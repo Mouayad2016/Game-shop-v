@@ -61,4 +61,45 @@ class Review(models.Model):
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
 
+class User(models.Model):
+    user_id = models.IntegerField(null=True)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    e_mail = models.CharField(max_length=300)
+    created_at = models.DateField(default=datetime.date.today)
+    updated_at = models.DateField(default=datetime.date.today)
+    
+class Shopping_cart(models.Model):
+    cart_id = models.IntegerField(null=True)
+    user_id = models.IntegerField(null=True)
+    created_at = models.DateField(default=datetime.date.today)
+    updated_at = models.DateField(default=datetime.date.today)
+    
+class Prod_cart(models.Model):
+    cart_id = models.IntegerField(null=True)
+    prod_id = models.IntegerField(null=True)
+    created_at = models.DateField(default=datetime.date.today)
+    updated_at = models.DateField(default=datetime.date.today)
+    
+class Order(models.Model):
+    order_id = models.IntegerField(null=True)
+    payment_way = models.CharField(max_length=500)
+    user_id = models.IntegerField(null=True)
+    discount_code = models.CharField(max_length=8)
+    state = models.BooleanField(default=False)
+    discount_id = models.IntegerField(null=True)
+    created_at = models.DateField(default=datetime.date.today)
+    updated_at = models.DateField(default=datetime.date.today)
+    
+class Adress(models.Model):
+    adress_id = models.IntegerField(null=True)
+    order_id = models.IntegerField(null=True)
+    city = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
+    post_number = models.IntegerField(null=True)
+    street_name = models.CharField(max_length=100)
+    co_adress = models.CharField(max_length=100)
+    created_at = models.DateField(default=datetime.date.today)
+    updated_at = models.DateField(default=datetime.date.today)
+
 # Create your models here.
