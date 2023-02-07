@@ -12,16 +12,28 @@ code {
     monospace;
 }
 
+a{
+  text-decoration: none;
+}
+
 .header_items {
   height: 45;
   padding: 16px;
   justify-content: space-evenly;
-  background-color: rgba(255, 0, 0, 0.6);
+  background-color: rgba(144, 14, 14, 0.8);
 }
 
-.header_cart_icon {
+.header_cart_icon, .header_me_icon, .contact {
   float: right;
+  padding: 0 20px;
 }
+
+.contact {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+
 
 .Header_right_section {
   padding: 0;
@@ -32,6 +44,7 @@ code {
 .header_items,
 a {
   padding: 16px;
+  color: #fff;
 }
 
 .footer {
