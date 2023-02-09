@@ -49,7 +49,7 @@
 
 .side_bar {
   /* position: relative; */
-  /* height: 100%;*/
+  height: auto;
   width: 10%;
   float: left;
   background-color: aliceblue;
@@ -68,3 +68,5 @@
     transform: rotate(360deg);
   }
 }
+
+@media only screen and (min-width: 1024px) {} /*we will need some like this to make the website look good when the page is shorter*/

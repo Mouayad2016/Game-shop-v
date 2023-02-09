@@ -11,7 +11,7 @@ const RotateImage = () => {
   return (
     <div className="Slides">
       <div>
-      <h1>Game of the moment</h1>
+      <h1>Games of the moment</h1>
       <Carousel infiniteLoop autoPlay>
         <div>
           <img src={img1} alt=""/>
