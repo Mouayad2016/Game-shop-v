@@ -17,6 +17,12 @@
   display: flex;
 }
 
+.page_content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -70,3 +76,4 @@
 }
 
 @media only screen and (min-width: 1024px) {} /*we will need some like this to make the website look good when the page is shorter*/
+

@@ -1,0 +1,13 @@
+.gallery {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    background-color: blue;
+    padding: 5px;
+  }
+  
+  img.gallery {
+    height: 200px;
+    width: auto;
+  }

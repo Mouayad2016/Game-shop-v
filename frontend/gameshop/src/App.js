@@ -3,6 +3,7 @@ import Fotter from "./components/footer";
 import Header from "./components/header";
 import RotateImage from "./components/rotateImage";
 import SideBar from "./components/sideBarComponent";
+import Gallery from "./components/gallery";
 
 const items = [1, 1, 1];
 
@@ -12,7 +13,11 @@ function App() {
       <Header />
       <div class="page_body">
         {" "}
-        <SideBar /> <RotateImage />
+        <SideBar />
+        <div class="page_content">
+         <RotateImage />
+         <Gallery />
+        </div> 
       </div>{" "}
       <Fotter />
     </div>
