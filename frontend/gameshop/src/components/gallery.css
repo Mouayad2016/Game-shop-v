@@ -2,12 +2,45 @@
     height: auto;
     display: flex;
     flex-wrap: wrap;
-    overflow: hidden;
     background-color: blue;
     padding: 5px;
   }
   
-  img.gallery {
-    height: 200px;
-    width: auto;
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 5px;
+}
+
+img.imgGallery {
+  margin: 8px;
+  vertical-align: middle;
+  width: 80%;
+}
+
+img.shrink {
+  transition: 1s ease;
+}
+
+img.shrink:hover{
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+  transition: 1s ease;
   }
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
