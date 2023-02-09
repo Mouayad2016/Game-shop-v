@@ -1,6 +1,6 @@
 import React from "react";
 import "./rotateImage.css";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import img1 from "../images/img1.jpg";
 import img2 from "../images/img2.jpg";
@@ -13,14 +13,17 @@ const RotateImage = () => {
       <div>
       <h1>Game of the moment</h1>
       <Carousel infiniteLoop autoPlay>
-        <div className="image">
+        <div>
           <img src={img1} alt=""/>
+          <p className="legend">RPG</p>
         </div>
-        <div className="image">
+        <div>
           <img src={img2} alt=""/>
+          <p className="legend">Adventure</p>
         </div>
-        <div className="image">
+        <div>
           <img src={img3} alt=""/>
+          <p className="legend">War</p>
         </div>
       </Carousel>
       </div>
