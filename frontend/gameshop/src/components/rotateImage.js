@@ -1,20 +1,15 @@
 import React from "react";
-import { Slide } from "react-slideshow-image";
-
-import img1 from "../images/apple.png";
+import "./rotateImage.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+import img1 from "../images/img1.jpg";
 import img2 from "../images/img2.jpg";
 import img3 from "../images/img3.jpg";
 
-const prop = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  backgroundSize: "cover",
-  height: "400px",
-};
 
 const RotateImage = () => {
   return (
+<<<<<<< HEAD
     <div Class>
       {" "}
       {/* //{" "}
@@ -38,6 +33,26 @@ const RotateImage = () => {
                     //{" "}
                   </Slide>{" "}
                   // <p> add your image </p>{" "} */}{" "}
+=======
+    <div className="Slides">
+      <div>
+      <h1>Games of the moment</h1>
+      <Carousel infiniteLoop autoPlay>
+        <div>
+          <img src={img1} alt=""/>
+          <p className="legend">RPG</p>
+        </div>
+        <div>
+          <img src={img2} alt=""/>
+          <p className="legend">Adventure</p>
+        </div>
+        <div>
+          <img src={img3} alt=""/>
+          <p className="legend">War</p>
+        </div>
+      </Carousel>
+      </div>
+>>>>>>> 29bf3506fcd56f6f01b52e23e428c326d3219dcc
     </div>
   );
 };
