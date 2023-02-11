@@ -16,22 +16,28 @@ const prop = {
 const RotateImage = () => {
   return (
     <div Class>
-      <Slide>
-        <div className="eachSlide">
-          {" "}
-          <div>
-            {" "}
-            <div img src={img1} alt="img1" />{" "}
-          </div>{" "}
-        </div>{" "}
-        <div className="eachSlide">
-          <img src={img2} alt="img2" />{" "}
-        </div>{" "}
-        <div className="eachSlide">
-          <img src={img3} alt="img2" />{" "}
-        </div>{" "}
-      </Slide>{" "}
-      <p> add your image </p>{" "}
+      {" "}
+      {/* //{" "}
+                  <Slide>
+                    //{" "}
+                    <div className="eachSlide">
+                      // //{" "}
+                      <div>
+                        // // <div img src={require("../images/apple.png")} alt="img1" /> //{" "}
+                      </div>{" "}
+                      //{" "}
+                    </div>{" "}
+                    //{" "}
+                    <div className="eachSlide">
+                      // <img src={img2} alt="img2" /> //{" "}
+                    </div>{" "}
+                    //{" "}
+                    <div className="eachSlide">
+                      // <img src={img3} alt="img2" /> //{" "}
+                    </div>{" "}
+                    //{" "}
+                  </Slide>{" "}
+                  // <p> add your image </p>{" "} */}{" "}
     </div>
   );
 };
