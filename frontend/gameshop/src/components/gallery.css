@@ -1,5 +1,4 @@
 .gallery {
-<<<<<<< HEAD
   height: auto;
   display: flex;
   flex-wrap: wrap;
@@ -7,15 +6,6 @@
   padding: 5px;
 }
 
-=======
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: blue;
-    padding: 5px;
-  }
-  
->>>>>>> 29bf3506fcd56f6f01b52e23e428c326d3219dcc
 .column {
   flex: 25%;
   max-width: 25%;
@@ -32,24 +22,13 @@ img.shrink {
   transition: 1s ease;
 }
 
-<<<<<<< HEAD
 img.shrink:hover {
-=======
-img.shrink:hover{
->>>>>>> 29bf3506fcd56f6f01b52e23e428c326d3219dcc
   -webkit-transform: scale(0.9);
   -ms-transform: scale(0.9);
   transform: scale(0.9);
   transition: 1s ease;
 }
 
-<<<<<<< HEAD
-/* Responsive layout - makes a two column-layout instead of four columns */
-
-=======
-
-/* Responsive layout - makes a two column-layout instead of four columns */
->>>>>>> 29bf3506fcd56f6f01b52e23e428c326d3219dcc
 @media screen and (max-width: 800px) {
   .column {
     flex: 50%;
@@ -58,17 +37,10 @@ img.shrink:hover{
 }
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-<<<<<<< HEAD
 
-=======
->>>>>>> 29bf3506fcd56f6f01b52e23e428c326d3219dcc
 @media screen and (max-width: 600px) {
   .column {
     flex: 100%;
     max-width: 100%;
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 29bf3506fcd56f6f01b52e23e428c326d3219dcc

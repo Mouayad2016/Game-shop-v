@@ -12,14 +12,10 @@ function App() {
       <div class="page_body">
         {" "}
         <SideBar />
-<<<<<<< HEAD
-        <RotateImage />
-=======
         <div class="page_content">
-         <RotateImage />
-         <Gallery />
-        </div> 
->>>>>>> 29bf3506fcd56f6f01b52e23e428c326d3219dcc
+          <RotateImage />
+          <Gallery />
+        </div>{" "}
       </div>{" "}
       <Fotter />
     </div>

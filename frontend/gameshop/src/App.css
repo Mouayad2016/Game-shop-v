@@ -1,14 +1,10 @@
 .App {
-  position: fixed;
+  /* position: fixed; */
   /* display: inline-block; */
   text-align: center;
-  height: 100%;
-  width: 100%;
-<<<<<<< HEAD
-  background-color: rgb(164, 241, 241);
-=======
+  height: 100vh;
+  width: 100vw;
   background-color: rgb(0, 174, 255);
->>>>>>> 29bf3506fcd56f6f01b52e23e428c326d3219dcc
 }
 
 #root {
@@ -17,20 +13,20 @@
 }
 
 .page_body {
-  display: inline;
-  position: relative;
-  height: 100%;
-  width: 100%;
+  /* display: inline; */
+  /* position: relative; */
+  /* height: 100%;
+  width: 100%; */
   /* position: relative; */
   /* /* display: inline-block; */
-  display: flex;
+  /* display: flex; */
 }
 
-.page_content {
-  height: 100%;
+/* .page_content {
+  height: 50%;
   display: flex;
   flex-direction: column;
-}
+} */
 
 .App-logo {
   height: 40vmin;
@@ -64,13 +60,14 @@
 }
 
 .side_bar_items {
-  width: 80%;
+  /* width: 80% !important; */
   position: absolute;
   padding: 20px !important;
 }
 
 .side_bar_items,
 input {
+  /* width: 80%; */
   padding: 8px 8px;
   border-radius: 25px;
 }
@@ -79,7 +76,6 @@ input {
   color: #61dafb;
 }
 
-<<<<<<< HEAD
 .side_bar_items,
 input[type="searsh"] ::placeholder {
   color: gray;
@@ -96,11 +92,12 @@ li {
   margin-left: 5px;
   padding: 10px;
   text-align: left;
-=======
+}
+
 .side_bar {
   /* position: relative; */
   height: auto;
-  width: 10%;
+  width: 13%;
   float: left;
   background-color: aliceblue;
   padding: 20px;
@@ -108,7 +105,6 @@ li {
   right: 0px;
   bottom: 0px;
   left: 0px;
->>>>>>> 29bf3506fcd56f6f01b52e23e428c326d3219dcc
 }
 
 @keyframes App-logo-spin {
@@ -120,12 +116,5 @@ li {
   }
 }
 
-<<<<<<< HEAD
 @media only screen and (min-width: 1024px) {
 }
-
-/*we will need some like this to make the website look good when the page is shorter*/
-=======
-@media only screen and (min-width: 1024px) {} /*we will need some like this to make the website look good when the page is shorter*/
-
->>>>>>> 29bf3506fcd56f6f01b52e23e428c326d3219dcc
