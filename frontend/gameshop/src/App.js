@@ -11,11 +11,9 @@ function App() {
       <Header />
       <div class="page_body">
         {" "}
-        <SideBar />
-        <div class="page_content">
-          <RotateImage />
-          <Gallery />
-        </div>{" "}
+        {/* <div class="page_content"> */} <SideBar />
+        <RotateImage />
+        <Gallery /> {/* </div>{" "} */}{" "}
       </div>{" "}
       <Fotter />
     </div>
