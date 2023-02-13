@@ -29,7 +29,7 @@ a {
 }
 
 .header_items {
-  height: 45;
+  /* height: 45; */
   padding: 16px;
   justify-content: space-evenly;
   background-color: rgba(144, 14, 14, 0.8);

@@ -1,8 +1,7 @@
 .App {
-  /* position: fixed; */
-  /* display: inline-block; */
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
   width: 100vw;
 }
 
@@ -12,22 +11,21 @@
 }
 
 .page_body {
-  /* display: inline; */
-  /* position: relative; */
-  /* height: 100%;
-  width: 100%; */
-  /* position: relative; */
-  /* /* display: inline-block; */
-  /* display: flex; */
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  display: flex;
 }
 
 .page_content {
-  overflow: auto;
+  /* overflow: auto;
   height: auto;
   width: auto;
-  /* display: flex; */
+  display: flex;
   color: #000;
-  flex-direction: column;
+  flex-direction: column; */
 }
 
 .App-logo {
@@ -49,28 +47,103 @@
   color: #61dafb;
 }
 
-.side_bar {
-  position: relative;
-  /* height: 100%;*/
-  /* position: absolute; */
-  width: 15%;
-  float: left;
+/*  ! side bar   */
+
+.main_banner {
+  /* width: 200px;
+  height: 50%;
+  min-height: 100%;
+  width: 100%;
+  min-width: 100%; */
+  padding: 16px;
+  height: 600px;
+  /* height: auto; */
+  display: flex;
+  justify-content: center;
+}
+
+.middel {
+  height: 100%;
+  width: 65%;
+  min-width: 13%;
+  display: flex;
+  flex-wrap: wrap;
+  /* margin: 20px; */
+  /* border-radius: 20px; */
+}
+
+.right {
+  height: auto;
+  width: auto;
   background-color: aliceblue;
+  /* padding: 20px; */
   top: 0px;
+  right: 0px;
   bottom: 0px;
   left: 0px;
+  min-width: 13%;
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.side_bar {
+  height: 100%;
+  width: 100%;
+  padding: 15px;
+}
+
+.left {
+  height: auto;
+  width: 15%;
+  background-image: url("../src/images/gaming-room-interior.png");
+  background-size: cover;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  min-width: 13%;
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.left_card_up {
+  border-radius: 20px 20px 0px 0px;
+  height: auto;
+  padding: 20px;
+  color: white;
+  font-weight: bold;
+  /* margin: 2px; */
+  background-color: rgb(152, 95, 160);
+}
+
+.left_card_down {
+  border-radius: 0px 0px 20px 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  padding: 20px;
+  color: white;
+  font-weight: bold;
+  /* margin: 2px; */
+  background-color: rgb(152, 95, 160);
 }
 
 .side_bar_items {
-  /* width: 80% !important; */
+  width: 100%;
   position: absolute;
-  padding: 20px !important;
 }
 
 .side_bar_items,
 input {
-  /* width: 80%; */
-  padding: 8px 8px;
+  position: relative;
+  width: 40%;
+  /* padding: 2px; */
+  min-width: 90%;
   border-radius: 25px;
 }
 
@@ -96,17 +169,12 @@ li {
   text-align: left;
 }
 
-.side_bar {
-  /* position: relative; */
-  height: auto;
-  width: 13%;
-  float: left;
-  background-color: aliceblue;
-  padding: 20px;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
+@media screen and (max-width: 800px) {
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 600px) {
 }
 
 @keyframes App-logo-spin {
