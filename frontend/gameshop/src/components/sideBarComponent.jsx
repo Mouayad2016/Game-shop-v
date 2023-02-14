@@ -43,6 +43,20 @@ const items = [
       },
     ],
   },
+  {
+    Name: "Others",
+    sub: [
+      {
+        Name: "ex1",
+      },
+      {
+        Name: "ex2",
+      },
+      {
+        Name: "ex3",
+      },
+    ],
+  },
 ];
 
 const SideBar = () => {
