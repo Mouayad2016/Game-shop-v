@@ -24,7 +24,7 @@ class Categories(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     description = models.TextField(blank=True)
-    creator_admin_id = models.ForeignKey(Administrators, on_delete=models.CASCADE, related_name ="creator_admin_id") # *sDjango is unable to generate unique names for many foreign keys so here you should use related_name
+    creator_admin_id = models.ForeignKey(Administrators, on_delete=models.CASCADE, null=True, related_name ="creator_admin_id") # *sDjango is unable to generate unique names for many foreign keys so here you should use related_name
     deleted_by_admin_id = models.ForeignKey(Administrators, on_delete=models.CASCADE, null= True , related_name="deleted_by_admin_id")
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
@@ -38,10 +38,10 @@ class Shopping_cart(models.Model):
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
-    description = models.TextField(blank=True ,)
-    stock = models.IntegerField(null=True)
-    review_id= models.ForeignKey('Review', on_delete=models.CASCADE)
-    discout_id = models.ForeignKey('Discount', on_delete=models.CASCADE)
+    description = models.TextField(blank=True)
+    stock = models.IntegerField(null= True)
+    review_id= models.ForeignKey('Review', on_delete=models.CASCADE , null= True)
+    discout_id = models.ForeignKey('Discount', on_delete=models.CASCADE,null= True)
     creator_admin_id = models.IntegerField(null=True)
     is_deleted= models.BooleanField(default=False)
     deleted_by_admin_id = models.IntegerField(null=True)
@@ -50,7 +50,10 @@ class Product(models.Model):
     prod_category = models.ManyToManyField(Categories) # * Many-to-many relationships will create a third table no need to manually creating the third table in this case it created gameshop_prod_cat table.
     prod_cart = models.ManyToManyField(Shopping_cart)
 
-    
+class Product_images(models.Model):
+    id: models.AutoField(primary_key=True)
+    product_id= models.ForeignKey('Product', on_delete=models.CASCADE)
+    image=models.ImageField()
 
 class Discount(models.Model):
     id = models.AutoField(primary_key=True)

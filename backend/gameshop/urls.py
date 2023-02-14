@@ -2,9 +2,26 @@ from django.urls import path
 from . import views
 from django.conf import settings
 
+
+prodRout ="products";
+categoryRout ="category";
+
 urlpatterns = [
-    path('', views.getProduct),
-    path('post/', views.postProdcut),
-    path('category/', views.getCategory),
-    path('category/post/', views.postCategory),
+
+    # ? Note No need to add / att the end i already configured the setting so it will be there automatically
+
+    # * Method : Get
+    # * link:  http://127.0.0.1:8000/products 
+    path(f'{prodRout}', views.getProduct),     
+    # * Method : Post
+    # * link:  http://127.0.0.1:8000/products/post 
+    # * Form : { "name": "prod_1","description": "aösmdöasmdas dlkas dlkas dkas dl askld asld kas","stock":123 }
+    path(f'{prodRout}/post', views.postProdcut),
+    # * Method : Get
+    # * link:  http://127.0.0.1:8000/category
+    path(f'{categoryRout}', views.getCategory),
+    # * Method : Post 
+    # * link:  http://127.0.0.1:8000/category/post 
+    # * Form : { "name":"CAT_1","creator_admin_id_id": 1, "description":"asdaaaaaaaaaaaa" }
+    path(f'{categoryRout}/post', views.postCategory),
 ]  
