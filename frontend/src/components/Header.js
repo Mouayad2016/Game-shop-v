@@ -10,8 +10,7 @@ return (
                     <nav class="main-nav">
 
                         <a href="index.html" class="logo">
-                        img<img src="/../../public/assets/images/me_white.png" class="logo" alt=""/> 
-                        {/*link may not be good*/}
+                        <img src="assets/images/me_white.png" heigth="30" width="60" alt=""/><img src="assets/images/me_white.png" heigth="30" width="60" alt=""/> 
                         </a>
                         <ul class="nav">
                             
@@ -27,7 +26,8 @@ return (
                                     <li><a href="">Search</a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><img src="./../public/assets/images/cart2_white.png" alt=""/></li>
+                            <li class="scroll-to-section"><img src="assets/images/cart2_white.png" alt="" height="25"
+            width="25"/></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact us</a></li> 
                             <div class="search-icon">
                                 <a href="#search"><i class="fa fa-search"></i></a>
