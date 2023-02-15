@@ -10,7 +10,7 @@ return (
                     <div class="left-text-content">
                         <div class="section-heading">
                             <h6>About Us</h6>
-                            <h2>We work with top brands and startups</h2>
+                            <h2>Contact us: +46 xxxxxxx  E-mail: xxxxxxx@geek.com</h2>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
