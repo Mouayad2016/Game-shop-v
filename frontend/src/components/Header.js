@@ -16,18 +16,30 @@ return (
                             
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
-                            <li class="scroll-to-section"><a href="#projects">Projects</a></li>
+                            <li class="submenu">
+                                <a href="javascript:;">Category</a>
+                                    <ul>
+                                        <li><a href=''>Action</a></li>
+                                        <li><a href=''>Sport</a></li>
+                                        <li><a href=''>Adventure</a></li>
+                                        <li><a href=''>Single</a></li>
+                                        <li><a href=''>Double</a></li>
+                                    </ul>
+                                    </li>
                             <li class="submenu">
                                 <a href="javascript:;">Products</a>
                                 <ul>
-                                    <li><a href="">New</a></li>
+                                    <li><a href="">All</a></li>
+                                    <li><a href="">New Releases</a></li>
                                     <li><a href="">Promo</a></li>
-                                    <li><a href="">Categories</a></li>
-                                    <li><a href="">Search</a></li>
+                                    <li><a href="">Top Seller</a></li>
+                                    <li><a href="">Free Games</a></li>
+                                    <li><a href="">Most Played</a></li>
+                                    <li><a href="">Coming soon</a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><img src="assets/images/cart2_white.png" alt="" height="25"
-            width="25"/></li>
+                            <li class="scroll-to-section"><a href='#cart'><img src="assets/images/cart2.png" alt="" height="25"
+            width="25"/></a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact us</a></li> 
                             <div class="search-icon">
                                 <a href="#search"><i class="fa fa-search"></i></a>
