@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from "axios";
 
+function toSell(num){
+  if(num == 1) return num;
+}
 const Gallery = () => {
+  const [data,setData] =useState([]);
+
+  useEffect(()=>{
+    const fetchData = async()=>{
+      const result = await axios("https://jsonplaceholder.typicode.com/posts",);
+      setData(result.data);
+      console.log("updated");
+    };
+    fetchData();
+    console.log("Mounted");
+  },[])
 return (
     <div>
+
     <section class="section" id="projects">
       <div class="container">
         <div class="row">
@@ -24,11 +40,14 @@ return (
             <div class="col-lg-9">
                 <div class="filters-content">
                     <div class="row grid">
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all des">
+                    {data.map(item =>(<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all des">
                           <div class="item">
-                            <a href="assets/images/project-big-item-01.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
+                            
+                            <a href="assets/images/project-big-item-01.jpg" data-lightbox="image-1" data-title={item.title}><img src="assets/images/project-item-01.jpg" alt=""/></a>
                           </div>
                         </div>
+                        ))}
+                        
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all dev">
                           <div class="item">
                             <a href="assets/images/project-big-item-02.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="assets/images/project-item-02.jpg" alt=""/></a>
