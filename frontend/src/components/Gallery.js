@@ -46,7 +46,7 @@ return (
                             <a href="assets/images/project-big-item-01.jpg" data-lightbox="image-1" data-title={item.title}><img src="assets/images/project-item-01.jpg" alt=""/></a>
                           </div>
                         </div>
-                        ))}
+                    ))}
                         
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all dev">
                           <div class="item">
