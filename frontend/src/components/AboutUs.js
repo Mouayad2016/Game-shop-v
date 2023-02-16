@@ -8,10 +8,10 @@ return (
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="left-text-content">
-                        <div class="section-heading">
+                        {/* <div class="section-heading">
                             <h6>About Us</h6>
-                            <h2>Contact us: +46 xxxxxxx  E-mail: xxxxxxx@geek.com</h2>
-                        </div>
+                            {<h2>Contact us: +46 123 45 45  E-mail: service@geek.com</h2>}
+                        </div> */}
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="service-item">
