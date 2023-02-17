@@ -1,13 +1,15 @@
 from django.shortcuts import render
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
-from gameshop.models import Product
-from gameshop.serializers import ProductSerializer
-from rest_framework import status
+from .models import Product
+from .serializers import ProductSerializer
 from .models import Categories
 from .serializers import CategorySerializer
 from .requestForm import prodFrom
+from .models import Shopping_cart
+from .serializers import Shopping_cartSerializer
 # Create your views here.
 @api_view(['GET'])
 def getProduct(request):
@@ -111,3 +113,44 @@ def updateCategoryById(request,id):
         return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
 
 # ---------------------------------------------------------------------------------------------- -------------------------------------------
+
+@api_view(['POST'])
+def postShopping_cart(request):
+    try:
+        serializer = Shopping_cartSerializer(data=request.data)
+        valid = serializer.is_valid(); # ! validate the response 
+        if valid:
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+@api_view(['DELETE'])
+def deleteShopping_cartById(request,id):
+    try:
+        num_deleted, _ = Shopping_cart.objects.filter(id=id).delete()
+        if num_deleted == 0:
+            return Response(status=status.HTTP_404_NOT_FOUND)       
+        else:
+            return Response(status=status.HTTP_204_NO_CONTENT)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+def updateShopping_cartById(request,id):
+    try:
+        shopping_cart = Shopping_cart.objects.get(id=id)
+        serializer = Shopping_cartSerializer(shopping_cart, data=request.data,partial=True )#? partial=True update only data provided by the body
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    except Shopping_cart.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
+
+# ---------------------------------------------------------------------------------------------- -------------------------------------------
+

@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from gameshop.models import Product
+from .models import Product
 from .models import Categories
+from .models import Shopping_cart
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -27,5 +28,14 @@ class CategorySerializer(serializers.ModelSerializer):
             'description',
             'creator_admin_id',
             'deleted_by_admin_id',
+            'created_at',
+            'updated_at')
+
+class Shopping_cartSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Categories
+        fields=(
+            'id',
+            'user_id',
             'created_at',
             'updated_at')
