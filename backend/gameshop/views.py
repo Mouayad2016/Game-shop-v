@@ -114,6 +114,15 @@ def updateCategoryById(request,id):
 
 # ---------------------------------------------------------------------------------------------- -------------------------------------------
 
+@api_view(['GET'])
+def getShopping_cart(request):
+    try:
+        shopping_cart = Shopping_cart.objects.all()
+        serializer = Shopping_cartSerializer(shopping_cart, many=True)
+        return Response(serializer.data)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+
 @api_view(['POST'])
 def postShopping_cart(request):
     try:

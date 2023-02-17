@@ -41,6 +41,9 @@ urlpatterns = [
     # * the data you pass will be uppdated ex : { "name":"mouayad", "description": "uppdated"} 
     path(f'{categoryRout}/<int:id>/update', views.updateCategoryById),
 
+    # * Method : Get
+    # * link:  http://127.0.0.1:8000/shopping_cart
+    path(f'{shopping_cartRout}', views.getShopping_cart),
     # * Method : Post 
     # * link:  http://127.0.0.1:8000/shopping_cart/post
     # * Form : { "user_id": 1}
