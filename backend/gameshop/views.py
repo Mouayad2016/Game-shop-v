@@ -34,7 +34,33 @@ def postProdcut(request):
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST)
 
+@api_view(['DELETE'])
+def deleteProdcutById(request,id):
+    try:
+        num_deleted, _ = Product.objects.filter(id=id).delete()
+        if num_deleted == 0:
+            return Response(status=status.HTTP_404_NOT_FOUND)       
+        else:
+            return Response(status=status.HTTP_204_NO_CONTENT)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST)
 
+@api_view(['PUT'])
+def updateProductById(request,id):
+    try:
+        product = Product.objects.get(id=id)
+        serializer = ProductSerializer(product, data=request.data,partial=True )#? partial=True update only data provided by the body
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    except Product.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
+
+# ----------------------------------------------------------------------------------------------------------
 
 @api_view(['GET'])
 def getCategory(request):
@@ -58,3 +84,30 @@ def postCategory(request):
             return Response(serializer.errors)
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+@api_view(['DELETE'])
+def deleteCategoryById(request,id):
+    try:
+        num_deleted, _ = Categories.objects.filter(id=id).delete()
+        if num_deleted == 0:
+            return Response(status=status.HTTP_404_NOT_FOUND)       
+        else:
+            return Response(status=status.HTTP_204_NO_CONTENT)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+def updateCategoryById(request,id):
+    try:
+        cat = Categories.objects.get(id=id)
+        serializer = ProductSerializer(cat, data=request.data,partial=True )#? partial=True update only data provided by the body
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    except Product.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
+
+# ---------------------------------------------------------------------------------------------- -------------------------------------------
