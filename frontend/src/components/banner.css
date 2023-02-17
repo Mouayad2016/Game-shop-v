@@ -1,0 +1,18 @@
+.carousel {
+    position: relative;
+}
+.carousel-caption{
+    height: auto;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    margin: auto;
+}
+
+.carousel-caption h3, h5, p {
+    padding-bottom: 10px;
+}
+
+.carousel-caption .main-stroked-button {
+    margin-right: 10px;
+}
