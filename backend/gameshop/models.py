@@ -67,8 +67,6 @@ class Discount(models.Model):
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
     
-
-
 class Order(models.Model):
     id = models.AutoField(primary_key=True)
     payment_way = models.CharField(max_length=500)
@@ -101,15 +99,4 @@ class Review(models.Model):
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
     
-class Adress(models.Model):
-    id = models.AutoField(primary_key=True)
-    order_id = models.IntegerField(null=True)
-    city = models.CharField(max_length=50)
-    country = models.CharField(max_length=50)
-    post_number = models.IntegerField(null=True)
-    street_name = models.CharField(max_length=100)
-    co_adress = models.CharField(max_length=100)
-    created_at = models.DateField(default=datetime.date.today)
-    updated_at = models.DateField(default=datetime.date.today)
-
 # Create your models here.
