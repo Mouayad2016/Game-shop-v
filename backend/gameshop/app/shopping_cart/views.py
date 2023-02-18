@@ -5,6 +5,14 @@ from ...models import Shopping_cart
 from ...serializers import Shopping_cartSerializer
 
 # ---------------------------------------------------------------------------------------------- -------------------------------------------
+@api_view(['GET'])
+def getShopping_cart(request):
+    try:
+        shopping_cart = Shopping_cart.objects.all()
+        serializer = Shopping_cartSerializer(shopping_cart, many=True)
+        return Response(serializer.data)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
 
 @api_view(['POST'])
 def postShopping_cart(request):
@@ -43,6 +51,5 @@ def updateShopping_cartById(request,id):
         return Response(status=status.HTTP_404_NOT_FOUND)
     except Exception as e:
         return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
-
 # ---------------------------------------------------------------------------------------------- -------------------------------------------
 

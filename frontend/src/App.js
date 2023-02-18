@@ -10,6 +10,7 @@ import LearnMore from './components/LearnMore';
 import Search from './components/Search';
 import SignIn from './components/SignIn';
 import Suggestion from './components/Suggestion';
+import ProductPage from './components/ProductPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Search/>
       <Banner/>
       <Gallery />
+      <ProductPage/>{/*just so that we can see it now will be moved later*/}
       <AboutUs/>
       <ContactInfo/>
       <LearnMore/>

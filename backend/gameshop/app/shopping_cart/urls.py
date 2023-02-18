@@ -8,6 +8,7 @@ urlpatterns = [
     # * Method : Post 
     # * link:  http://127.0.0.1:8000/shopping_cart/post
     # * Form : { "user_id": 1}
+    path('get', views.getShopping_cart),
     path('post', views.postShopping_cart),
     # * Method : Delete
     # * link:  http://127.0.0.1:8000/shopping_cart/id/delete 
