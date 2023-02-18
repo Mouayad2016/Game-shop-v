@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Product
 from .models import Categories
 from .models import Shopping_cart
+from .models import Discount
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -33,9 +34,24 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class Shopping_cartSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Categories
+        model=Shopping_cart
         fields=(
             'id',
             'user_id',
+            'created_at',
+            'updated_at')
+
+class DiscountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Discount
+        fields=(
+            'id',
+            'start_date',
+            'end_date',
+            'title',
+            'discount_type',
+            'rate',
+            'code',
+            'admin_id',
             'created_at',
             'updated_at')

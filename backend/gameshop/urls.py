@@ -6,6 +6,7 @@ from django.conf import settings
 prodRout ="products";
 categoryRout ="category";
 shopping_cartRout = "shopping_cart"
+discountRout = "discount"
 
 urlpatterns = [
 
@@ -55,5 +56,20 @@ urlpatterns = [
     # * link:  http://127.0.0.1:8000/shopping_cart/id/update 
     # * the data you pass will be uppdated ex : { "user_id": 2} 
     path(f'{shopping_cartRout}/<int:id>/update', views.updateShopping_cartById),
+
+     # * Method : Get
+    # * link:  http://127.0.0.1:8000/discount
+    path(f'{discountRout}', views.getDiscount),
+    # * Method : Post 
+    # * link:  http://127.0.0.1:8000/discount/post
+    # * Form : { "title": 1, "discount_type": 1, "rate": 1, "code": 1, "admin_id": 1}
+    path(f'{discountRout}/post', views.postDiscount),
+    # * Method : Delete
+    # * link:  http://127.0.0.1:8000/discount/id/delete 
+    path(f'{discountRout}/<int:id>/delete', views.deleteDiscountById),
+    # * Method : PUT
+    # * link:  http://127.0.0.1:8000/discount/id/update 
+    # * the data you pass will be uppdated ex : { "title": 2, "discount_type": 2, "rate": 2, "code": 2, "admin_id": 2} 
+    path(f'{discountRout}/<int:id>/update', views.updateDiscountById),
 
 ]      
