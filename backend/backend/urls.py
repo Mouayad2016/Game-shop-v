@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('gameshop.urls')),
+    path('auth/', include('gameshop.app.auth.urls')),
+    path('category/', include('gameshop.app.category.urls')),
+    path('products/', include('gameshop.app.product.urls')),
+    path('shopping_cart/', include('gameshop.app.shopping_cart.urls')),
+
+
 ]

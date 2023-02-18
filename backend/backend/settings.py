@@ -19,6 +19,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
+GOOGLE_OAUTH_CLIENT_ID = '208664010544-tel853atbvk6bqe1mpintav5p4jjgm3v.apps.googleusercontent.com'
+GOOGLE_OAUTH_CLIENT_SECRET = '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'
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-)@6zs(jz6%w)ychj$swd%7&$p+=#(+x@0lhvgejv5=8(nbo%7^'
 

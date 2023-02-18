@@ -8,6 +8,7 @@ from django.db import models
 class User(models.Model):
     id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=200)
+    username  = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     e_mail = models.CharField(max_length=300)
     created_at = models.DateField(default=datetime.date.today)
@@ -76,6 +77,7 @@ class Order(models.Model):
     discount_id = models.ForeignKey(Discount, on_delete=models.CASCADE)
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
+
 
 class Adress(models.Model):
     id = models.AutoField(primary_key=True)
