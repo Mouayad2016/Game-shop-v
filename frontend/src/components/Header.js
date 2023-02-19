@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => {
 return (
-    <div>
+    <div>{/*We have a problem with the menu bar when the page go little there no more menu only the tree line and after nothing */}
     <header class="header-area header-sticky">
         <div class="container">
             <div class="row">

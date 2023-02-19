@@ -23,6 +23,7 @@ function App() {
       <AboutUs/>
       <ContactInfo/>
       <LearnMore/>
+      {/*<SignIn/>*/}
       <Footer />
     </div>
   );

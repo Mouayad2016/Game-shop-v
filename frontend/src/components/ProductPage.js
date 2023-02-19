@@ -32,6 +32,9 @@ return (
                     <p>How much this cost 350 SEK</p>
                     <br></br>
                     <p>Good looking button to add to your shopping cart</p>
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="main-button-icon">Add to chart<i class="fa fa-arrow-right"></i></button>
+                    </fieldset>
                 </div>{/*}
                 <div class="filters">
                     <ul>
@@ -59,31 +62,32 @@ return (
                     <div class="row grid">
                         <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 all des">
                           <div class="item">
-                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
+                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
                           </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 all des">
-                          <div class="item">
-                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
+                        
+                        <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 all des">
+                          <div class="row grid">
+                            <div class="item col-lg-4 col-md-6 col-sm-8 all">
+                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
                           </div>
                           <br></br>
-                          <div class="item">
-                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
+                          <div class="item col-lg-4 col-md-6 col-sm-8 all">
+                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
                           </div>
                           <br></br>
-                          <div class="item">
-                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
+                          <div class="item col-lg-4 col-md-6 col-sm-8 all">
+                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
                           </div>
                           <br></br>
-                          <div class="item">
-                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
+                          <div class="item col-lg-4 col-md-6 col-sm-8 all">
+                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
                           </div>
                           <br></br>
-                          <div class="item">
-                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-1" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
+                          <div class="item col-lg-4 col-md-6 col-sm-8 all">
+                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
                           </div>
-
-            </div></div></div>
+            </div></div></div></div>
         </div>
       </div></div>
     </section>
