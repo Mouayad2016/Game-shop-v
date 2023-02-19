@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from ...models import Product
 from ...serializers import ProductSerializer
 from ...models import Categories
-from ...serializers import CategorySerializer
+from .serializer import CategorySerializer
 
 
 

@@ -70,10 +70,10 @@ class Discount(models.Model):
 class Order(models.Model):
     id = models.AutoField(primary_key=True)
     payment_way = models.CharField(max_length=500)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    discount_code = models.CharField(max_length=8)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE , null=True)
+    discount_code = models.CharField(max_length=8,null=True)
     state = models.BooleanField(default=False)
-    discount_id = models.ForeignKey(Discount, on_delete=models.CASCADE)
+    discount_id = models.ForeignKey(Discount, on_delete=models.CASCADE, null=True)
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
 

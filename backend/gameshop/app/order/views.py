@@ -4,6 +4,9 @@ from rest_framework import status
 from ...models import Order
 from .serializer import OrderSerializer
 
+
+
+
 @api_view(['GET'])
 def getOrders(request):
     try:
@@ -48,6 +51,6 @@ def updateOrderById(request, id):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     except Order.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        return Response("Not found",status=status.HTTP_404_NOT_FOUND)
     except Exception as e:
         return Response(str(e), status=status.HTTP_400_BAD_REQUEST)

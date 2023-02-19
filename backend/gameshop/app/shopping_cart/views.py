@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from ...models import Shopping_cart
-from ...serializers import Shopping_cartSerializer
+from .serializer import Shopping_cartSerializer
 
 # ---------------------------------------------------------------------------------------------- -------------------------------------------
 @api_view(['GET'])
