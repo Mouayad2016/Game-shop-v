@@ -9,7 +9,7 @@ const Gallery = () => {
 
   useEffect(()=>{
     const fetchData = async()=>{
-      const result = await axios("http://127.0.0.1:8000/category",);
+      const result = await axios("http://127.0.0.1:8000/category/get",);
       setData(result.data); {/*"https://jsonplaceholder.typicode.com/posts" */}
       console.log("updated");
     };
