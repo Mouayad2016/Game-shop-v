@@ -27,7 +27,7 @@ return (
                                 <li><a href="">Search</a></li>
                             </ul>
                         </li>
-                        <li class="scroll-to-section"><img src="assets/images/cart2_white.png" alt="" height="25"
+                        <li class="scroll-to-section"><img src="assets/images/cart2_green.png" alt="" height="25"
                     width="25"/></li>
                         <li class="scroll-to-section"><a href="#contact-us">Contact us</a></li> 
                         <div class="search-icon">
