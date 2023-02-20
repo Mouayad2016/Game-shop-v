@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const Header = () => {
 return (
     <div>{/*We have a problem with the menu bar when the page go little there no more menu only the tree line and after nothing */}
@@ -27,8 +28,8 @@ return (
                                 <li><a href="">Search</a></li>
                             </ul>
                         </li>
-                        <li class="scroll-to-section"><img src="assets/images/cart2_green.png" alt="" height="25"
-                    width="25"/></li>
+                        <li class="scroll-to-section"><img src="assets/images/cart2_green.png" alt="" height="27"
+                    width="27"/></li>
                         <li class="scroll-to-section"><a href="#contact-us">Contact us</a></li> 
                         <div class="search-icon">
                             <a href="#search"><i class="fa fa-search"></i></a>
