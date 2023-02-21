@@ -1,6 +1,6 @@
 import React from "react";
 import "./ShoppingCart.css";
-import CartItem from "./CartItem";
+import CartItem from "./CartItems";
 
 function ShoppingCart() {
   return (

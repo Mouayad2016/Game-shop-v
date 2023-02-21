@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ShoppingCart from "./Cart/ShoppingCart";
 
 const Header = () => {
 return (
