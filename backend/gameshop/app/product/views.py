@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from ...models import Product
-from .serializer import ProductSerializer
+from .serializer import ProductSerializer,GetProductSerializer
 
 
 # Create your views here.
@@ -10,7 +10,7 @@ from .serializer import ProductSerializer
 def getProduct(request):
     try:
         product = Product.objects.all()
-        serializer = ProductSerializer(product, many=True)
+        serializer = GetProductSerializer(product, many=True)
         return Response(serializer.data)
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
