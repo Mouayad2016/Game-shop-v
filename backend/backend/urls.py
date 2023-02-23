@@ -23,6 +23,8 @@ urlpatterns = [
     path('category/', include('gameshop.app.category.urls')),
     path('cart/', include('gameshop.app.shopping_cart.urls')),
     path('order/', include('gameshop.app.order.urls')),
+    path('discount/', include('gameshop.app.discount.urls')),
+    path('review/', include('gameshop.app.review.urls')),
 
 
 ]
