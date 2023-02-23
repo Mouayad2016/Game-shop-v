@@ -68,12 +68,27 @@ And activate the environment
   pipenv shell
 ```
 
+To install google authentication
+
+```bash
+  pip install google-auth
+  pip install google-auth-oathlib
+```
+
 ## Deployment
 
-To deploy this project run
+To deploy this project, this in backend
 
 ```bash
   python manage.py runserver
+```
+
+And this in frontend
+
+```bash
+  cd frontend
+  cd gameshop
+  npm start
 ```
 
 ## Usage/Examples
