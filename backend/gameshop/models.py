@@ -48,7 +48,7 @@ class Product(models.Model):
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
     prod_category = models.ManyToManyField(Categories) # * Many-to-many relationships will create a third table no need to manually creating the third table in this case it created gameshop_prod_cat table.
-    prod_cart = models.ManyToManyField(Shopping_cart)
+    prod_cart = models.ManyToManyField(Shopping_cart, null=True)
 
 class Product_images(models.Model):
     id: models.AutoField(primary_key=True)
