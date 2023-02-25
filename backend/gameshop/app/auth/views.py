@@ -7,8 +7,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from google.oauth2 import id_token
+from rest_framework import status
 
 from google.auth.transport import requests
 import requests as httpreq
@@ -59,10 +61,12 @@ def google_auth_callback(request):
         user.save()
         
         # Log the user in and redirect to the home page
-        user = authenticate(request, username=user.email, password=None)
+        user.backend = "django.contrib.auth.backends.ModelBackend"
         if user is not None:
             login(request, user)
-        return redirect("http://localhost:3000")
+            return redirect("http://localhost:3000")
+        else:
+            return Response({"error": "Unable to log in."}, status=status.HTTP_400_BAD_REQUEST)
     except ValueError as err: 
         print(err)
         return err
