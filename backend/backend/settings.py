@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-)@6zs(jz6%w)ychj$swd%7&$p+=#(+x@0lhvgejv5=8(nbo%7^'
-
+GOOGLE_OAUTH_CLIENT_ID= "208664010544-tel853atbvk6bqe1mpintav5p4jjgm3v.apps.googleusercontent.com"
+GOOGLE_OAUTH_CLIENT_SECRET= "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"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'gameshop',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +61,22 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+]
+
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',  # Replace with the URL of your frontend
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
 ]
 
 ROOT_URLCONF = 'backend.urls'

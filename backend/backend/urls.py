@@ -19,6 +19,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include('gameshop.urls')),
     path('auth/', include('gameshop.app.auth.urls')),
+    path('user/', include('gameshop.app.user.urls')),
     path('products/', include('gameshop.app.product.urls')),
     path('category/', include('gameshop.app.category.urls')),
     path('cart/', include('gameshop.app.shopping_cart.urls')),

@@ -2,16 +2,11 @@ from django.db import models
 from django.db.models import Deferrable, UniqueConstraint
 import datetime
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
-class User(models.Model):
-    id = models.AutoField(primary_key=True)
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
-    e_mail = models.CharField(max_length=300)
-    created_at = models.DateField(default=datetime.date.today)
-    updated_at = models.DateField(default=datetime.date.today)
+
 
 class Administrators(models.Model):
     id = models.AutoField(primary_key=True)
@@ -31,7 +26,7 @@ class Categories(models.Model):
 
 class Shopping_cart(models.Model):
     id = models.AutoField(primary_key=True)
-    user_id = models.ForeignKey('User', on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
 
@@ -93,7 +88,7 @@ class Review(models.Model):
     rating = models.IntegerField(null=True)
     feedback = models.TextField(blank=True)
     prod_id = models.ForeignKey('Product', on_delete=models.CASCADE)
-    user_id = models.ForeignKey('User', on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     hidden = models.BooleanField(default=False)
     reported = models.BooleanField(default=False)
     created_at = models.DateField(default=datetime.date.today)
