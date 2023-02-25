@@ -11,7 +11,7 @@ import Search from './components/Search';
 import SignIn from './components/SignIn';
 import Suggestion from './components/Suggestion';
 import ProductPage from './components/ProductPage';
-import ShoppingCart from './components/Cart/ShoppingCart';
+
 
 function App() {
   return (
@@ -19,7 +19,6 @@ function App() {
       <Header />
       <Search/>
       <Banner/>
-      <ShoppingCart />
       <Gallery />
       <ProductPage/>{/*just so that we can see it now will be moved later*/}
       <AboutUs/>
