@@ -26,6 +26,7 @@ urlpatterns = [
     path('order/', include('gameshop.app.order.urls')),
     path('discount/', include('gameshop.app.discount.urls')),
     path('review/', include('gameshop.app.review.urls')),
+    path('administrators/', include('gameshop.app.administrators.urls')),
 
 
 ]
