@@ -10,7 +10,11 @@ function CartItem(props) {
       <div className="cart-item-details">
         <p className="cart-item-name">{name}</p>
         <p className="cart-item-price">{`$${price}`}</p>
-        <p className="cart-item-quantity">{`Quantity: ${quantity}`}</p>
+        <div className="cart-item-quantity">
+          <button>-</button>
+          <span>{quantity}</span>
+          <button>+</button>
+        </div>
       </div>
     </div>
   );

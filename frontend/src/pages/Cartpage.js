@@ -1,8 +1,6 @@
 import './../App.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Banner from '../components/Banner';
+import './Cartpage.css';
 import Footer from '../components/Footer';
-import Gallery from '../components/Gallery';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import ShoppingCart from '../components/Cart/ShoppingCart';
@@ -13,7 +11,6 @@ function CartPage() {
     <div className="App">
       <Header />
       <Search/>
-      <Banner/>
       <ShoppingCart />
       <Footer />
     </div>
