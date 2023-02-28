@@ -73,6 +73,7 @@ To install google authentication
 ```bash
   pip install google-auth
   pip install google-auth-oathlib
+  npm install react-router-dom
 ```
 
 ## Deployment
@@ -138,4 +139,3 @@ def getProduct(request):
 
 [Need to add!](https://choosealicense.com/licenses/mit/)
 
-npm install react-router-dom
