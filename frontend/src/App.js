@@ -5,7 +5,7 @@ import Banner from './components/Banner';
 import ContactInfo from './components/ContactInfo';
 import Footer from './components/Footer';
 import Gallery from './components/Gallery';
-import Header from './components/Header';
+import HeaderHome from './components/HeaderHome';
 import LearnMore from './components/LearnMore';
 import Search from './components/Search';
 import SignIn from './components/SignIn';
@@ -16,7 +16,7 @@ import Suggestion from './components/Suggestion';
 function App() {
   return (
     <div className="App">  
-      <Header />
+      <HeaderHome />
       <Search/>
       <Banner/>
       <Gallery />

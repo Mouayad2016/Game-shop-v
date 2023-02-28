@@ -36,7 +36,7 @@ return (
                     <div class="row grid">
                         <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 all des">
                           <div class="item">
-                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
+                            <a href={"assets/images/project-item-0"+idd+".jpg"} data-lightbox="image-A" data-title="Our Projects"><img src={"assets/images/project-item-0"+idd+".jpg"} alt=""/></a>
                           </div>
                         </div>
                         

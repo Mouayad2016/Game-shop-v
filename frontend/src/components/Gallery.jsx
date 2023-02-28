@@ -25,17 +25,18 @@ const Gallery = () => {
       console.log(e);
     }
   };
+  const catid = 0;
   const fetchProductByCategoryID = async () => {
-    // try {
-    //   const response = await axios.get("http://localhost:8000/products/get");
-    //   const prod = response.data.map((prod) => ({
-    //     id: prod.id,
-    //     name: prod.name,
-    //   }));
-    //   setProductData(prod);
-    // } catch (e) {
-    //   console.log(e);
-    // }
+     try {
+       const response = await axios.get("http://localhost:8000/products/get");
+       const prod = response.data.map((prod) => ({
+         id: prod.id,
+         name: prod.name,
+       }));
+      setProductData(prod);
+     } catch (e) {
+       console.log(e);
+     }
   };
   const fetchCatData = async () => {
     try {
@@ -61,11 +62,11 @@ const Gallery = () => {
               </div>
               <div class="filters">
                 <ul>
-                  <li class="active" data-filter="*" onClick={fetchAllProdData}>
+                  <li class="desactive" data-filter="*" onClick={fetchAllProdData}>
                     All
                   </li>
                   {categoryData.map((e) => (
-                    <li data-filter=".des">{e.name}</li>
+                    <li data-filter=".des" onCLick="">{e.name}</li>
                   ))}
                 </ul>
               </div>
