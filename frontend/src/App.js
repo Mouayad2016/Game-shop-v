@@ -11,15 +11,12 @@ import Search from './components/Search';
 import SignIn from './components/SignIn';
 import Suggestion from './components/Suggestion';
 import ProductPage from './components/ProductPage';
-// import { Register } from './components/Log/Register';
-import { Login } from '../components/Log/Login';
 
-
+/* this is the front page so if you don't want it to apear on the front page dont put it here*/
 
 function App() {
   return (
-    <div className="App"> 
-      <Login/> 
+    <div className="App">  
       <Header />
       <Search/>
       <Banner/>

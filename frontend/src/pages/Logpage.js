@@ -3,7 +3,7 @@ import './../App.css';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Search from '../components/Search';
-import { Login } from '../components/Log/Login';
+import Login  from '../components/Log/Login';
 
 
 

@@ -20,6 +20,8 @@ return (
                         <li class="scroll-to-section"><Link to="/">Home</Link></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
                         <li class="scroll-to-section"><a href="#projects">Our Games</a></li>
+                        <li class="scroll-to-section"><Link to="/Logpage">Login</Link></li> {/*here you call the page you want */}
+                        <li class="scroll-to-section"><Link to="/Register">Register</Link></li>
                         <li class="submenu">
                             <a href="javascript:;">Products</a>
                             <ul>

@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import CartPage from './pages/Cartpage';
+import Login from './pages/Logpage';
+import Register from './pages/Regispage';
 import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -14,6 +16,14 @@ const router = createBrowserRouter([
   {
     path: "/cartpage",
     element : <CartPage/>,
+  }, /*when you create a new page you need to add the path here*/
+  {
+    path: "/Logpage",
+    element : <Login/>,
+  },
+  {
+    path: "/Register",
+    element : <Register/>,
   },
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));
