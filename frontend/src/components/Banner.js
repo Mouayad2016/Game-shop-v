@@ -8,7 +8,7 @@ return (
   <div id="carouselBannerControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100" src="assets/images/img1.jpg" alt="First slide"/>
+        <img class="d-block w-100" src="assets/images/banner1.jpg" alt="First slide"/>
         <div class="carousel-caption d-none d-md-block">
           <h3>Welcome To Breezed</h3>
           <h5>New Bootstrap Template</h5>
@@ -18,7 +18,7 @@ return (
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="assets/images/img2.jpg" alt="Second slide"/>
+        <img class="d-block w-100" src="assets/images/banner2.jpg" alt="Second slide"/>
         <div class="carousel-caption d-none d-md-block">
           <h3>High Performance</h3>
           <h5>Robust and Speedy</h5>
@@ -28,7 +28,7 @@ return (
         </div>
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="assets/images/img3.jpg" alt="Third slide"/>
+        <img class="d-block w-100" src="assets/images/banner3.jpg" alt="Third slide"/>
         <div class="carousel-caption d-none d-md-block">
           <h3>High Performance</h3>
           <h5>Robust and Speedy</h5>
