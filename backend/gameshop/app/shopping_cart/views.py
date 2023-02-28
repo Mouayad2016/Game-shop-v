@@ -2,14 +2,15 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from ...models import Shopping_cart
-from .serializer import Shopping_cartSerializer
+from .serializer import Shopping_cartSerializer , GetShopping_cartSerializer
 
 # ---------------------------------------------------------------------------------------------- -------------------------------------------
 @api_view(['GET'])
 def getShopping_cart(request):
     try:
         shopping_cart = Shopping_cart.objects.all()
-        serializer = Shopping_cartSerializer(shopping_cart, many=True)
+        serializer = GetShopping_cartSerializer(shopping_cart, many=True)
+        print(request.user.id)
         return Response(serializer.data)
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
