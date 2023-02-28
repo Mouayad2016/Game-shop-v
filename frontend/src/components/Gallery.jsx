@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 // function toSell(num) {
 //   if (num == 1) return num;
@@ -80,12 +81,11 @@ const Gallery = () => {
                             href="assets/images/project-item-01.jpg"
                             data-lightbox="image-1"
                             data-title="Our Projects"
-                          >
-                            <img
-                              src="assets/images/project-item-01.jpg"
-                              alt=""
-                            />
+                          ><img  src="assets/images/project-item-01.jpg" alt=""/>
                           </a>
+                          <br></br>
+                          <Link to='product' class="text-button-icon">Show more</Link>
+
                         </div>
                       </div>
                     ))}

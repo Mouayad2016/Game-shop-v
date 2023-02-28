@@ -7,6 +7,7 @@ import CartPage from './pages/Cartpage';
 import Login from './pages/Logpage';
 import Register from './pages/Regispage';
 import reportWebVitals from './reportWebVitals';
+import ProductPage from './pages/Productpage';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/Register",
     element : <Register/>,
+  },
+  {
+    path: "/product",
+    element : <ProductPage/>,
   },
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -10,7 +10,6 @@ import LearnMore from './components/LearnMore';
 import Search from './components/Search';
 import SignIn from './components/SignIn';
 import Suggestion from './components/Suggestion';
-import ProductPage from './components/ProductPage';
 
 /* this is the front page so if you don't want it to apear on the front page dont put it here*/
 
@@ -21,7 +20,6 @@ function App() {
       <Search/>
       <Banner/>
       <Gallery />
-      <ProductPage/>{/*just so that we can see it now will be moved later*/}
       <AboutUs/>
       <ContactInfo/>
       <LearnMore/>
