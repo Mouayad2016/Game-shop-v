@@ -78,13 +78,13 @@ const Gallery = () => {
                       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all des">
                         <div class="item">
                           <a
-                            href="assets/images/project-item-01.jpg"
+                            href="assets/images/project-item-02.jpg"
                             data-lightbox={e.id}
                             data-title={e.name+"<br></br> Product id :"+e.id+" "}
-                          ><img  src="assets/images/project-item-01.jpg" alt=""/>
+                          ><img  src="assets/images/project-item-02.jpg" alt=""/>
                           </a>
                           <br></br>
-                          <Link to='product' class="text-button-icon">Show more</Link>
+                          <Link to="product" state={{id : e.id}} class="text-button-icon">Show more</Link>
 
                         </div>
                       </div>
