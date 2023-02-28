@@ -79,8 +79,8 @@ const Gallery = () => {
                         <div class="item">
                           <a
                             href="assets/images/project-item-01.jpg"
-                            data-lightbox="image-1"
-                            data-title="Our Projects"
+                            data-lightbox={e.id}
+                            data-title={e.name+"<br></br> Product id :"+e.id+" "}
                           ><img  src="assets/images/project-item-01.jpg" alt=""/>
                           </a>
                           <br></br>
