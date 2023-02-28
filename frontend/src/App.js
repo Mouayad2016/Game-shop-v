@@ -11,11 +11,15 @@ import Search from './components/Search';
 import SignIn from './components/SignIn';
 import Suggestion from './components/Suggestion';
 import ProductPage from './components/ProductPage';
+// import { Register } from './components/Log/Register';
+import { Login } from '../components/Log/Login';
+
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="App"> 
+      <Login/> 
       <Header />
       <Search/>
       <Banner/>
