@@ -35,6 +35,7 @@ const Gallery = () => {
       const products = productResponse.data.map((product) => ({
         id: product.id,
         name: product.name,
+        des : product.description,
       }));
       setProductData(products);
     } catch (e) {
@@ -97,8 +98,9 @@ const Gallery = () => {
                           <a
                             href="assets/images/project-item-02.jpg"
                             data-lightbox={product.id}
-                            data-title={`${product.name}<br /> Product id: ${product.id}`}
+                            data-title={`<h2>${product.name}</h2><br /> <p><Truncate maxWidth={50} inline title="branch-name-that-is-really-long">${product.des}</Truncate></p>`}
                           >
+                        
                             <img
                               src="assets/images/project-item-02.jpg"
                               alt=""
@@ -110,7 +112,7 @@ const Gallery = () => {
                             state={{ id: product.id }}
                             class="text-button-icon"
                           >
-                            Show more
+                            More info
                           </Link>
                         </div>
                       </div>
@@ -119,7 +121,7 @@ const Gallery = () => {
                 </div>
                 {visibleItems < productData.length && (
                   <div class="text-center">
-                    <button class="btn btn-primary" onClick={handleShowMore}>
+                    <button class="main-button-icon" onClick={handleShowMore}>
                       Show more
                     </button>
                   </div>
