@@ -18,6 +18,7 @@ const ProductPage = () => {
         name: prod.name,
         des: prod.description,
         stock: prod.stock,
+        price : prod.price,
       }));
       setProductData(prod);
     } catch (e) {
@@ -73,16 +74,15 @@ return (
                     <h6>About this product {e.id}</h6>
                     <h2>{e.name}</h2>
                     <br></br>
-                    <h3>{e.des}</h3>
-                    <br></br>
-                    <p>How much this cost 350 SEK</p>
+                    <p>Only {e.price} SEK and {e.stock} product left.</p>
                     <br></br>
                     <fieldset>
                       <button type="submit" id="form-submit" class="main-button-icon">Add to chart<i class="fa fa-arrow-right"></i></button>
                     </fieldset>
-                </div> 
-            <br/><br/>
-        </div>))}
+                    
+                </div>{e.des} 
+        </div>
+        ))}
       </div></div>
     </section>
 </div>
