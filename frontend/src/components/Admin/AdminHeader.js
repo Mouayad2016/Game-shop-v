@@ -12,7 +12,7 @@ return (
                 <div class="col-12">
                     <nav class="main-nav">
 
-                    <Link to="/AdminHomePage">
+                    <Link to="/admin">
                     <h1>Admin</h1>
                     </Link>
 

@@ -35,4 +35,9 @@
     background-color: rgb(192, 235, 184);
     padding-top: 5%;
     padding-bottom: 20%;
+    width:90%;
+}
+
+.adminProducts .container-fluid {
+    width: 90%;
 }
