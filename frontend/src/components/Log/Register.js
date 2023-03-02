@@ -1,5 +1,6 @@
  import React, { useState } from "react";
  import { Link } from "react-router-dom";
+ import "./Register.css";
 
  const Register = (props) => {
      const [email, setEmail] = useState('');
@@ -12,7 +13,7 @@
      }
 
      return (
-        <section class="section" id="projects">
+      <section class="section" id="projects">
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
@@ -43,7 +44,6 @@
          <h6><button class="main-button" onClick={() => props.onFormSwitch('login')}>Already have a account? <Link to="/Logpage"> Login </Link> here.</button></h6>
          <br></br></div></div></div>
          </div></div></section>
-
      )
 
  }
