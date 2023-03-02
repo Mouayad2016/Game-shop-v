@@ -38,6 +38,7 @@ class Product(models.Model):
     review_id= models.ForeignKey('Review', on_delete=models.CASCADE , null= True)
     discout_id = models.ForeignKey('Discount', on_delete=models.CASCADE,null= True)
     creator_admin_id = models.IntegerField(null=True)
+    price = models.IntegerField(null= False,default=0)
     is_deleted= models.BooleanField(default=False)
     deleted_by_admin_id = models.IntegerField(null=True)
     created_at = models.DateField(default=datetime.date.today)

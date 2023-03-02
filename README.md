@@ -44,7 +44,7 @@ And for the API the application in use is Postman.
 ## Installation
 
 First install globally
-
+/*we also need to install node js and then npm*/
 ```bash
   pip install pipenv
 ```
