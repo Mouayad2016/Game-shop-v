@@ -1,0 +1,38 @@
+.adminHeader h1 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #5fb759;
+    text-align: left;
+    position: absolute;
+    top: 20%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.adminHome .btn {
+    background-color: green; /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+
+.adminHome a {
+    color: white;
+}
+    
+/* Darker background on mouse-over */
+.adminHome .btn:hover {
+    background-color:darkgreen;
+}
+
+.adminHome .row {
+    margin: 2%;
+}
+
+.adminHome .container-fluid {
+    background-color: rgb(192, 235, 184);
+    padding-top: 5%;
+    padding-bottom: 20%;
+}
