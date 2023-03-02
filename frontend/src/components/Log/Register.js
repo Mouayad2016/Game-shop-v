@@ -18,7 +18,6 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="section-heading">
-                <p>Here you can ask for the creation of an admin profile on our website. If you have nothing to do here, please got to <Link to="/"> Home </Link> page !</p>
                 <h2>Register</h2>
               </div>
             </div>
@@ -41,9 +40,9 @@
              <br></br>               
             
          </form>
-         <h6><button class="main-button" onClick={() => props.onFormSwitch('login')}>Already have a account? <Link to="/Logpage"> Login </Link> here.</button></h6>
+         <h6>Already have a account? <Link to="/Logpage"> Login </Link> here.</h6>
          <br></br></div></div></div>
-         </div></div></section>
+         </div><p>Here you can ask for the creation of an admin profile on our website. If you have nothing to do here, please got to <Link to="/"> Home </Link> page !</p></div></section>
      )
 
  }

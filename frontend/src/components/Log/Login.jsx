@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./login.css";
 import "./Register";
 
@@ -16,8 +17,20 @@ const Login = (props) => {
   };
 
   return (
-    <div className="login-container">
-      <h1>Login</h1>
+    <section class="section">
+      <div class="container">
+          <div class="row">
+      <     div class="col-lg-12">
+              <div class="section-heading">
+                <h2>Login</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+                <div class="col-md-2 col-sm-12">
+                </div>
+            <div class="col-md-8 col-sm-12">
+            <div className="login-container">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -56,10 +69,10 @@ const Login = (props) => {
             Google
           </button>
         </div>
-        
-        <button className="Register" onClick={() => props.onFormSwitch("./Register.js")}>Don't have an accound? Register here.</button>
-      </form>
-    </div>
+        <div> <br></br>
+        <h6>Don't have an accound? <Link to="/Register"> Register </Link> here.</h6>
+      </div></form></div></div>
+    </div></div></section>
   );
 };
 

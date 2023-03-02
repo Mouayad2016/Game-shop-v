@@ -27,9 +27,6 @@ const Header = () => {
                       <img src="assets/images/cart2_green.png" alt="" height="27" width="27" />
                     </Link>
                   </li>
-                  <li class="scroll-to-section">
-                    <a href="#contact-us"> Contact us </a>
-                  </li>
                 </ul>
                 <a class="menu-trigger">
                   <span> Menu </span>
