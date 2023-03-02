@@ -8,6 +8,8 @@ import Login from './pages/Logpage';
 import Register from './pages/Regispage';
 import reportWebVitals from './reportWebVitals';
 import ProductPage from './pages/Productpage';
+import AdminHomePage from './pages/adminPages/AdminHomePage';
+import AdminProductsPage from './pages/adminPages/AdminProductPage';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
   {
     path: "/product",
     element : <ProductPage/>,
+  },
+  {
+    path: "/admin",
+    element : <AdminHomePage/>,
+  },
+  {
+    path: "/admin/products",
+    element : <AdminProductsPage/>,
   },
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));
