@@ -1,4 +1,5 @@
  import React, { useState } from "react";
+ import { Link } from "react-router-dom";
 
  const Register = (props) => {
      const [email, setEmail] = useState('');
@@ -11,7 +12,22 @@
      }
 
      return (
-         <div className="auth-form-container">
+        <section class="section" id="projects">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="section-heading">
+                <p>Here you can ask for the creation of an admin profile on our website. If you have nothing to do here, please got to <Link to="/"> Home </Link> page !</p>
+                <h2>Register</h2>
+              </div>
+            </div>
+            </div>
+        <div class='subscribe-content'>
+         <div className="auth-form-container" class="contact-form">
+            <div class="row">
+                <div class="col-md-2 col-sm-12">
+                </div>
+            <div class="col-md-8 col-sm-12">
          <form onSubmit={handleSubmit}>
              <label htmlFor="name">Full name</label>
              <input value={name} name="name" id="name" placeholder="full name" />
@@ -19,11 +35,15 @@
              <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="youremail@gmail.com" id="email" name="email" />
              <label htmlFor="password">password</label>
              <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="**********" id="password" name="password" />
-             <button type="submit">Log In</button>               
+             <button class="main-button" type="submit">Register</button>
+             <br></br>
+             <br></br>               
             
          </form>
-         <button onClick={() => props.onFormSwitch('login')}>Already have a account? Login here.</button>
-         </div>
+         <h6><button class="main-button" onClick={() => props.onFormSwitch('login')}>Already have a account? <Link to="/Logpage"> Login </Link> here.</button></h6>
+         <br></br></div></div></div>
+         </div></div></section>
+
      )
 
  }
