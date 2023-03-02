@@ -10,6 +10,8 @@ import reportWebVitals from './reportWebVitals';
 import ProductPage from './pages/Productpage';
 import AdminHomePage from './pages/adminPages/AdminHomePage';
 import AdminProductsPage from './pages/adminPages/AdminProductPage';
+import AdminProductsReviewPage from './pages/adminPages/AdminProductReviewPage';
+import AdminReviewPage from './pages/adminPages/AdminReviewPage';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
   {
     path: "/admin/products",
     element : <AdminProductsPage/>,
+  },
+  {
+    path: "/admin/productsreview",
+    element : <AdminProductsReviewPage/>,
+  },
+  {
+    path: "/admin/review",
+    element : <AdminReviewPage/>,
   },
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));
