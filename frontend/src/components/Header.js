@@ -17,7 +17,7 @@ const Header = () => {
                     <Link to="/"> Home </Link>
                   </li>
                   <li class="scroll-to-section">
-                    <Link to="/Logpage"> Login </Link>{/*here you call the page you want */}
+                    <Link to="/Logpage">Login</Link>
                   </li>
                   <li class="scroll-to-section">
                     <Link to="/Register"> Register </Link>

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./login.css";
+import "./Register";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -51,9 +52,12 @@ const Login = () => {
             onClick={handleGoogleSignIn}
           >
             <i className="fab fa-google mr-2"></i>
+            
             Google
           </button>
         </div>
+        
+        <button className="Register" onClick={() => props.onFormSwitch("./Register.js")}>Don't have an accound? Register here.</button>
       </form>
     </div>
   );

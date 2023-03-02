@@ -29,13 +29,10 @@ const Header = () => {
                   <li class="scroll-to-section">
                     <a href="#projects"> Our Games </a>
                   </li>
-                  <li class="scroll-to-section">
-                    <Link to="/Logpage"> Login </Link>
-                  </li>
                   {/*here you call the page you want */}
-                  <li class="scroll-to-section">
+                  {/* <li class="scroll-to-section">
                     <Link to="/Register"> Register </Link>
-                  </li>
+                  </li> */}
                   <li class="submenu">
                     <a href="javascript:;"> Products </a>
                     <ul>
@@ -71,6 +68,9 @@ const Header = () => {
                       <i class="fa fa-search"> </i>
                     </a>
                   </div>
+                  <li class="scroll-to-section">
+                  <Link to="/Logpage"><img src="assets/images/login.png"class="logo" heigth="20" width="40" alt=""/></Link>
+                  </li>
                 </ul>
                 <a class="menu-trigger">
                   <span> Menu </span>

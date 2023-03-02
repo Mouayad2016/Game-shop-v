@@ -5,7 +5,7 @@
   justify-content: center;
   height: 68vh;
   /* adjust the height to your liking */
-  background-color: #f8f9fa;
+  background-color: #afe0cb57;
 }
 
 h1 {
@@ -31,20 +31,20 @@ label {
   font-size: 1rem;
   border: none;
   border-radius: 0.25rem;
-  background-color: #e9ecef;
+  background-color: #ffffffe3;
 }
 
 .form-control:focus {
   outline: none;
   box-shadow: none;
-  background-color: #fff;
+  background-color: #fcffe9b8;
 }
 
 .btn {
   display: inline-block;
   font-weight: 600;
   color: #fff;
-  background-color: #007bff;
+  background-color: #0069d984;
   border: none;
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
@@ -57,7 +57,7 @@ label {
 }
 
 .btn:hover {
-  background-color: #0069d9;
+  background-color: #0069d9c5;
 }
 
 .btn:active {
@@ -93,4 +93,10 @@ label {
 
 .fab.fa-google {
   margin-right: 0.5rem;
+}
+
+.Register {
+  margin-top: 10px;
+  background-color: #aeeae1;
+  border-color: #c7eae698;
 }
