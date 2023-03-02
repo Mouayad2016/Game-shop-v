@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from ...models import Product
+from ...models import Product, Categories
 from .serializer import ProductSerializer,GetProductSerializer
 
 
@@ -10,6 +10,17 @@ from .serializer import ProductSerializer,GetProductSerializer
 def getProduct(request):
     try:
         product = Product.objects.all()
+        serializer = GetProductSerializer(product, many=True)
+        return Response(serializer.data)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+
+
+@api_view(['GET'])
+def getProductByCategory(request, id):
+    try:
+        category = Categories.objects.get(id=id)
+        product = category.product_set.all()
         serializer = GetProductSerializer(product, many=True)
         return Response(serializer.data)
     except Exception as e:

@@ -7,6 +7,8 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = '__all__'
+
+
   
 
 class GetProductSerializer(serializers.ModelSerializer):
@@ -15,3 +17,4 @@ class GetProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = '__all__'
+

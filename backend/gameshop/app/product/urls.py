@@ -10,6 +10,9 @@ urlpatterns = [
     # * Method : Get
     # * link:  http://127.0.0.1:8000/products 
     path('get', views.getProduct),     
+    # * Method : Get
+    # * link:  http://127.0.0.1:8000/products/id/get
+    path('<int:id>/get', views.getProductByCategory),  
     # * Method : Post
     # * link:  http://127.0.0.1:8000/products/post 
     # * Form : { "name": "prod_1","description": "aösmdöasmdas dlkas dlkas dkas dl askld asld kas","stock":123 }
