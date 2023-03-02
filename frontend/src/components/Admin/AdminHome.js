@@ -25,7 +25,7 @@ const AdminHome = () => {
               <button class="btn"><i class="fa-solid fa-user-group"> Admins</i></button>
             </div>
             <div class="col">
-              <button class="btn"><i class="fa-solid fa-star"> Reviews</i></button>
+              <button class="btn"><Link to="/admin/review"><i class="fa-solid fa-star"> Reviews</i></Link></button>
             </div>
           </div>
         </div>
