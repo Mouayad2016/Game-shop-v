@@ -77,7 +77,32 @@ return (
                     <p>Only {e.price} SEK and {e.stock} product left.</p>
                     <br></br>
                     <fieldset>
-                      <button type="submit" id="form-submit" class="main-button-icon">Add to chart<i class="fa fa-arrow-right"></i></button>
+                      <button
+                      onClick={
+                        //needd user_id
+                        ()=>{
+                          axios.post('http://127.0.0.1:8000/cart/post',...productData.filter((e) =>{
+                            return e.id === idd ? e : null;
+                          }))
+                          .then(
+                            res=>{
+                              console.log("--res---",res)
+                            }
+                          )
+                          .catch(
+                            e=>{
+                              console.log("---e--",e)
+                            }
+                          )
+                          console.log(productData.filter((e) =>{
+                            return e.id === idd ? e : null;
+                          }))
+                        }
+                      }
+                      type="submit" 
+                      id="form-submit" 
+                      class="main-button-icon"
+                      >Add to chart<i class="fa fa-arrow-right"></i></button>
                     </fieldset>
                     
                 </div>{e.des} 
