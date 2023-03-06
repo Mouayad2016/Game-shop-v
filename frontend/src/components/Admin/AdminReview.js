@@ -29,7 +29,19 @@ const AdminReview = () => {
     } catch (r) {
       console.log(r);
     }
+};
+  const post_request = async () => {
+    try{
+      const resp = await axios.post("http://localhost:8000/review/post",{
+        id:null, rating:4, feedback:"Very good deal and the shipping went well !", hidden: false,
+        reported:false, created_at:"2023-02-25", updated_at: "2023-02-25", prod_id: 5, user_id: 1
+      });
+      console.log(resp.data);
+  } catch (error){
+    console.log(error.reponse);
+  }
   };
+  
     return (
       <div class="adminProducts">
         <h3>All reviews</h3>
@@ -62,8 +74,15 @@ const AdminReview = () => {
                             <td>{r.user_id}</td>
                         </tr>
                     ))}
+                    
                     </tbody>
                 </table>
+                <form onSubmit={post_request}>
+                    <button
+                      type="submit" 
+                      id="form-submit" 
+                      className="main-button-icon"
+                      >Add review</button></form>
             </div>
         </div>
       </div>
