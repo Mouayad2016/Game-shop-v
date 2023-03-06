@@ -60,7 +60,7 @@ const AdminProducts = () => {
             {productData.filter((e) =>{
               return e.id === idd ? e : null;
             }).map((e) => (
-              <p>All review about {e.name}</p>
+              <h3>All review about {e.name}</h3>
             ))}
             </div>
           </div>
@@ -70,13 +70,13 @@ const AdminProducts = () => {
                     
                         <tr class="bg-light">
                             <th width="5%">#</th>
-                            <th width="20%">Rate</th>
-                            <th width="10%">Feedback</th>
+                            <th width="5%">Rate</th>
+                            <th width="45%">Feedback</th>
                             <th width="10%">Hidden</th>
-                            <th width="20%">Repported</th>
-                            <th width="20%">Creation date</th>
-                            <th width="20%">Last Update</th>
-                            <th width="20%">User</th>
+                            <th width="10%">Repported</th>
+                            <th width="10%">Creation date</th>
+                            <th width="10%">Last Update</th>
+                            <th width="5%">User</th>
                         </tr>
                     </thead>
                     <tbody>

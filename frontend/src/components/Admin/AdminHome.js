@@ -7,14 +7,14 @@ const AdminHome = () => {
       <div class="adminHome">
         <div class="container-fluid">
           <div class="row">
+          <div class="col">
+              <button class="btn"><i class="fa-solid fa-user"> Profil</i></button>
+            </div>
             <div class="col">
-                <button class="btn"><i class="fa-solid fa-home"> Home</i></button>
+              <button class="btn"><i class="fa-solid fa-user-group"> Admins</i></button>
             </div>
             <div class="col">
               <button class="btn"><Link to="/admin/products"><i class="fa-solid fa-gamepad"> Products</i></Link></button>
-            </div>
-            <div class="col">
-              <button class="btn"><i class="fa-solid fa-user"> Profil</i></button>
             </div>
           </div>
           <div class="row">
@@ -22,10 +22,10 @@ const AdminHome = () => {
               <button class="btn"><i class="fa-solid fa-rectangle-list"> Categories</i></button>
             </div>
             <div class="col">
-              <button class="btn"><i class="fa-solid fa-user-group"> Admins</i></button>
+              <button class="btn"><Link to="/admin/review"><i class="fa-solid fa-star"> Reviews</i></Link></button>
             </div>
             <div class="col">
-              <button class="btn"><Link to="/admin/review"><i class="fa-solid fa-star"> Reviews</i></Link></button>
+              <button class="btn"><Link to="/admin/review"><i class="fa-solid fa-coins"> Deals</i></Link></button>
             </div>
           </div>
         </div>

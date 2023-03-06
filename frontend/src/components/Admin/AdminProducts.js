@@ -27,6 +27,7 @@ const AdminProducts = () => {
   };
     return (
       <div class="adminProducts">
+        <h3>All products</h3>
         <div class="container-fluid">
             <div class="table-responsive">
                 <table class="table table-bordeless">

@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 const AdminReview = () => {
-    const [reviewData, setReviewData] = useState([]);
+  const [reviewData, setReviewData] = useState([]);
 
 
   useEffect(() => {
@@ -32,6 +32,7 @@ const AdminReview = () => {
   };
     return (
       <div class="adminProducts">
+        <h3>All reviews</h3>
         <div class="container-fluid">
             <div class="table-responsive">
                 <table class="table table-bordeless">
@@ -39,13 +40,13 @@ const AdminReview = () => {
                     
                         <tr class="bg-light">
                             <th width="5%">#</th>
-                            <th width="20%">Rate</th>
-                            <th width="10%">Feedback</th>
+                            <th width="5%">Rate</th>
+                            <th width="45%">Feedback</th>
                             <th width="10%">Hidden</th>
-                            <th width="20%">Repported</th>
-                            <th width="20%">Creation date</th>
-                            <th width="20%">Last Update</th>
-                            <th width="20%">User</th>
+                            <th width="10%">Repported</th>
+                            <th width="10%">Creation date</th>
+                            <th width="10%">Last Update</th>
+                            <th width="5%">User</th>
                         </tr>
                     </thead>
                     <tbody>

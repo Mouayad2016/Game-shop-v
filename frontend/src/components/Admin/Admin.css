@@ -41,3 +41,7 @@
 .adminProducts .container-fluid {
     width: 90%;
 }
+
+.adminProducts h3 {
+    padding-bottom: 30px;
+}
