@@ -15,6 +15,18 @@ def getShopping_cart(request):
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
 
+
+@api_view(['GET'])
+def getShopping_caartByUser_id(request, id):
+    try:
+        shopping_cart = Shopping_cart.objects.get(user_id_id=id)
+        product = shopping_cart.product_set.all()
+        serializer = GetShopping_cartSerializer(product, many=True)
+        return Response(serializer.data)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+
+
 @api_view(['POST'])
 def postShopping_cart(request):
     try:
