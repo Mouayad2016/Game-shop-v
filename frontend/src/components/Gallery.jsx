@@ -27,7 +27,7 @@ const Gallery = () => {
       let productResponse;
       if (categoryId) {
         productResponse = await axios.get(
-          `http://localhost:8000/products/get?categoryId=${categoryId}`
+          `http://localhost:8000/products/${categoryId}/get`
         );
       } else {
         productResponse = await axios.get("http://localhost:8000/products/get");

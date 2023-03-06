@@ -82,7 +82,7 @@ const AdminReview = () => {
                       type="submit" 
                       id="form-submit" 
                       className="main-button-icon"
-                      >Add review</button></form>
+                      >Add review</button></form>{/*https://www.freecodecamp.org/news/how-to-use-axios-with-react/ */}
             </div>
         </div>
       </div>

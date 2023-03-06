@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation} from 'react-router-dom';
 import axios from "axios";
-
+/**/
 const ProductPage = () => {
   const location = useLocation()
   const { id } = location.state
   const idd =id;
+  let prodname= "";
   const [productData, setProductData] = useState([]);
+  const [reviewData, setReviewData] = useState([]);
+  const [userData, setUserData] = useState([]);
   useEffect(() => {
     fetchAllProdData();
+    fetchAllReviewData();
+    fetchNameData();
   }, []);
   const fetchAllProdData = async () => {
     try {
@@ -23,6 +28,35 @@ const ProductPage = () => {
       setProductData(prod);
     } catch (e) {
       console.log(e);
+    }
+  };
+  const fetchAllReviewData = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/review/get");
+      const rev = response.data.map((rev) => ({
+        id: rev.id,
+        rate: rev.rating,
+        feedback: rev.feedback,
+        hidden: rev.hidden,
+        updated: rev.updated_at,
+        prod: rev.prod_id,
+        user_id: rev.user_id
+      }));
+      setReviewData(rev);
+    } catch (r) {
+      console.log(r);
+    }
+  };
+  const fetchNameData = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/user/get");
+      const user = response.data.map((user) => ({
+        id: user.id,
+        name: user.username,
+      }));
+      setUserData(user);
+    } catch (u) {
+      console.log(u);
     }
   };
 return (
@@ -67,7 +101,7 @@ return (
               return e.id === idd ? e : null;
             }).map((e) => (
           
-            
+            prodname = e.name,
             <div class="col-lg-3">    
                 <div class="section-heading">
                   <br/>
@@ -83,6 +117,7 @@ return (
                         ()=>{
                           axios.post('http://127.0.0.1:8000/cart/post',...productData.filter((e) =>{
                             return e.id === idd ? e : null;
+                            
                           }))
                           .then(
                             res=>{
@@ -108,7 +143,32 @@ return (
                 </div>{e.des} 
         </div>
         ))}
-      </div></div>
+      </div>
+      <div class="col-lg-9">
+        <div class="row">
+      {reviewData.filter((r) =>{
+              return r.prod === idd ? r : null;
+            }).map((r) => (
+              <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" data-scroll-reveal="enter bottom move 30px over 0.6s after 0.4s">
+                    <div class="features-item">
+                        <div class="features-icon">
+                          <img src="assets/images/login.png" alt=""/>
+                        </div>
+                        <div class="features-content">
+                        {userData.filter((u) =>{
+                          return r.user_id === u.id ? u : null;
+                        }).map((u) => (
+                          <h4>{u.name} on the {r.updated}</h4>
+                        ))}
+                            <p>{r.feedback}</p>
+                            <h6>{prodname}</h6>
+                            <br></br>
+                        </div>
+                    </div><br></br>
+                </div>))}
+            </div>
+      </div>
+      </div>
     </section>
 </div>
 );
