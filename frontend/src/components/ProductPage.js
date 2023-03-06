@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation} from 'react-router-dom';
+import ReactStars from "react-rating-stars-component";
 import axios from "axios";
 /**/
 const ProductPage = () => {
@@ -161,6 +162,11 @@ return (
                           <h4>{u.name} on the {r.updated}</h4>
                         ))}
                             <p>{r.feedback}</p>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                              <i class="fa-regular fa-star"></i>                           
                             <h6>{prodname}</h6>
                             <br></br>
                         </div>
