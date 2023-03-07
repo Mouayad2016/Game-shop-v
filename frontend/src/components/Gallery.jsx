@@ -1,41 +1,38 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { getData } from "./helper/axios";
 
 const Gallery = () => {
   const [categoryData, setCategoryData] = useState([]);
   const [productData, setProductData] = useState([]);
   const [visibleItems, setVisibleItems] = useState(6);
   const [loading, setLoading] = useState(false);
-
+  var car_id;
   useEffect(() => {
-    fetchData();
+    fechCat();
+    fetchAllProduct();
   }, []);
 
-  const fetchData = async (categoryId) => {
+  const fechCat = async () => {
+    const categoryResponse = await getData({ url: "/category/get" });
+    const categories = categoryResponse.data.map((category) => ({
+      id: category.id,
+      name: category.name,
+    }));
+    setCategoryData(categories);
+  };
+
+  const fechCatProd = async (categoryId) => {
     setLoading(true);
     try {
-      const categoryResponse = await axios.get(
-        "http://localhost:8000/category/get"
-      );
-      const categories = categoryResponse.data.map((category) => ({
-        id: category.id,
-        name: category.name,
-      }));
-      setCategoryData(categories);
-
-      let productResponse;
-      if (categoryId) {
-        productResponse = await axios.get(
-          `http://localhost:8000/products/${categoryId}/get`
-        );
-      } else {
-        productResponse = await axios.get("http://localhost:8000/products/get");
-      }
+      const productResponse = await getData({
+        url: `/products/${categoryId}/get`,
+      });
       const products = productResponse.data.map((product) => ({
         id: product.id,
         name: product.name,
-        des : product.description,
+        des: product.description,
       }));
       setProductData(products);
     } catch (e) {
@@ -43,14 +40,72 @@ const Gallery = () => {
     }
     setLoading(false);
   };
+  const fetchAllProduct = async () => {
+    setLoading(true);
+    try {
+      const productResponse = await getData({ url: "/products/get" });
 
+      const products = productResponse.data.map((product) => ({
+        id: product.id,
+        name: product.name,
+        des: product.description,
+      }));
+      setProductData(products);
+    } catch (e) {
+      console.log(e);
+    }
+    setLoading(false);
+  };
+  const loadCatProd = async (categoryId) => {
+    setLoading(true);
+    try {
+      const productResponse = await getData({
+        url: `/products/${categoryId}/get?offset=${productData.length}`,
+      });
+      const products = productResponse.data.map((product) => ({
+        id: product.id,
+        name: product.name,
+        des: product.description,
+      }));
+      setProductData([...productData, ...products]);
+    } catch (e) {
+      console.log(e);
+    }
+    setLoading(false);
+  };
+  const loadAllProd = async () => {
+    setLoading(true);
+    try {
+      const productResponse = await getData({
+        url: `/products/get?offset=${productData.length}`,
+      });
+      const products = productResponse.data.map((product) => ({
+        id: product.id,
+        name: product.name,
+        des: product.description,
+      }));
+      setProductData([...productData, ...products]);
+    } catch (e) {
+      console.log(e);
+    }
+    setLoading(false);
+  };
   const handleCategoryClick = (categoryId) => {
-    setVisibleItems(6); // reset number of visible items
-    fetchData(categoryId);
+    if (categoryId) {
+      car_id = categoryId;
+      fechCatProd(categoryId);
+    } else {
+      car_id = undefined;
+      fetchAllProduct();
+    }
   };
 
-  const handleShowMore = () => {
-    setVisibleItems((prevVisibleItems) => prevVisibleItems + 6);
+  const loadData = () => {
+    if (car_id) {
+      loadCatProd();
+    } else {
+      loadAllProd();
+    }
   };
 
   return (
@@ -65,10 +120,7 @@ const Gallery = () => {
               </div>
               <div class="filters">
                 <ul>
-                  <li
-                    class="desactive"
-                    onClick={() => handleCategoryClick(null)}
-                  >
+                  <li class="desactive" onClick={() => handleCategoryClick()}>
                     All
                   </li>
                   {categoryData.map((category) => (
@@ -89,7 +141,7 @@ const Gallery = () => {
                   {loading ? (
                     <div>Loading...</div>
                   ) : (
-                    productData.slice(0, visibleItems).map((product) => (
+                    productData.map((product) => (
                       <div
                         key={product.id}
                         class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all des"
@@ -100,7 +152,6 @@ const Gallery = () => {
                             data-lightbox={product.id}
                             data-title={`<h2>${product.name}</h2><br /> <p><Truncate maxWidth={50} inline title="branch-name-that-is-really-long">${product.des}</Truncate></p>`}
                           >
-                        
                             <img
                               src="assets/images/project-item-02.jpg"
                               alt=""
@@ -119,13 +170,11 @@ const Gallery = () => {
                     ))
                   )}
                 </div>
-                {visibleItems < productData.length && (
-                  <div class="text-center">
-                    <button class="main-button-icon" onClick={handleShowMore}>
-                      Show more
-                    </button>
-                  </div>
-                )}
+                <div class="text-center">
+                  <button class="main-button-icon" onClick={loadData}>
+                    Show more
+                  </button>
+                </div>
               </div>
             </div>
           </div>
