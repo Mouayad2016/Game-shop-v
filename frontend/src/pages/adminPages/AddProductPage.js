@@ -3,7 +3,7 @@ import AdminHeader from '../../components/Admin/AdminHeader'
 import AdminCreateProducts from '../../components/Admin/createProductForm/createPrdForm'
 
 
-function AdminProductsPage() {
+function AddProductsPage() {
   return (
     <div className="App">
       <AdminHeader />
@@ -12,4 +12,4 @@ function AdminProductsPage() {
   );
 }
 
-export default AdminProductsPage;
+export default AddProductsPage;
