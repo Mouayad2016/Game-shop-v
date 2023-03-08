@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation} from 'react-router-dom';
-import ReactStars from "react-rating-stars-component";
+// import ReactStars from "react-rating-stars-component";
 import axios from "axios";
-/**/
+
 const ProductPage = () => {
   const location = useLocation()
   const { id } = location.state
@@ -114,6 +114,7 @@ return (
                     <fieldset>
                       <button
                       onClick={
+                        
                         //needd user_id
                         ()=>{
                           axios.post('http://127.0.0.1:8000/cart/post',...productData.filter((e) =>{

@@ -48,7 +48,7 @@ const AdminReview = () => {
         <div class="container-fluid">
             <div class="table-responsive">
                 <table class="table table-bordeless">
-                    <thead>
+                    <thead className="bg-dark text-white">
                     
                         <tr class="bg-light">
                             <th width="5%">#</th>
