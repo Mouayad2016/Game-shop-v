@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './Admin.css';
 import axios from "axios";
 
-
-const AdminReview = () => {
+function AdminReview() {
+  const [idd, setIdd] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
   const [reviewData, setReviewData] = useState([]);
-
 
   useEffect(() => {
     fetchAllReviewData();
   }, []);
- 
+
   const fetchAllReviewData = async () => {
     try {
       const response = await axios.get("http://localhost:8000/review/get");
@@ -29,56 +29,55 @@ const AdminReview = () => {
     } catch (r) {
       console.log(r);
     }
-};
-
-const Removefuntion=(id) => {
-  if(window.config("Do you want to remove?")) {
-      fetch("http://localhost:3000/admin/review/"+ id,{
-          method:"DELETE"
-      }).then((res)=>{
-          alert("Removed succeefully.")
-          window.location.reload();
-      }).catch((r)=>{
-          console.log(err.message)
-      })
-  }
-}
+  };
 
   const post_request = async () => {
-    try{
-      const resp = await axios.post("http://localhost:8000/review/post",{
-        id:null, rating:4, feedback:"Very good deal and the shipping went well !", hidden: false,
-        reported:false, created_at:"2023-02-25", updated_at: "2023-02-25", prod_id: 5, user_id: 1
+    try {
+      const resp = await axios.post("http://localhost:8000/review/post", {
+        id: null, rating: 4, feedback: "Very good deal and the shipping went well !", hidden: false,
+        reported: false, created_at: "2023-02-25", updated_at: "2023-02-25", prod_id: 5, user_id: 1
       });
       console.log(resp.data);
-  } catch (error){
-    console.log(error.reponse);
-  }
+    } catch (error) {
+      console.log(error.reponse);
+    }
   };
-  
-    return (
-      <div class="adminProducts">
-        <h3>All reviews</h3>
-        <div class="container-fluid">
-            <div class="table-responsive">
-                <table class="table table-bordeless">
-                    <thead className="bg-dark text-white">
-                    
-                        <tr class="bg-light">
-                            <th width="5%">#</th>
-                            <th width="5%">Rate</th>
-                            <th width="45%">Feedback</th>
-                            <th width="10%">Hidden</th>
-                            <th width="10%">Repported</th>
-                            <th width="10%">Creation date</th>
-                            <th width="10%">Last Update</th>
-                            <th width="5%">User</th>
-                            <th width="5%">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {reviewData.map((r) => (
-                        <tr>
+
+  const handleRemove = async (id) => {
+    try {
+      const response = await axios.delete(
+        `http://127.0.0.1:8000/review/${id}/delete`
+      );
+      setErrorMessage("Bravo, you just delete a category");
+      fetchAllReviewData();
+    } catch (error) {
+      console.error(error);
+      setErrorMessage("An error occurred while deleting the product.");
+    }
+  };
+
+  return (
+    <div class="adminProducts">
+      <h3>All reviews</h3>
+      <div class="container-fluid">
+        <div class="table-responsive">
+          <table class="table table-bordeless">
+            <thead>
+              <tr class="bg-light">
+                <th width="5%">#</th>
+                <th width="5%">Rate</th>
+                <th width="45%">Feedback</th>
+                <th width="10%">Hidden</th>
+                <th width="10%">Repported</th>
+                <th width="10%">Creation date</th>
+                <th width="10%">Last Update</th>
+                <th width="5%">User</th>
+                <th width="5%">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reviewData.map((r) => (
+                <tr>
                             <td>{r.id}</td>
                             <td>{r.rate}/5</td>
                             <td>{r.feedb}</td>
@@ -87,11 +86,12 @@ const Removefuntion=(id) => {
                             <td>{r.creat}</td>
                             <td>{r.update}</td>
                             <td>{r.user_id}</td>
-                            <td><a onClick={() => { LoadEdit(item.id) }} className="btn btn-success">Edit</a>
-                                <a onClick={() => { Removefunction(item.id) }} className="btn btn-danger">Remove</a>
+                            <td>
+                              <button onClick={() => { handleRemove(r.id) }} className="btn btn-danger">Remove</button>
                             </td>
                         </tr>
-                    ))}
+                      ))}
+          
                     
                     </tbody>
                 </table>
@@ -106,5 +106,6 @@ const Removefuntion=(id) => {
       </div>
     );
 };
+
     
 export default AdminReview
