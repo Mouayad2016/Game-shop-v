@@ -19,7 +19,7 @@ const AdminHome = () => {
           </div>
           <div class="row">
             <div class="col">
-              <button class="btn"><i class="fa-solid fa-rectangle-list"> Categories</i></button>
+              <button class="btn"><Link to="/admin/category"><i class="fa-solid fa-rectangle-list"> Categories</i></Link></button>
             </div>
             <div class="col">
               <button class="btn"><Link to="/admin/review"><i class="fa-solid fa-star"> Reviews</i></Link></button>

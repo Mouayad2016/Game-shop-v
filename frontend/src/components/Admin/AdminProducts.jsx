@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Admin.css";
 import axios from "axios";
-import CreateProductForm from "./createProductForm/createPrdForm";
 
 const AdminProducts = () => {
   const [productData, setProductData] = useState([]);

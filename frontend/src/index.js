@@ -14,6 +14,7 @@ import AdminProductsReviewPage from './pages/adminPages/AdminProductReviewPage';
 import AdminReviewPage from './pages/adminPages/AdminReviewPage';
 import AdminCreateProducts from './pages/adminPages/AddProductPage';
 import AdminModifyProducts from './pages/adminPages/ModifyProductPage';
+import AdminCategoryPage from './pages/adminPages/AdminCategoryPage';
 
 
 const router = createBrowserRouter([
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/ProductModify",
     element : <AdminModifyProducts/>,
+  },
+  {
+    path: "/admin/category",
+    element : <AdminCategoryPage/>,
   },
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));
