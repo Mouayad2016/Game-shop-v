@@ -17,6 +17,7 @@ import AdminModifyProducts from './pages/adminPages/ModifyProductPage';
 import AdminCategoryPage from './pages/adminPages/AdminCategoryPage';
 import AdminCreateCategory from './pages/adminPages/AddCategoryPage';
 import AdminModifyCategory from './pages/adminPages/ModifyCategoryPage';
+import AdminLoginPage from './pages/adminPages/AdminLoginPage';
 import AdminDeleteCategory from './pages/adminPages/DeleteCategoryPage';
 
 
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/CategoryModify",
     element : <AdminModifyCategory/>,
+  },
+  {
+    path :"/adminlogin",
+    element : <AdminLoginPage/>,
   },
   {
     path: "/admin/CategoryDelete",
