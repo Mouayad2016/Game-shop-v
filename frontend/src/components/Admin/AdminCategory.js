@@ -6,7 +6,7 @@ import axios from "axios";
 const AdminProducts = () => {
   const [catData, setCatData] = useState([]);
   useEffect(() => {
-    fetchAllCatData();
+    fetchAllCatData(); 
   }, []);
   const fetchAllCatData = async () => {
     try {
@@ -29,9 +29,9 @@ const AdminProducts = () => {
     <div class="adminProducts">
       
       <div class="container-fluid">
-        <h1>Products</h1>
+        <h1>Category</h1>
       <div class="col-lg-12">
-      <button class="btn">Click hete to <Link to="/admin/ProductCreate">Create Category</Link></button><br></br><br></br>
+      <button class="btn">Click hete to <Link to="/admin/ProductCreate">Create a Category</Link></button><br></br><br></br>
       </div>
       <div class="col-lg-12">
         <div class="table-responsive">
@@ -51,7 +51,7 @@ const AdminProducts = () => {
                   <td> {e.c_date} </td> <td> {e.u_date} </td>{" "}
                   <td>{e.id_creator}</td><td>{e.id_deletor}</td>
                   {/* all reviexs for that product*/}{" "}
-                  <td><Link to="/admin/ProductModify" state={{ id: e.id }}>Modify Category</Link></td>
+                  <td><Link to="/admin/CategoryModify" state={{ id: e.id }}>Modify Category</Link></td>
                 </tr>
               ))}{" "}
             </tbody>{" "}
