@@ -27,9 +27,13 @@ const AdminProducts = () => {
   };
   return (
     <div class="adminProducts">
-      <h1> Create product </h1>
-      <CreateProductForm />
+      
       <div class="container-fluid">
+        <h1>Products</h1>
+      <div class="col-lg-12">
+      <button class="btn">Click hete to <Link to="/admin/ProductCreate">Create Product</Link></button><br></br><br></br>
+      </div>
+      <div class="col-lg-12">
         <div class="table-responsive">
           <table class="table table-bordeless">
             <thead>
@@ -62,6 +66,7 @@ const AdminProducts = () => {
           </table>{" "}
         </div>{" "}
       </div>{" "}
+    </div>
     </div>
   );
 };
