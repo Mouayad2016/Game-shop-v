@@ -19,7 +19,8 @@ return (
                     <ul class="nav">
                         <li class="scroll-to-section"><Link to="/admin">Home</Link></li>
                         <li class="scroll-to-section"><Link to="/admin/products">Products</Link></li> {/*here you call the page you want */}
-                        <li class="scroll-to-section"><Link to="/admin/profil">Profil</Link></li>
+                        {/*<li class="scroll-to-section"><Link to="/admin/profil">Profil</Link></li>*/}
+                        <li class="scroll-to-section"><Link to="/admin/category">Categories</Link></li>
                         <li class="scroll-to-section"><Link to="/admin/review">Reviews</Link></li>
                     </ul>        
                     <a class='menu-trigger'>

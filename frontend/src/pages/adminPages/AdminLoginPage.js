@@ -1,15 +1,15 @@
 import '../../components/Admin/Admin.css';
 import AdminHeader from '../../components/Admin/AdminHeader'
-import AdminCategory from '../../components/Admin/AdminCategory'
+import AdminLogin from '../../components/Admin/AdminLogin'
 
 
-function AdminCategoryPage() {
+function AdminLoginPage() {
   return (
     <div className="App">
       <AdminHeader />
-      <AdminCategory />
+      <AdminLogin />
     </div>
   );
 }
 
-export default AdminCategoryPage;
+export default AdminLoginPage;

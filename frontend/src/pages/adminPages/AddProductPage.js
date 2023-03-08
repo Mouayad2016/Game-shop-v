@@ -1,15 +1,15 @@
 import '../../components/Admin/Admin.css';
 import AdminHeader from '../../components/Admin/AdminHeader'
-import AdminCategory from '../../components/Admin/AdminCategory'
+import AdminCreateProducts from '../../components/Admin/createProductForm/createPrdForm'
 
 
-function AdminCategoryPage() {
+function AddProductsPage() {
   return (
     <div className="App">
       <AdminHeader />
-      <AdminCategory />
+      <AdminCreateProducts />
     </div>
   );
 }
 
-export default AdminCategoryPage;
+export default AddProductsPage;

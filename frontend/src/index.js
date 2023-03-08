@@ -12,10 +12,18 @@ import AdminHomePage from './pages/adminPages/AdminHomePage';
 import AdminProductsPage from './pages/adminPages/AdminProductPage';
 import AdminProductsReviewPage from './pages/adminPages/AdminProductReviewPage';
 import AdminReviewPage from './pages/adminPages/AdminReviewPage';
+import AdminCreateProducts from './pages/adminPages/AddProductPage';
+import AdminModifyProducts from './pages/adminPages/ModifyProductPage';
+import AdminCategoryPage from './pages/adminPages/AdminCategoryPage';
+import AdminCreateCategory from './pages/adminPages/AddCategoryPage';
+import AdminModifyCategory from './pages/adminPages/ModifyCategoryPage';
+import AdminLoginPage from './pages/adminPages/AdminLoginPage';
+import AdminDeleteCategory from './pages/adminPages/DeleteCategoryPage';
+
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/", 
     element : <App />,
   },
   {
@@ -49,6 +57,34 @@ const router = createBrowserRouter([
   {
     path: "/admin/review",
     element : <AdminReviewPage/>,
+  },
+  {
+    path: "/admin/ProductCreate",
+    element : <AdminCreateProducts/>,
+  },
+  {
+    path: "/admin/ProductModify",
+    element : <AdminModifyProducts/>,
+  },
+  {
+    path: "/admin/category",
+    element : <AdminCategoryPage/>,
+  },
+  {
+    path: "/admin/CategoryCreate",
+    element : <AdminCreateCategory/>,
+  },
+  {
+    path: "/admin/CategoryModify",
+    element : <AdminModifyCategory/>,
+  },
+  {
+    path :"/adminlogin",
+    element : <AdminLoginPage/>,
+  },
+  {
+    path: "/admin/CategoryDelete",
+    element : <AdminDeleteCategory/>,
   },
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));

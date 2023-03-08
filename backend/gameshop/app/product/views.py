@@ -9,7 +9,7 @@ from .serializer import ProductSerializer,GetProductSerializer
 @api_view(['GET'])
 def getProduct(request):
     try:
-        limit = request.GET.get('limit', 2) # get the limit parameter from the query string, default to 10
+        limit = request.GET.get('limit', 6) # get the limit parameter from the query string, default to 10
         offset = request.GET.get('offset', 0) # get the offset parameter from the query string, default to 0
         product = Product.objects.all()[int(offset):int(offset)+int(limit)]
         serializer = GetProductSerializer(product, many=True)
@@ -21,7 +21,7 @@ def getProduct(request):
 @api_view(['GET'])
 def getProductByCategory(request, id):
     try:
-        limit = request.GET.get('limit', 2) # get the limit parameter from the query string, default to 10
+        limit = request.GET.get('limit', 6) # get the limit parameter from the query string, default to 10
         offset = request.GET.get('offset', 0) # get the offset parameter from the query string, default to 0
         category = Categories.objects.get(id=id)
         product = category.product_set.all()[int(offset):int(offset)+int(limit)]

@@ -1,15 +1,15 @@
 import '../../components/Admin/Admin.css';
 import AdminHeader from '../../components/Admin/AdminHeader'
-import AdminCategory from '../../components/Admin/AdminCategory'
+import AdminCreateCategory from '../../components/Admin/createCategoryForm/createCatForm'
 
 
-function AdminCategoryPage() {
+function AddCatPage() {
   return (
     <div className="App">
       <AdminHeader />
-      <AdminCategory />
+      <AdminCreateCategory />
     </div>
   );
 }
 
-export default AdminCategoryPage;
+export default AddCatPage;
