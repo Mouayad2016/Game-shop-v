@@ -58,7 +58,7 @@ function CreateProductForm() {
         name: "",
         description: "",
         stock: 0,
-        price: 0,
+        price: 0, 
       /*  prod_category: [],*/
       });
       setErrorMessage("");

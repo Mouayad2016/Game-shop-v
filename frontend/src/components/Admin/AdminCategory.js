@@ -7,7 +7,7 @@ const AdminProducts = () => {
   const [catData, setCatData] = useState([]);
   useEffect(() => {
     fetchAllCatData(); 
-  }, []);
+  }, []); 
   const fetchAllCatData = async () => {
     try {
       const response = await axios.get("http://localhost:8000/category/get");
@@ -31,7 +31,7 @@ const AdminProducts = () => {
       <div class="container-fluid">
         <h1>Category</h1>
       <div class="col-lg-12">
-      <button class="btn">Click hete to <Link to="/admin/ProductCreate">Create a Category</Link></button><br></br><br></br>
+      <button class="btn">Click hete to <Link to="/admin/CategoryCreate">Create a Category</Link></button><br></br><br></br>
       </div>
       <div class="col-lg-12">
         <div class="table-responsive">
@@ -40,7 +40,7 @@ const AdminProducts = () => {
               <tr class="bg-light">
                 <th width="5%"> # </th> <th width="20%"> Name </th>{" "}
                 <th width="50%"> Description </th> <th width="15%"> Creation Date </th>{" "}
-                <th width="10%"> Last Update </th> <th width="10%"> Creator </th> <th width="10%">Deletor</th><th>Modify</th>{" "}
+                <th width="10%"> Last Update </th> <th width="10%"> Creator </th> <th width="10%">Deletor</th><th>Modify</th> <th>Delete</th>{" "}
               </tr>{" "}
             </thead>{" "}
             <tbody>
@@ -52,6 +52,7 @@ const AdminProducts = () => {
                   <td>{e.id_creator}</td><td>{e.id_deletor}</td>
                   {/* all reviexs for that product*/}{" "}
                   <td><Link to="/admin/CategoryModify" state={{ id: e.id }}>Modify Category</Link></td>
+                  <td><br></br><Link to="/admin/CategoryDelete" className="alert alert-danger" state={{ id: e.id }}>Delete</Link></td>
                 </tr>
               ))}{" "}
             </tbody>{" "}

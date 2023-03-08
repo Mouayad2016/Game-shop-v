@@ -9,7 +9,7 @@ function CreateCatForm() {
     c_date: new Date(),
     u_date: new Date(),
     id_creator: null,
-    id_deletor: null,
+    id_deletor: null, 
   });
   const [errorMessage, setErrorMessage] = useState("");
 
