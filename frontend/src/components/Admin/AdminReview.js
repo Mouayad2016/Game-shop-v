@@ -59,6 +59,7 @@ const AdminReview = () => {
                             <th width="10%">Creation date</th>
                             <th width="10%">Last Update</th>
                             <th width="5%">User</th>
+                            <th width="5%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,6 +73,9 @@ const AdminReview = () => {
                             <td>{r.creat}</td>
                             <td>{r.update}</td>
                             <td>{r.user_id}</td>
+                            <td><a className='btn btn-danger'>delete</a>
+                                <a className='btn btn-success'>Edite</a>
+                            </td>
                         </tr>
                     ))}
                     
