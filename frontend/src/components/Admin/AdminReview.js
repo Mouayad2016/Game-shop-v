@@ -30,6 +30,20 @@ const AdminReview = () => {
       console.log(r);
     }
 };
+
+const Removefuntion=(id) => {
+  if(window.config("Do you want to remove?")) {
+      fetch("http://localhost:3000/admin/review/"+ id,{
+          method:"DELETE"
+      }).then((res)=>{
+          alert("Removed succeefully.")
+          window.location.reload();
+      }).catch((r)=>{
+          console.log(err.message)
+      })
+  }
+}
+
   const post_request = async () => {
     try{
       const resp = await axios.post("http://localhost:8000/review/post",{
@@ -73,8 +87,8 @@ const AdminReview = () => {
                             <td>{r.creat}</td>
                             <td>{r.update}</td>
                             <td>{r.user_id}</td>
-                            <td><a className='btn btn-danger'>delete</a>
-                                <a className='btn btn-success'>Edite</a>
+                            <td><a onClick={() => { LoadEdit(item.id) }} className="btn btn-success">Edit</a>
+                                <a onClick={() => { Removefunction(item.id) }} className="btn btn-danger">Remove</a>
                             </td>
                         </tr>
                     ))}

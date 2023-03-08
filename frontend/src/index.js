@@ -50,7 +50,6 @@ const router = createBrowserRouter([
     path: "/admin/review",
     element : <AdminReviewPage/>,
   },
-  
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
