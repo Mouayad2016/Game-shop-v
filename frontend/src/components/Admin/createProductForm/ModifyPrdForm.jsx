@@ -50,7 +50,7 @@ function CreateProductForm() {
     event.preventDefault();
     try {
       const response = await axios.put(
-        "http://127.0.0.1:8000/products/${idd}/update",
+        `http://127.0.0.1:8000/products/${idd}/update`,
         formData
       );
       console.log(response.data);
@@ -75,21 +75,7 @@ function CreateProductForm() {
       [name]: value,
     });
   };
-/*
-  const handleCategoryChange = (event) => {
-    const { value } = event.target;
-    setFormData({
-      ...formData,
-      prod_category: [...formData.prod_category, value],
-    });
-  };
 
-  const handleRemoveCategory = (category) => {
-    setFormData({
-      ...formData,
-      prod_category: formData.prod_category.filter((c) => c !== category),
-    });
-  };*/
 
   return (
     <section>
@@ -192,7 +178,7 @@ function CreateProductForm() {
               ))}
             </div>
               )}
-        </div>*/}
+              </div>*/}
         <button type="submit" className="btn btn-primary">
           Create
         </button>

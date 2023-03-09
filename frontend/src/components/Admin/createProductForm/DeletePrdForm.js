@@ -14,7 +14,7 @@ function CreateCatForm() {
     event.preventDefault();
     try {
       const response = await axios.delete(
-        `http://127.0.0.1:8000/products/${idd}/delete`
+        `http://127.0.0.1:8000/products/${idd}/update`
       );
       setErrorMessage("Bravo, you just delete a product");
     } catch (error) {
@@ -49,7 +49,7 @@ function CreateCatForm() {
 
   return (
     <section>
-        <div class="col-lg-12"><h1>Delete category number {idd}</h1>Donot use it is not working fo now</div>
+        <div class="col-lg-12"><h1>Delete category number {idd}</h1>Do not use it is not working fo now</div>
     <div className="form_container">
       <form onSubmit={handleSubmit}>
         {errorMessage && (

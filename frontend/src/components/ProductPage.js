@@ -134,7 +134,7 @@ return (
                         //need user_id
                         ()=>{
                           {fId ? (
-                          axios.post(`http://127.0.0.1:8000/cart/${fId}/post`,...productData.filter((e) =>{
+                          axios.post(`http://127.0.0.1:8000/cart/${fId}/${e.id}/post`,...productData.filter((e) =>{
                             return e.id === idd ? e : null; /*just need the rigth link */
                             
                           }))
@@ -148,8 +148,8 @@ return (
                               console.log("---e--",e)
                             }
                           )
-                          ): (
-                            axios.post(`http://127.0.0.1:8000/cart/post`,...productData.filter((e) =>{
+                          ):(
+                            axios.post(`http://127.0.0.1:8000/null/${e.id}/cart/post`,...productData.filter((e) =>{
                             return e.id === idd ? e : null;/*same neded of the good link*/
                             
                           }))
