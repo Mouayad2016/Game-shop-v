@@ -28,15 +28,21 @@ def getShopping_caartByUser_id(request, id):
 
 
 @api_view(['POST'])
-def addProductToShopping_cart(request, userId, product_id):
+def addProductToShopping_cart(request, userId=None, product_id=None):
     try:
         product = Product.objects.get(id=product_id)
 
-        
+        if userId is None:
+            shopping_cart, created = Shopping_cart.objects.get_or_create(user_id_id=None)
+        else:
+            user_id = userId
+            shopping_cart, created = Shopping_cart.objects.get_or_create(user_id_id=userId)
+
         # Get the user's shopping cart or create a new one if it doesn't exist
-        shopping_cart, created = Shopping_cart.objects.get_or_create(user_id_id=userId)
+        # shopping_cart, created = Shopping_cart.objects.get_or_create(user_id_id=user_id)
         # shopping_cart.product_prod_cart.add(product)
         product.prod_cart.add(shopping_cart)
+
 
         # Return a success response
         if created:
