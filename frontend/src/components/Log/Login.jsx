@@ -15,7 +15,7 @@ const Login = (props) => {
   const handleGoogleSignIn = () => {
     try {
       window.location.href = "http://localhost:8000/auth/google-login";
-      const urlParams = new URLSearchParams(window.location.search);
+      // const urlParams = new URLSearchParams(window.location.search);
     } catch (e) {}
   };
 
