@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import redirect
 from google.oauth2 import id_token
 from django.conf import settings
@@ -64,7 +65,7 @@ def google_auth_callback(request):
         user.backend = "django.contrib.auth.backends.ModelBackend"
         if user is not None:
             login(request, user)
-            return redirect("http://localhost:3000")
+            return redirect(f"http://localhost:3000/?first_name={user.first_name}&last_name={user.last_name}&id={user.id}&email={user.email}")        
         else:
             return Response({"error": "Unable to log in."}, status=status.HTTP_400_BAD_REQUEST)
     except ValueError as err: 
