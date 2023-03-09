@@ -7,7 +7,7 @@ const Header = () => {
   const [fName, setFname] = useState();
   const handle = () => {
     deleteAllCookies();
-  };
+  }; 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const email = searchParams.get("email");

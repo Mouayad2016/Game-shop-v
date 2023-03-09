@@ -1,7 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { getCookieValue } from "../helper/cookies";
+import { useState,useEffect} from "react"; 
 
 const Header = () => {
+  const [fName, setFname] = useState();
+  const handle = () => {
+    deleteAllCookies();
+  }; 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const email = searchParams.get("email");
+    const firstName = searchParams.get("first_name");
+    const lastName = searchParams.get("last_name");
+    const user_id = searchParams.get("id");
+
+    if (email && firstName && lastName && user_id) {
+      document.cookie = `email=${email}; path=/;`;
+      document.cookie = `firstName=${firstName}; path=/;`;
+      document.cookie = `lastName=${lastName}; path=/;`;
+      document.cookie = `user_id=${user_id}; path=/;`;
+    }
+
+    setFname(getCookieValue("firstName"));
+    console.log(fName);
+    console.log(searchParams);
+  });
+  function deleteAllCookies() {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i];
+      const eqPos = cookie.indexOf("=");
+      const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+    }
+    window.location.href = "http://localhost:3000";
+  }
+
   return (
     <div>
       

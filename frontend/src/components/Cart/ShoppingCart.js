@@ -1,21 +1,52 @@
 import React, { useState,useEffect } from "react";
 import "./ShoppingCart.css";
 import CartItem from "./CartItems";
-import axios from 'axios'
+import axios from 'axios';
+import { getCookieValue } from "../../helper/cookies";
+
 function ShoppingCart() {
-  const [cartItems, setCartItems] = useState([
-    { id: 1, image: "https://via.placeholder.com/150", name: "Item 1", price: 1.11, quantity: 1 },
-    { id: 2, image: "https://via.placeholder.com/150", name: "Item 2", price: 2.22, quantity: 2 },
-    { id: 3, image: "https://via.placeholder.com/150", name: "Item 3", price: 3.33, quantity: 3 },
-    { id: 4, image: "https://via.placeholder.com/150", name: "Item 4", price: 4.44, quantity: 4 },
-    { id: 5, image: "https://via.placeholder.com/150", name: "Item 5", price: 5.55, quantity: 4 },
-  ]);
+
+const [fId, setId] = useState();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const user_id = searchParams.get("id");
+
+    if (user_id) {
+      document.cookie = `user_id=${user_id}; path=/;`;
+    }
+
+    setId(getCookieValue("user_id"));
+    console.log(fId);
+    console.log(searchParams);
+  });
+
+  const [cartItems, setCartItems] = useState();
+
+  useEffect(() => {
+    fetchUserCartData();
+  }, []);
+
+  const fetchUserCartData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8000/cart/${fId}/get`);
+      const cart = response.data.map((cart) => ({
+        id: cart.id,
+        /*all other info send by the backend*/
+      }));
+      setCartItems(cart);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const increase=(id)=>{
     let index = cartItems.findIndex(item=> item.id === id)
     let tmp = [...cartItems]
     let quantity = cartItems[index].quantity
     tmp[index].quantity=quantity+1
     axios.put(`http://127.0.0.1:8000/cart/${id}/update`,tmp[index])
+    /*need to know what are the link and witch data they need to work*/
     setCartItems(tmp)
   }
   const decrease=(id)=>{
@@ -25,9 +56,11 @@ function ShoppingCart() {
     if(quantity!=1){
       axios.put(`http://127.0.0.1:8000/cart/${id}/update`,tmp[index])
       tmp[index].quantity=quantity-1
+      /*need to know what are the link and witch data they need to work*/
     }else{
       axios.delete(`http://127.0.0.1:8000/cart/${id}/delete`)
       tmp.splice(index,1)
+      /*need to know what are the link and witch data they need to work*/
     }
     setCartItems(tmp)
   }
