@@ -1,7 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from ...models import Shopping_cart
+from ...models import Shopping_cart, Product
 from .serializer import Shopping_cartSerializer , GetShopping_cartSerializer
 
 # ---------------------------------------------------------------------------------------------- -------------------------------------------
@@ -23,6 +23,26 @@ def getShopping_caartByUser_id(request, id):
         product = shopping_cart.product_set.all()
         serializer = GetShopping_cartSerializer(product, many=True)
         return Response(serializer.data)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+
+
+@api_view(['POST'])
+def addProductToShopping_cart(request, userId, product_id):
+    try:
+        product = Product.objects.get(id=product_id)
+
+        
+        # Get the user's shopping cart or create a new one if it doesn't exist
+        shopping_cart, created = Shopping_cart.objects.get_or_create(user_id_id=userId)
+        # shopping_cart.product_prod_cart.add(product)
+        product.prod_cart.add(shopping_cart)
+
+        # Return a success response
+        if created:
+            return Response({'cart_id': shopping_cart.id, 'success': 'Product added to new cart'}, status=200)
+        else:
+            return Response({'success': 'Product added to existing cart'}, status=200)
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
 
