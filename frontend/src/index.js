@@ -19,6 +19,7 @@ import AdminCreateCategory from './pages/adminPages/AddCategoryPage';
 import AdminModifyCategory from './pages/adminPages/ModifyCategoryPage';
 import AdminLoginPage from './pages/adminPages/AdminLoginPage';
 import AdminDeleteCategory from './pages/adminPages/DeleteCategoryPage';
+import AdminDeleteProduct from './pages/adminPages/DeleteProductPage';
 
 
 const router = createBrowserRouter([
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/CategoryDelete",
     element : <AdminDeleteCategory/>,
+  },
+  {
+    path: "/admin/ProductDelete",
+    element : <AdminDeleteProduct/>,
   },
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));

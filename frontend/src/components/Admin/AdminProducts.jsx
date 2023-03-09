@@ -38,7 +38,7 @@ const AdminProducts = () => {
               <tr class="bg-light">
                 <th width="5%"> # </th> <th width="20%"> Name </th>{" "}
                 <th width="10%"> Stock </th> <th width="10%"> Category </th>{" "}
-                <th width="20%"> Price </th> <th width="20%"> Reviews </th> <th width="20%">Modify</th>{" "}
+                <th width="20%"> Price </th> <th width="20%"> Reviews </th> <th width="20%">Modify</th><th width="20%">Delete</th>{" "}
               </tr>{" "}
             </thead>{" "}
             <tbody>
@@ -59,6 +59,7 @@ const AdminProducts = () => {
                   </td>{" "}
                   {/* all reviexs for that product*/}{" "}
                   <td><Link to="/admin/ProductModify" state={{ id: e.id }}>Modify Product</Link></td>
+                  <td><Link to="/admin/ProductDelete" className="alert alert-danger"state={{ id: e.id }}>Delete</Link></td>
                 </tr>
               ))}{" "}
             </tbody>{" "}
