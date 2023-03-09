@@ -2,8 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useLocation} from 'react-router-dom';
 // import ReactStars from "react-rating-stars-component";
 import axios from "axios";
+import { getCookieValue } from "../helper/cookies";
 
 const ProductPage = () => {
+  const [fId, setId] = useState();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const user_id = searchParams.get("id");
+
+    if (user_id) {
+      document.cookie = `user_id=${user_id}; path=/;`;
+    }
+
+    setId(getCookieValue("user_id"));
+    console.log(fId);
+    console.log(searchParams);
+  });
+
   const location = useLocation()
   const { id } = location.state
   const idd =id;
@@ -115,10 +131,11 @@ return (
                       <button
                       onClick={
                         
-                        //needd user_id
+                        //need user_id
                         ()=>{
-                          axios.post('http://127.0.0.1:8000/cart/post',...productData.filter((e) =>{
-                            return e.id === idd ? e : null;
+                          {fId ? (
+                          axios.post(`http://127.0.0.1:8000/cart/${fId}/${e.id}/post`,...productData.filter((e) =>{
+                            return e.id === idd ? e : null; /*just need the rigth link */
                             
                           }))
                           .then(
@@ -131,6 +148,23 @@ return (
                               console.log("---e--",e)
                             }
                           )
+                          ):(
+                            axios.post(`http://127.0.0.1:8000/null/${e.id}/cart/post`,...productData.filter((e) =>{
+                            return e.id === idd ? e : null;/*same neded of the good link*/
+                            
+                          }))
+                          .then(
+                            res=>{
+                              console.log("--res---",res)
+                            }
+                          )
+                          .catch(
+                            e=>{
+                              console.log("---e--",e)
+                            }
+                          )
+                          )}
+
                           console.log(productData.filter((e) =>{
                             return e.id === idd ? e : null;
                           }))
