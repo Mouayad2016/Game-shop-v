@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-import ReactLoading from "react-loading";
+// import ReactLoading from "react-loading";
 import "./style.css";
 const PayPalButton = () => {
   const [loading, setLoading] = useState(false);
@@ -30,14 +30,15 @@ const PayPalButton = () => {
 
   return (
     <button type="button" onClick={handlePay}>
-      {loading ? (
-        <ReactLoading type={"spin"} color={"#123abc"} height={50} width={50} />
-      ) : (
+      {
+        // loading ? (
+        // <ReactLoading type={"spin"} color={"#123abc"} height={50} width={50} />
+        // ) :
         <img
           src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png"
           alt="Pay with PayPal"
         />
-      )}
+      }
     </button>
   );
 };
