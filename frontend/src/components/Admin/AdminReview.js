@@ -3,7 +3,7 @@ import './Admin.css';
 import axios from "axios";
 
 function AdminReview() {
-  const [idd, setIdd] = useState(null);
+  const [productId, setProductId] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [reviewData, setReviewData] = useState([]);
 
@@ -31,16 +31,8 @@ function AdminReview() {
     }
   };
 
-  const post_request = async () => {
-    try {
-      const resp = await axios.post("http://localhost:8000/review/post", {
-        id: null, rating: 4, feedback: "Very good deal and the shipping went well !", hidden: false,
-        reported: false, created_at: "2023-02-25", updated_at: "2023-02-25", prod_id: 5, user_id: 1
-      });
-      console.log(resp.data);
-    } catch (error) {
-      console.log(error.reponse);
-    }
+  const handleProductChange = (event) => {
+    setProductId(event.target.value);
   };
 
   const handleRemove = async (id) => {
@@ -55,6 +47,24 @@ function AdminReview() {
       setErrorMessage("An error occurred while deleting the product.");
     }
   };
+
+
+  const toggleHidden = async (id) => {
+    const updatedReviewData = reviewData.map((r) => {
+      if (r.id === id) {
+        const updatedReview = { ...r, hidden: !r.hidden };
+        axios.put(`http://localhost:8000/review/${id}/update`, updatedReview);
+        return updatedReview;
+      }
+      return r;
+    });
+    setReviewData(updatedReviewData);
+  };
+
+  const filteredReviewData = productId
+    ? reviewData.filter((r) => r.prod_id === productId)
+    : reviewData;
+  
 
   return (
     <div class="adminProducts">
@@ -81,7 +91,13 @@ function AdminReview() {
                             <td>{r.id}</td>
                             <td>{r.rate}/5</td>
                             <td>{r.feedb}</td>
-                            <td>{r.hidden === true ? "true": "false"}</td>
+                            <td>
+                            <button
+                              onClick={() => {toggleHidden(r.id)}} className={`btn ${r.hidden ? "btn-primary" : "btn-secondary"}`}
+                              >
+                              {r.hidden ? "True" : "False"}
+                            </button>
+                            </td>
                             <td>{r.reported === true ? "true": "false"}</td>
                             <td>{r.creat}</td>
                             <td>{r.update}</td>
@@ -95,12 +111,7 @@ function AdminReview() {
                     
                     </tbody>
                 </table>
-                <form onSubmit={post_request}>
-                    <button
-                      type="submit" 
-                      id="form-submit" 
-                      className="main-button-icon"
-                      >Add review</button></form>{/*https://www.freecodecamp.org/news/how-to-use-axios-with-react/ */}
+                
             </div>
         </div>
       </div>
