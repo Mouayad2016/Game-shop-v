@@ -8,6 +8,9 @@ urlpatterns = [
     # ? Note No need to add / att the end i already configured the setting so it will be there automatically
 
     # * Method : Get
+    # * link:  http://127.0.0.1:8000/products/get/id
+    path('get/<int:id>', views.getProductByProductId),
+    # * Method : Get
     # * link:  http://127.0.0.1:8000/products 
     path('get', views.getProduct),     
     # * Method : Get
