@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { getData } from "./helper/axios";
 
@@ -163,7 +162,7 @@ const Gallery = () => {
                             state={{ id: product.id }}
                             class="text-button-icon"
                           >
-                            More info
+                          {product.name}
                           </Link>
                         </div>
                       </div>

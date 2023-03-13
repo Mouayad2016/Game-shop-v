@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "google-auth-library": "^8.7.0"
+    "google-auth-library": "^8.7.0",
+    "js-cookie": "^3.0.1"
   }
 }

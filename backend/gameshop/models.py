@@ -26,7 +26,7 @@ class Categories(models.Model):
 
 class Shopping_cart(models.Model):
     id = models.AutoField(primary_key=True)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
 

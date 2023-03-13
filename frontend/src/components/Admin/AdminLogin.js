@@ -9,11 +9,9 @@ const AdminLogin = () => {
 
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
-    const [authenticated, setauthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated")|| false));
+    const [authenticated, setauthenticated] = useState(sessionStorage.getItem(sessionStorage.getItem("authenticated")|| false));
 
-    const users = [{ username: "Loana", password: "Loanamdp" }];
-
-    /*const [userData, setUserData] = useState([]);
+    const [userData, setUserData] = useState([]);
 
     useEffect(() => {
         fetchAllAdminData();
@@ -31,37 +29,52 @@ const AdminLogin = () => {
         } catch (error) {
             console.log(error);
         }
-    };*/
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        const account = users.find((user) => user.username === username);
+        const account = userData.find((user) => user.username === username);
         if (account && account.password === password) {
             setauthenticated(true)
-            localStorage.setItem("authenticated", true);
+            sessionStorage.setItem("authenticated", true);
             navigate("/admin", {replace: true});
         }
     };
 
     return (
         <div>
-            <p>Welcome Back</p>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="Username"
-                    placeholder='username'
-                    value={username}
-                    onChange={(e) => setusername(e.target.value)}
-                />
-                <input
-                    type="password"
-                    name="Password"
-                    placeholder='password'
-                    onChange={(e) => setpassword(e.target.value)}
-                />
-                <input type="submit" value="Submit" />
-            </form>
+            <center><img src="assets/images/logo.png" heigth="60" width="120"/></center>
+            <h2>Welcome Back</h2>
+            <p></p>
+            <h6>Please log in with your administrators credentials</h6>
+            <div className="form_container">
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="username">Username</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="Username"
+                            //placeholder='username'
+                            value={username}
+                            onChange={(e) => setusername(e.target.value)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            name="Password"
+                            //placeholder='password'
+                            onChange={(e) => setpassword(e.target.value)}
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary">
+                        Log In
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };

@@ -7,6 +7,16 @@ from .serializer import ProductSerializer,GetProductSerializer
 
 # Create your views here.
 @api_view(['GET'])
+def getProductByProductId(request, id):
+    try:
+        product = Product.objects.get(id=id)
+        serializer = ProductSerializer(product)
+        return Response(serializer.data)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+
+
+@api_view(['GET'])
 def getProduct(request):
     try:
         limit = request.GET.get('limit', 6) # get the limit parameter from the query string, default to 10
