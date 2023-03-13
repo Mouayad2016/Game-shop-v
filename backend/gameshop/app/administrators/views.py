@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from ...models import Administrators
 from .serializer import AdministratorsSerializer
+import hashlib
+from django.contrib.auth.hashers import make_password
 
 
 # Create your views here.
@@ -24,18 +26,36 @@ def getAdministratorByID(request,id):
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
 
+@api_view(['GET'])
+def getAdministratorByUsernameAndPassword(request, username, password):
+    try:
+        raw_password = password
+        encrypted_password = hashlib.sha256((raw_password + username).encode()).hexdigest()
+        administrators = Administrators.objects.get(password=encrypted_password)
+        serializer = AdministratorsSerializer(administrators)
+        return Response(serializer.data)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+
 @api_view(['POST'])
 def postAdministrators(request):
     try:
         serializer = AdministratorsSerializer(data=request.data)
         valid = serializer.is_valid(); # ! validate the response 
         if valid:
-            serializer.save()
+            username = request.data.get("username")
+            raw_password = request.data.get("password")
+
+            # encrypted_password = make_password(raw_password)
+            encrypted_password = hashlib.sha256((raw_password + username).encode()).hexdigest()
+
+            serializer.save(password=encrypted_password)
             return Response(serializer.data)
         else:
             return Response(serializer.errors)
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+
 @api_view(['DELETE'])
 def deleteAdministratorsById(request,id):
     try:
