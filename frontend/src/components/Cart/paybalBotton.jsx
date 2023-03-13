@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import { BeatLoader } from "react-spinners";
 // import ReactLoading from "react-loading";
 import "./style.css";
 const PayPalButton = () => {
@@ -21,8 +22,9 @@ const PayPalButton = () => {
           timeout: 5000,
         }
       );
-      setLoading(false);
+
       window.location.href = response.data.link;
+      setLoading(false);
     } catch (e) {
       console.log(e);
     }
@@ -30,15 +32,14 @@ const PayPalButton = () => {
 
   return (
     <button type="button" onClick={handlePay}>
-      {
-        // loading ? (
-        // <ReactLoading type={"spin"} color={"#123abc"} height={50} width={50} />
-        // ) :
+      {loading ? (
+        <BeatLoader loading={true} size={15} color={"#007bff"} />
+      ) : (
         <img
           src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png"
           alt="Pay with PayPal"
         />
-      }
+      )}
     </button>
   );
 };

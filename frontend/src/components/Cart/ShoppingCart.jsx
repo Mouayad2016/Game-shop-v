@@ -94,6 +94,16 @@ function ShoppingCart() {
               />
             ))}{" "}
           </div>{" "}
+          <div>
+            {" "}
+            <p>
+              <strong>Paybal email:</strong> sb - qonwa25271562
+              @personal.example.com{" "}
+            </p>
+            <p>
+              <strong>Paybal password:</strong> 00000000{" "}
+            </p>
+          </div>
           <div className="cart-summary">
             <p className="cart-summary-text">
               Subtotal:{" "}
