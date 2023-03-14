@@ -33,6 +33,7 @@ const Account = () => {
         try {
           const response = await axios.get(`http://localhost:8000/order/get`);
           const order = response.data.map((order)=>({
+            order_id : order.id,
             payment_way : order.payment_way,
             discount: order.discount_code,
             created_at: order.created_at,
@@ -54,26 +55,73 @@ const Account = () => {
       };
 
     return (
-
+ 
 <section class="section" id="projects">
 {fID ? (
     <div class="container">
-        <h2> Your information </h2>
-        <div class="col-lg-9">
-            <div class="filters-content">
-              <div class="col-lg-4">
-                <p><b>Name : </b>{userData.first_name} {userData.last_name}</p>
-                <p>Username : {userData.username}</p>
-                <p>Last login : {userData.last_login}</p>
-                <p>Email  : {userData.email}</p>
-                <p>Join us on the : {userData.date_joined}</p>
-              </div>
-            </div>
-        </div>
+        <h2> Your personal information </h2>
+        <div class="table-responsive">
+                <table class="table table-bordeless">
+                    <thead>
+                      <br></br>
+                    </thead>
+                    <tbody>
+                      <tr>
+                      <td>Name : </td>
+                      <td>{userData.first_name} {userData.last_name}</td>
+                    </tr>
+                    <tr>
+                      <td>Username : </td>
+                      <td>{userData.username}</td>
+                    </tr>
+                    <tr>
+                      <td>Last login : </td>
+                      <td>{userData.last_login} need to find a way to change the way of showing the date </td>
+                    </tr>
+                    <tr>
+                      <td>Email  :</td>
+                      <td>{userData.email}</td>
+                    </tr>
+                    <tr>
+                      <td>Join us on the : </td>
+                      <td>{userData.date_joined}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
         <h2> Your previous orders </h2>
-        {orderData.filter((e) => e.user_id === id ? e : null).map((e) =>(
-          <p>1 line user id : {e.user_id} discount {e.discount} payement {e.payment_way}</p>
+        <br></br><br></br>
+        <div class="row">
+          
+          {orderData/*.filter((e) => e.user_id === id ? e : null)*/.map((e) =>(
+          
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+              <h5> Order number : {e.order_id}</h5>
+              <div class="table-responsive">
+                <table class="table table-bordeless">
+                    <thead>
+                      <br></br>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>Username : </td>
+                      <td>{userData.username}</td>
+                    </tr>
+                    <tr>
+                      <td>Discount : </td>
+                      <td>{e.discount}</td>
+                    </tr>
+                    <tr>
+                      <td>Payement way: </td>
+                      <td>{e.payment_way}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+          </div>
+         
         ))}
+        </div>
     </div>              
                 
     
