@@ -16,6 +16,9 @@ urlpatterns = [
     # * Method : Get
     # * link:  http://127.0.0.1:8000/products/id/get
     path('<int:id>/get', views.getProductByCategory),  
+    # * Method : Get
+    # * link:  http://127.0.0.1:8000/products/get/text
+    path('get/<str:text>', views.getProductFuzzyQuery),
     # * Method : Post
     # * link:  http://127.0.0.1:8000/products/post 
     # * Form : { "name": "prod_1","description": "aösmdöasmdas dlkas dlkas dkas dl askld asld kas","stock":123 }
