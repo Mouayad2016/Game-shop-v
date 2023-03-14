@@ -30,6 +30,13 @@ class Shopping_cart(models.Model):
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
 
+class Favorite_product(models.Model):
+    id = models.AutoField(primary_key=True)
+    user_id = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
+    product_id = models.ForeignKey('Product', null=True,on_delete=models.CASCADE)
+    created_at = models.DateField(default=datetime.date.today)
+    updated_at = models.DateField(default=datetime.date.today)
+
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
