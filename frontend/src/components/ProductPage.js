@@ -152,8 +152,8 @@ return (
                       onClick={
                         ()=>{
                           {fId ? (
-                          axios.post(`http://127.0.0.1:8000/cart/${fId}/${productData.id}/post`,...productData)
-                          .then(
+                          axios.post(`http://127.0.0.1:8000/cart/${fId}/${productData.id}/postProduct`,productData)
+                          .then( /*this one add the product to the cart*/
                             res=>{
                               console.log("--res---",res)
                             }
@@ -164,8 +164,8 @@ return (
                             }
                           )
                           ):(
-                            axios.post(`http://127.0.0.1:8000/null/${productData.id}/cart/post`,...productData)
-                          .then(
+                            axios.post(`http://127.0.0.1:8000/cart/null/${productData.id}/postProduct`,productData)
+                          .then( /*add product to cart 1 each time so not working well*/
                             res=>{
                               console.log("--res---",res)
                             }
@@ -186,6 +186,7 @@ return (
                     
                 </div>{productData.description} 
         </div>
+        <p>comment : need to add discount if there is some</p>
       </div>
       {/* <container>
         <h2>Add review</h2>

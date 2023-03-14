@@ -6,6 +6,7 @@ import { getCookieValue } from "../helper/cookies";
 
 const Account = () => {
     const [userData, setUserData] = useState([]);
+    const [orderData, setOrderData] = useState([]);
 
     const [fID, setFID] = useState();
     useEffect(() => {
@@ -22,11 +23,27 @@ const Account = () => {
     });
     const id=getCookieValue("user_id");
     console.log("my user id =", id);
+
     useEffect(() => {
         fetchUserdata();
+        fetchOrderData();
       },[]);
 
-    const fetchUserdata = async () => {
+      const fetchOrderData = async () => {
+        try {
+          const response = await axios.get(`http://localhost:8000/order/get`);
+          const order = response.data.map((order)=>({
+            payment_way : order.payment_way,
+            discount: order.discount_code,
+            created_at: order.created_at,
+            user_id : order.user_id,
+          }));
+          setOrderData(order);
+        } catch (e) {
+          console.log("error =",e);
+        }
+      };
+      const fetchUserdata = async () => {
         try {
           const response = await axios.get(`http://localhost:8000/user/${id}`);
           const user = response.data;
@@ -54,6 +71,9 @@ const Account = () => {
             </div>
         </div>
         <h2> Your previous orders </h2>
+        {orderData.filter((e) => e.user_id === id ? e : null).map((e) =>(
+          <p>1 line user id : {e.user_id} discount {e.discount} payement {e.payment_way}</p>
+        ))}
     </div>              
                 
     

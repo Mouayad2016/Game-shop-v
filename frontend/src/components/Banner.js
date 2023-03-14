@@ -10,20 +10,20 @@ return (
       <div class="carousel-item active">
         <img class="d-block w-100" src="assets/images/banner1.jpg" alt="First slide"/>
         <div class="carousel-caption d-none d-md-block">
-          <h3>Welcome To Breezed</h3>
-          <h5>New Bootstrap Template</h5>
+          <h3>Welcome To Geek</h3>
+          <h5>Your new favorite game shopping website</h5>
           <br/>
-          <a href="#" class="main-stroked-button">Learn More</a>
-          <a href="#" class="main-filled-button">Get It Now</a>
+          <a href="#projects" class="main-stroked-button">Learn more about our products</a>
+          <a href="#" class="main-filled-button">See some reviews</a>
         </div>
       </div>
       <div class="carousel-item">
         <img class="d-block w-100" src="assets/images/banner2.jpg" alt="Second slide"/>
         <div class="carousel-caption d-none d-md-block">
-          <h3>High Performance</h3>
-          <h5>Robust and Speedy</h5>
+          <h3>All games you want</h3>
+          <h5>Look at ours categories</h5>
           <br/>
-          <a href="#" class="main-stroked-button">Learn More</a>
+          <a href="#" class="main-stroked-button">Search</a>
           <a href="#" class="main-filled-button">Get It Now</a>
         </div>
       </div>
