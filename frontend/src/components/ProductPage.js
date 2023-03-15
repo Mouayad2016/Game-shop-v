@@ -152,21 +152,9 @@ return (
                       onClick={
                         ()=>{
                           {fId ? (
-                          axios.post(`http://127.0.0.1:8000/cart/${fId}/${productData.id}/postProduct`,productData)
-                          .then( /*this one add the product to the cart*/
-                            res=>{
-                              console.log("--res---",res)
-                            }
-                          )
-                          .catch(
-                            e=>{
-                              console.log("---e--",e)
-                            }
-                          )
-                          
-                          
+                            <p>new button for adding a product as fvorite when you are log in<i class="fa-solid fa-star"></i></p>
                           ):(
-                            <p></p>
+                            <p>new button for adding a product as fvorite when you are log in<i class="fa-regular fa-star"></i></p>
                             
                           )}
                         }
@@ -262,11 +250,6 @@ return (
             </div>
       </div>
       </div>
-      <div><i class="fa-regular fa-star"></i></div>
-      <div>
-                              <i class="fa-regular fa-star"></i>
-                            <p>you can't add the producte to favorite you need to connect for that</p>
-                            </div>
     </section>
 </div>
 
