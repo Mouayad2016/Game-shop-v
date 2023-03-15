@@ -21,6 +21,7 @@ import AdminModifyCategory from './pages/adminPages/ModifyCategoryPage';
 import AdminLoginPage from './pages/adminPages/AdminLoginPage';
 import AdminDeleteCategory from './pages/adminPages/DeleteCategoryPage';
 import AdminDeleteProduct from './pages/adminPages/DeleteProductPage';
+import AdminDiscountPage from './pages/adminPages/AdminDiscountPage';
 
 
 const router = createBrowserRouter([
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
   {
     path: "/account",
     element : <AccountPage/>,
+  },
+  {
+    path: "/admin/Discount",
+    element : <AdminDiscountPage/>,
   },
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));
