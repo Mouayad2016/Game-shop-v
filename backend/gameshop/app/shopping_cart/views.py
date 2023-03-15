@@ -1,6 +1,8 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from django.utils import timezone
+from datetime import timedelta
 from ...models import Shopping_cart, Product
 from .serializer import Shopping_cartSerializer , GetShopping_cartSerializer
 
@@ -34,6 +36,7 @@ def addProductToShopping_cart(request, userId=None, product_id=None):
 
         if userId is None:
             shopping_cart, created = Shopping_cart.objects.get_or_create(user_id_id=None)
+            shopping_cart.delete_after = timezone.now() + timedelta(hours=1)
         else:
             user_id = userId
             shopping_cart, created = Shopping_cart.objects.get_or_create(user_id_id=userId)
