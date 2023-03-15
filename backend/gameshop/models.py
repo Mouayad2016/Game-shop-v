@@ -58,6 +58,13 @@ class Product_images(models.Model):
     product_id= models.ForeignKey('Product', on_delete=models.CASCADE)
     image=models.ImageField()
 
+class Order_product(models.Model):
+    id = models.AutoField(primary_key=True)
+    order_id = models.ForeignKey('Order', null=True,on_delete=models.CASCADE)
+    product_id = models.ForeignKey('Product', null=True,on_delete=models.CASCADE)
+    created_at = models.DateField(default=datetime.date.today)
+    updated_at = models.DateField(default=datetime.date.today)
+
 class Discount(models.Model):
     id = models.AutoField(primary_key=True)
     start_date = models.DateField(default=datetime.date.today)
