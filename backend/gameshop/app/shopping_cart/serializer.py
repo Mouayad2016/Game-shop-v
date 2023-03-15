@@ -9,7 +9,7 @@ class Shopping_cartSerializer(serializers.ModelSerializer):
 
 
 class GetShopping_cartSerializer(serializers.ModelSerializer):
-    Shopping_cart_product = ProductSerializer(many=True)
+    prod_cart = Shopping_cartSerializer(many=True)
     # category_id = serializers.IntegerField()
     class Meta:
         model = Shopping_cart
