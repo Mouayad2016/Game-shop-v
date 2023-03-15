@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
+import { useLocation } from 'react-router-dom';
 import { getCookieValue } from "../helper/cookies";
 
 const Account = () => {
-    const [userData, setUserData] = useState([]);
+    const [orderproductData, setOrderProductData] = useState([]);
     const [orderData, setOrderData] = useState([]);
+    const location = useLocation()
+    const { order_id } = location.state
+    const idd = order_id;
 
     const [fID, setFID] = useState();
     useEffect(() => {
@@ -25,7 +29,7 @@ const Account = () => {
     console.log("my user id =", id);
 
     useEffect(() => {
-        fetchUserdata();
+        fetchOrderProductdata();
         fetchOrderData();
       },[]);
 
@@ -44,11 +48,13 @@ const Account = () => {
           console.log("error =",e);
         }
       };
-      const fetchUserdata = async () => {
+      const fetchOrderProductdata = async () => {
         try {
-          const response = await axios.get(`http://localhost:8000/user/${id}`);
-          const user = response.data;
-          setUserData(user);
+          const response = await axios.get(`http://127.0.0.1:8000/order_product/get/${idd}`);
+          const orderproduct = response.data.map((orderproduct)=>({
+            product_id: orderproduct.product_id, 
+          }));
+          setOrderProductData(orderproduct);
         } catch (e) {
           console.log("error =",e);
         }
@@ -59,56 +65,21 @@ const Account = () => {
 <section class="section" id="projects">
 {fID ? (
     <div class="container">
-        <h2> Your personal information </h2>
-        <div class="table-responsive">
-                <table class="table table-bordeless">
-                    <thead>
-                      <br></br>
-                    </thead>
-                    <tbody>
-                      <tr>
-                      <td>Name : </td>
-                      <td>{userData.first_name} {userData.last_name}</td>
-                    </tr>
-                    <tr>
-                      <td>Username : </td>
-                      <td>{userData.username}</td>
-                    </tr>
-                    <tr>
-                      <td>Last login : </td>
-                      <td>{userData.last_login} need to find a way to change the way of showing the date </td>
-                    </tr>
-                    <tr>
-                      <td>Email  :</td>
-                      <td>{userData.email}</td>
-                    </tr>
-                    <tr>
-                      <td>Join us on the : </td>
-                      <td>{userData.date_joined}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                </div>
-        <h2> Your previous orders </h2>
+        <h2> About your order {idd} </h2>
         <br></br><br></br>
         <div class="row">
           {orderData.filter((e) => {
             return e.user_id === parseInt(id) ? e : null;
           }).map((e) =>(
           
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <h5> Order number : {e.order_id}</h5>
-              <h6><Link to="/account/order" state={{ order_id: e.order_id }}>More information</Link></h6>
               <div class="table-responsive">
                 <table class="table table-bordeless">
                     <thead>
                       <br></br>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>Username : </td>
-                      <td>{userData.username}</td>
-                    </tr>
                     <tr>
                       <td>Discount : </td>
                       <td>{e.discount == null ? "None" : e.discount}</td>
@@ -117,6 +88,14 @@ const Account = () => {
                       <td>Payement way: </td>
                       <td>{e.payment_way}</td>
                     </tr>
+                    {orderproductData.map((e) =>(
+                       <tr>
+                       <td>Product number : {e.product_id}</td>
+                       <td><Link to="/product" state={{id : e.product_id}}>Product page</Link></td>
+                    {/*need if we can to get the info about the product on that page to direclyt show info to the customers ( name, price...)  */}
+                     </tr> 
+                    ))}
+
                     </tbody>
                 </table>
                 </div>
