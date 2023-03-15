@@ -6,4 +6,4 @@ class GameshopConfig(AppConfig):
     name = 'gameshop'
 
     def ready(self):
-        import app.shopping_cart.signals
+        import gameshop.app.shopping_cart.signals
