@@ -163,6 +163,36 @@ return (
                               console.log("---e--",e)
                             }
                           )
+                          
+                          
+                          ):(
+                            <p></p>
+                            
+                          )}
+                        }
+                      }
+                      type="submit" 
+                      id="form-submit" 
+                      class=""
+                      >Add as favorite<i class="fa fa-arrow-right"></i></button>
+                    </fieldset>
+                    <br></br>
+                    <fieldset>
+                      <button
+                      onClick={
+                        ()=>{
+                          {fId ? (
+                          axios.post(`http://127.0.0.1:8000/cart/${fId}/${productData.id}/postProduct`,productData)
+                          .then( /*this one add the product to the cart*/
+                            res=>{
+                              console.log("--res---",res)
+                            }
+                          )
+                          .catch(
+                            e=>{
+                              console.log("---e--",e)
+                            }
+                          )
                           ):(
                             axios.post(`http://127.0.0.1:8000/cart/null/${productData.id}/postProduct`,productData)
                           .then( /*add product to cart 1 each time so not working well*/
@@ -232,8 +262,14 @@ return (
             </div>
       </div>
       </div>
+      <div><i class="fa-regular fa-star"></i></div>
+      <div>
+                              <i class="fa-regular fa-star"></i>
+                            <p>you can't add the producte to favorite you need to connect for that</p>
+                            </div>
     </section>
 </div>
+
 );
 };
 
