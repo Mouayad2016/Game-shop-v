@@ -9,6 +9,7 @@ import Register from './pages/Regispage';
 import reportWebVitals from './reportWebVitals';
 import ProductPage from './pages/Productpage';
 import AccountPage from './pages/Accountpage';
+import OrderPage from './pages/Orderpage';
 import AdminHomePage from './pages/adminPages/AdminHomePage';
 import AdminProductsPage from './pages/adminPages/AdminProductPage';
 import AdminProductsReviewPage from './pages/adminPages/AdminProductReviewPage';
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
   {
     path: "/account",
     element : <AccountPage/>,
+  },
+  {
+    path: "/account/order",
+    element : <OrderPage/>,
   },
   {
     path: "/admin/Discount",
