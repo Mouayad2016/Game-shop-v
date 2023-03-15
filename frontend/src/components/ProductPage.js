@@ -152,6 +152,24 @@ return (
                       onClick={
                         ()=>{
                           {fId ? (
+                            <p>new button for adding a product as fvorite when you are log in<i class="fa-solid fa-star"></i></p>
+                          ):(
+                            <p>new button for adding a product as fvorite when you are log in<i class="fa-regular fa-star"></i></p>
+                            
+                          )}
+                        }
+                      }
+                      type="submit" 
+                      id="form-submit" 
+                      class=""
+                      >Add as favorite<i class="fa fa-arrow-right"></i></button>
+                    </fieldset>
+                    <br></br>
+                    <fieldset>
+                      <button
+                      onClick={
+                        ()=>{
+                          {fId ? (
                           axios.post(`http://127.0.0.1:8000/cart/${fId}/${productData.id}/postProduct`,productData)
                           .then( /*this one add the product to the cart*/
                             res=>{
@@ -234,6 +252,7 @@ return (
       </div>
     </section>
 </div>
+
 );
 };
 
