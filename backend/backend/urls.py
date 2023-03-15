@@ -28,6 +28,7 @@ urlpatterns = [
     path('review/', include('gameshop.app.review.urls')),
     path('administrators/', include('gameshop.app.administrators.urls')),
     path('payment/', include('gameshop.app.paybal.urls')),
+    path('product_image/', include('gameshop.app.product_image.urls')),
 
 
 
