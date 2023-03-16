@@ -1,16 +1,13 @@
 from rest_framework import serializers
 from ...models import Shopping_cart
-from ..product.serializer import ProductSerializer
 
-class Shopping_cartSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Shopping_cart
-        fields = '__all__'
 
 
 class GetShopping_cartSerializer(serializers.ModelSerializer):
-    Shopping_cart_product = ProductSerializer(many=True)
-    # category_id = serializers.IntegerField()
+    # user = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
+    products = serializers.StringRelatedField(many=True, read_only=True, source='prod_cart')
+
     class Meta:
         model = Shopping_cart
         fields = '__all__'
+

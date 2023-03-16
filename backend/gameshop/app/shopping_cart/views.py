@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from ...models import Shopping_cart, Product
-from .serializer import Shopping_cartSerializer , GetShopping_cartSerializer
+from .serializer import GetShopping_cartSerializer
 
 # ---------------------------------------------------------------------------------------------- -------------------------------------------
 @api_view(['GET'])
@@ -17,7 +17,7 @@ def getShopping_cart(request):
 
 
 @api_view(['GET'])
-def getShopping_caartByUser_id(request, id):
+def getShoppingCartByUserId(request, id):
     try:
         shopping_cart = Shopping_cart.objects.get(user_id_id=id)
         product = shopping_cart.product_set.all()
@@ -42,7 +42,6 @@ def addProductToShopping_cart(request, userId=None, product_id=None):
         # shopping_cart, created = Shopping_cart.objects.get_or_create(user_id_id=user_id)
         # shopping_cart.product_prod_cart.add(product)
         product.prod_cart.add(shopping_cart)
-
 
         # Return a success response
         if created:
