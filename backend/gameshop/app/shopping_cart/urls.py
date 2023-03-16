@@ -11,7 +11,8 @@ urlpatterns = [
     path('get', views.getShopping_cart),
     # * Method : Get
     # * link:  http://127.0.0.1:8000/cart/id/get
-    path('<int:id>/get', views.getShoppingCartByUserId), 
+
+    path('<int:id>/get', views.getShopping_cartByUser_id), 
 
     # * Method : Post
     # * link:  http://127.0.0.1:8000/cart/userId/product_id/postProduct

@@ -15,7 +15,11 @@ urlpatterns = [
     # * link:  http://127.0.0.1:8000/favorite_product/post
     # * Form : { "product_id": 1, "user_id": 1}
     path('post', views.postFavorite_product),
-    # * Method : Delete
+    # * Method : Post 
+    # * link:  http://127.0.0.1:8000/favorite_product/post/user_id/product_id
+    # * Form : { "product_id": 1, "user_id": 1}
+    path('post/<int:user_id>/<int:product_id>', views.postFavorite_productByUser_idAndProduct_id),
+    # * Method : Deletes
     # * link:  http://127.0.0.1:8000/favorite_product/id/delete 
     path('<int:id>/delete', views.deleteFavorite_productById),
     # * Method : PUT

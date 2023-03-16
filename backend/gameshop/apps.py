@@ -5,5 +5,6 @@ class GameshopConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'gameshop'
 
-    # def ready(self):
-        
+    def ready(self):
+        import gameshop.app.shopping_cart.signals
+

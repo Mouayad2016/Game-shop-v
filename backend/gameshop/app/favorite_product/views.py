@@ -37,6 +37,20 @@ def postFavorite_product(request):
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
 
+@api_view(['POST'])
+def postFavorite_productByUser_idAndProduct_id(request, user_id, product_id):
+    try:
+        favorite_product = Favorite_product.objects.create(user_id_id = user_id, product_id_id = product_id)
+        serializer = Favorite_productSerializer(favorite_product, data=request.data)
+        valid = serializer.is_valid(); # ! validate the response 
+        if valid:
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+
 @api_view(['DELETE'])
 def deleteFavorite_productById(request,id):
     try:
