@@ -40,7 +40,7 @@ const Header = () => {
   return (
     <div>
       
-      {/*We have a problem with the menu bar when the page go little there no more menu only the tree line and after nothing */}
+      {/*Still need to configure this in a responsive way*/}
       <header class="header-area header-sticky">
         <div class="container">
           <div class="row">
@@ -51,9 +51,9 @@ const Header = () => {
                   <li class="scroll-to-section">
                     <Link to="/"> Home </Link>
                   </li>
-                  <li class="scroll-to-section">
+                 {/* <li class="scroll-to-section"> 
                     <Link to="/Register"> Register </Link>
-                  </li>
+                  </li>*/}
                   <li class="scroll-to-section">
                     <Link to="/cartpage">
                       <img src="assets/images/cart2_green.png" alt="" height="27" width="27" />

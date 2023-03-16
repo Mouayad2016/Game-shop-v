@@ -5,7 +5,6 @@ import { getData } from "./helper/axios";
 const Gallery = () => {
   const [categoryData, setCategoryData] = useState([]);
   const [productData, setProductData] = useState([]);
-  const [visibleItems, setVisibleItems] = useState(6);
   const [loading, setLoading] = useState(false);
   var car_id;
   useEffect(() => {
@@ -128,7 +127,7 @@ const Gallery = () => {
                       data-filter=".des"
                       onClick={() => handleCategoryClick(category.id)}
                     >
-                      {category.name}
+                     {category.name}
                     </li>
                   ))}
                 </ul>
@@ -162,7 +161,7 @@ const Gallery = () => {
                             state={{ id: product.id }}
                             class="text-button-icon"
                           >
-                          {product.name}
+                           {product.name}
                           </Link>
                         </div>
                       </div>
