@@ -161,7 +161,7 @@ return (
                     <p>Only {productData.price} SEK and {productData.stock} product left.</p>
                     <br></br>
                     <fieldset>
-                      <button onClick={addToFavorites}>Add to favorites</button>
+                      <button class="main-button" onClick={addToFavorites}>Add to favorites</button>
                     </fieldset>
                     <br></br>
                     <fieldset>

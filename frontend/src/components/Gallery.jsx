@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getData } from "./helper/axios";
-
+/*import "./gallery.css";*/
 const Gallery = () => {
   const [categoryData, setCategoryData] = useState([]);
   const [productData, setProductData] = useState([]);
@@ -106,6 +106,9 @@ const Gallery = () => {
     }
   };
 
+  // const addProductTOShoppingCart = (prodId){
+
+  // }
   return (
     <div>
       <section class="section" id="projects">
@@ -148,20 +151,28 @@ const Gallery = () => {
                           <a
                             href="assets/images/project-item-02.jpg"
                             data-lightbox={product.id}
-                            data-title={`<h2>${product.name}</h2><br /> <p><Truncate maxWidth={50} inline title="branch-name-that-is-really-long">${product.des}</Truncate></p>`}
+                            data-title={`<h2>${product.name}</h2><br />
+                          <p><Truncate maxWidth={50} inline title="branch-name-that-is-really-long">${product.des}</Truncate></p>`}
                           >
                             <img
                               src="assets/images/project-item-02.jpg"
-                              alt=""
+                              alt={product.name}
                             />
-                          </a>
-                          <br />
+                          </a>{/* 
+                          <div class="item-buttons">
+                            <button class="add-to-favorite">
+                              <i class="fas fa-heart"></i>
+                            </button>
+                            <button class="add-to-cart">
+                              <i class="fas fa-shopping-cart"></i>
+                            </button>
+                    </div>*/}
                           <Link
                             to="product"
                             state={{ id: product.id }}
-                            class="text-button-icon"
+                            class="text-button-icon"/*"item-name"*/
                           >
-                           {product.name}
+                            {product.name}
                           </Link>
                         </div>
                       </div>
