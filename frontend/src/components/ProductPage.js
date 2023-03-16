@@ -100,6 +100,16 @@ const ProductPage = () => {
     }
   };
 
+  const addToFavorites = async () => {
+    if (!fId) {
+      alert("Please log in to add this product to favorites");
+      return;
+    }
+
+    const response = await axios.post(`http://127.0.0.1:8000/favorite_product/post/${fId}/${productData.id}`);
+    console.log("Product added to favorites: ", response.data);
+  }
+
 return (
     <div>
 
@@ -148,21 +158,7 @@ return (
                     <p>Only {productData.price} SEK and {productData.stock} product left.</p>
                     <br></br>
                     <fieldset>
-                      <button
-                      onClick={
-                        ()=>{
-                          {fId ? (
-                            <p>new button for adding a product as fvorite when you are log in<i class="fa-solid fa-star"></i></p>
-                          ):(
-                            <p>new button for adding a product as fvorite when you are log in<i class="fa-regular fa-star"></i></p>
-                            
-                          )}
-                        }
-                      }
-                      type="submit" 
-                      id="form-submit" 
-                      class=""
-                      >Add as favorite<i class="fa fa-arrow-right"></i></button>
+                      <button onClick={addToFavorites}>Add to favorites</button>
                     </fieldset>
                     <br></br>
                     <fieldset>

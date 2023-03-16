@@ -41,7 +41,7 @@ def postFavorite_product(request):
 def postFavorite_productByUser_idAndProduct_id(request, user_id, product_id):
     try:
         favorite_product = Favorite_product.objects.create(user_id_id = user_id, product_id_id = product_id)
-        serializer = Favorite_productSerializer(favorite_product)
+        serializer = Favorite_productSerializer(favorite_product, data=request.data)
         valid = serializer.is_valid(); # ! validate the response 
         if valid:
             serializer.save()
