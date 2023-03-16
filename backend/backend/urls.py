@@ -29,7 +29,7 @@ urlpatterns = [
     path('administrators/', include('gameshop.app.administrators.urls')),
     path('payment/', include('gameshop.app.paybal.urls')),
     path('product_image/', include('gameshop.app.product_image.urls')),
-
-
+    path('favorite_product/', include('gameshop.app.favorite_product.urls')),
+    path('order_product/', include('gameshop.app.order_product.urls')),
 
 ]

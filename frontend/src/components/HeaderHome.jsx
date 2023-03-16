@@ -116,6 +116,9 @@ const Header = () => {
                           {" "}
                           Logout
                         </a>
+                        <li>
+                        <Link to="/account">My account</Link>
+                        </li>
                       </>
                     ) : (
                       <li class="scroll-to-section">

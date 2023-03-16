@@ -8,6 +8,7 @@ import Login from './pages/Logpage';
 import Register from './pages/Regispage';
 import reportWebVitals from './reportWebVitals';
 import ProductPage from './pages/Productpage';
+import AccountPage from './pages/Accountpage';
 import AdminHomePage from './pages/adminPages/AdminHomePage';
 import AdminProductsPage from './pages/adminPages/AdminProductPage';
 import AdminProductsReviewPage from './pages/adminPages/AdminProductReviewPage';
@@ -20,6 +21,7 @@ import AdminModifyCategory from './pages/adminPages/ModifyCategoryPage';
 import AdminLoginPage from './pages/adminPages/AdminLoginPage';
 import AdminDeleteCategory from './pages/adminPages/DeleteCategoryPage';
 import AdminDeleteProduct from './pages/adminPages/DeleteProductPage';
+import AdminDiscountPage from './pages/adminPages/AdminDiscountPage';
 
 
 const router = createBrowserRouter([
@@ -90,6 +92,14 @@ const router = createBrowserRouter([
   {
     path: "/admin/ProductDelete",
     element : <AdminDeleteProduct/>,
+  },
+  {
+    path: "/account",
+    element : <AccountPage/>,
+  },
+  {
+    path: "/admin/Discount",
+    element : <AdminDiscountPage/>,
   },
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));

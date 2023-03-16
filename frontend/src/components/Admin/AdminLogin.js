@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Admin.css';
 import axios from 'axios';
+import { sha256 } from 'js-sha256';
 
 const AdminLogin = () => {
 
@@ -34,7 +35,8 @@ const AdminLogin = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         const account = userData.find((user) => user.username === username);
-        if (account && account.password === password) {
+        const hashedPassword = sha256(password+username);
+        if (account && account.password === hashedPassword) {
             setauthenticated(true)
             sessionStorage.setItem("authenticated", true);
             navigate("/admin", {replace: true});

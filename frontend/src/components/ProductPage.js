@@ -38,14 +38,8 @@ const ProductPage = () => {
 
   const fetchAllProdData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/products/get");
-      const prod = response.data.map((prod) => ({
-        id: prod.id,
-        name: prod.name,
-        des: prod.description,
-        stock: prod.stock,
-        price : prod.price,
-      }));
+      const response = await axios.get(`http://localhost:8000/products/get/${idd}`);
+      const prod = response.data;
       setProductData(prod);
     } catch (e) {
       console.log(e);
@@ -144,31 +138,40 @@ return (
                             <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
                           </div>
             </div></div></div></div></div>
-            {productData.filter((e) =>{
-              return e.id === idd ? e : null;
-            }).map((e) => (
           
-            prodname = e.name,
             <div class="col-lg-3">    
                 <div class="section-heading">
                   <br/>
-                    <h6>About this product {e.id}</h6>
-                    <h2>{e.name}</h2>
+                    <h6>About this product {productData.id}</h6>
+                    <h2>{productData.name}</h2>
                     <br></br>
-                    <p>Only {e.price} SEK and {e.stock} product left.</p>
+                    <p>Only {productData.price} SEK and {productData.stock} product left.</p>
                     <br></br>
                     <fieldset>
                       <button
                       onClick={
-                        
-                        //need user_id
                         ()=>{
                           {fId ? (
-                          axios.post(`http://127.0.0.1:8000/cart/${fId}/${e.id}/post`,...productData.filter((e) =>{
-                            return e.id === idd ? e : null; /*just need the rigth link */
+                            <p>new button for adding a product as fvorite when you are log in<i class="fa-solid fa-star"></i></p>
+                          ):(
+                            <p>new button for adding a product as fvorite when you are log in<i class="fa-regular fa-star"></i></p>
                             
-                          }))
-                          .then(
+                          )}
+                        }
+                      }
+                      type="submit" 
+                      id="form-submit" 
+                      class=""
+                      >Add as favorite<i class="fa fa-arrow-right"></i></button>
+                    </fieldset>
+                    <br></br>
+                    <fieldset>
+                      <button
+                      onClick={
+                        ()=>{
+                          {fId ? (
+                          axios.post(`http://127.0.0.1:8000/cart/${fId}/${productData.id}/postProduct`,productData)
+                          .then( /*this one add the product to the cart*/
                             res=>{
                               console.log("--res---",res)
                             }
@@ -179,11 +182,8 @@ return (
                             }
                           )
                           ):(
-                            axios.post(`http://127.0.0.1:8000/null/${e.id}/cart/post`,...productData.filter((e) =>{
-                            return e.id === idd ? e : null;/*same neded of the good link*/
-                            
-                          }))
-                          .then(
+                            axios.post(`http://127.0.0.1:8000/cart/null/${productData.id}/postProduct`,productData)
+                          .then( /*add product to cart 1 each time so not working well*/
                             res=>{
                               console.log("--res---",res)
                             }
@@ -194,10 +194,6 @@ return (
                             }
                           )
                           )}
-
-                          console.log(productData.filter((e) =>{
-                            return e.id === idd ? e : null;
-                          }))
                         }
                       }
                       type="submit" 
@@ -206,9 +202,9 @@ return (
                       >Add to chart<i class="fa fa-arrow-right"></i></button>
                     </fieldset>
                     
-                </div>{e.des} 
+                </div>{productData.description} 
         </div>
-        ))}
+        <p>comment : need to add discount if there is some</p>
       </div>
       {/* <container>
         <h2>Add review</h2>
@@ -256,6 +252,7 @@ return (
       </div>
     </section>
 </div>
+
 );
 };
 

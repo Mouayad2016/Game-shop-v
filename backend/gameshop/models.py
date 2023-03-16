@@ -30,13 +30,19 @@ class Shopping_cart(models.Model):
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
 
+class Favorite_product(models.Model):
+    id = models.AutoField(primary_key=True)
+    user_id = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
+    product_id = models.ForeignKey('Product', null=True,on_delete=models.CASCADE)
+    created_at = models.DateField(default=datetime.date.today)
+    updated_at = models.DateField(default=datetime.date.today)
+
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     stock = models.IntegerField(null= True)
-    review_id= models.ForeignKey('Review', on_delete=models.CASCADE , null= True)
-    discout_id = models.ForeignKey('Discount', on_delete=models.CASCADE,null= True)
+    discount_id = models.ForeignKey('Discount', on_delete=models.CASCADE,null= True)
     creator_admin_id = models.IntegerField(null=True)
     price = models.IntegerField(null= False,default=0)
     is_deleted= models.BooleanField(default=False)
@@ -51,14 +57,21 @@ class Product_images(models.Model):
     product_id= models.ForeignKey('Product', on_delete=models.CASCADE)
     image=models.ImageField()
 
+class Order_product(models.Model):
+    id = models.AutoField(primary_key=True)
+    order_id = models.ForeignKey('Order', null=True,on_delete=models.CASCADE)
+    product_id = models.ForeignKey('Product', null=True,on_delete=models.CASCADE)
+    created_at = models.DateField(default=datetime.date.today)
+    updated_at = models.DateField(default=datetime.date.today)
+
 class Discount(models.Model):
     id = models.AutoField(primary_key=True)
     start_date = models.DateField(default=datetime.date.today)
     end_date  = models.TextField(blank=True ,)
-    title = models.IntegerField(null=True)
-    discount_type= models.IntegerField(null=True)
-    rate = models.IntegerField(null=True)
-    code = models.IntegerField(null=True)
+    title = models.TextField(blank=True)
+    discount_type= models.TextField(blank=True)
+    rate = models.FloatField(null=True)
+    code = models.TextField(blank=True)
     admin_id= models.ForeignKey(Administrators, on_delete=models.CASCADE)
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)

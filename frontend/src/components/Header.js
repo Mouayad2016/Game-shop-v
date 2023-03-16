@@ -52,9 +52,6 @@ const Header = () => {
                     <Link to="/"> Home </Link>
                   </li>
                   <li class="scroll-to-section">
-                    <Link to="/Logpage">Login</Link>
-                  </li>
-                  <li class="scroll-to-section">
                     <Link to="/Register"> Register </Link>
                   </li>
                   <li class="scroll-to-section">
@@ -62,6 +59,26 @@ const Header = () => {
                       <img src="assets/images/cart2_green.png" alt="" height="27" width="27" />
                     </Link>
                   </li>
+                  <div className="lol">
+                    {fName ? (
+                      <>
+                        <li class="scroll-to-section">
+                          Welcome back{" "}
+                          <span style={{ color: "blue", fontWeight: "bold" }}>
+                            {fName}
+                          </span>
+                        </li>
+                        <a href="#" onClick={handle}>
+                          {" "}
+                          Logout
+                        </a>
+                      </>
+                    ) : (
+                      <li class="scroll-to-section">
+                        <a href="/Logpage"> Please login </a>
+                      </li>
+                    )}
+                  </div>
                 </ul>
                 <a class="menu-trigger">
                   <span> Menu </span>

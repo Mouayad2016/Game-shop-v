@@ -40,11 +40,17 @@ def getProductByCategory(request, id):
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
         
-    
+@api_view(['GET'])
+def getProductFuzzyQuery(request, text):
+    try:
+        product = Product.objects.filter(name__icontains=text)
+        serializer = ProductSerializer(product, many=True)
+        return Response(serializer.data)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
 
 @api_view(['POST'])
 def postProdcut(request):
-
     try:
         serializer = ProductSerializer(data=request.data) # ! make it json
         valid = serializer.is_valid(); # ! validate the response 

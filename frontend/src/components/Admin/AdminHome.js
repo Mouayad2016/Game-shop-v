@@ -29,7 +29,7 @@ const AdminHome = () => {
                 <button class="btn"><Link to="/admin/review"><i class="fa-solid fa-star"> Reviews</i></Link></button>
               </div>
               <div class="col">
-                <button class="btn"><Link to="/admin/review"><i class="fa-solid fa-coins"> Deals</i></Link></button>
+                <button class="btn"><Link to="/admin/discount"><i class="fa-solid fa-coins"> Discount</i></Link></button>
               </div>
             </div>
           </div>
