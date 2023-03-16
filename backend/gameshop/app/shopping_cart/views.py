@@ -24,7 +24,7 @@ def getShoppingCartByUserId(request, id):
     try:
         shopping_cart = Shopping_cart.objects.get(user_id_id=id)
         product = shopping_cart.product_set.all()
-        serializer = GetDetailShopping_cartSerializer(product, many=True)
+        serializer = GetShopping_cartSerializer(product, many=True)
         return Response(serializer.data)
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
