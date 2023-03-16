@@ -1,5 +1,5 @@
 import React from 'react'
-
+/*this could be use to implement the search for product part on the front page*/
 const Search = () => {
 return (
     <div id="search">

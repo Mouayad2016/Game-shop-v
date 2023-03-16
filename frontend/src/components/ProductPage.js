@@ -105,8 +105,11 @@ const ProductPage = () => {
       alert("Please log in to add this product to favorites");
       return;
     }
-
-    const response = await axios.post(`http://127.0.0.1:8000/favorite_product/post/${fId}/${productData.id}`);
+    const favorites = { /*need also to check if the product is not allready in favorite for the person*/
+      product_id: productData.id, 
+      user_id: fId
+    };
+    const response = await axios.post(`http://127.0.0.1:8000/favorite_product/post/${fId}/${productData.id}`,favorites);
     console.log("Product added to favorites: ", response.data);
   }
 
@@ -158,7 +161,7 @@ return (
                     <p>Only {productData.price} SEK and {productData.stock} product left.</p>
                     <br></br>
                     <fieldset>
-                      <button onClick={addToFavorites}>Add to favorites</button>
+                      <button class="main-button" onClick={addToFavorites}>Add to favorites</button>
                     </fieldset>
                     <br></br>
                     <fieldset>

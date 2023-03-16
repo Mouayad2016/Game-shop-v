@@ -1,13 +1,9 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import AboutUs from "./components/AboutUs";
 import Banner from "./components/Banner";
-import ContactInfo from "./components/ContactInfo";
 import Footer from "./components/Footer";
 import Gallery from "./components/Gallery";
 import HeaderHome from "./components/HeaderHome";
-import LearnMore from "./components/LearnMore";
 import Search from "./components/Search";
 import PopupDialog from "./components/popUp/popUp";
 /* this is the front page so if you don't want it to apear on the front page dont put it here*/
@@ -35,9 +31,8 @@ function App() {
       <Banner />
       <PopupDialog />
       <Gallery />
-      <AboutUs />
-      <ContactInfo />
-      <LearnMore /> {/*<SignIn/>*/} <Footer />
+      <br></br>
+      <Footer />
     </div>
   );
 }

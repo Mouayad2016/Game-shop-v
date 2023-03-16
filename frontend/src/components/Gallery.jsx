@@ -5,7 +5,6 @@ import "./gallery.css";
 const Gallery = () => {
   const [categoryData, setCategoryData] = useState([]);
   const [productData, setProductData] = useState([]);
-  const [visibleItems, setVisibleItems] = useState(6);
   const [loading, setLoading] = useState(false);
   var car_id;
   useEffect(() => {
@@ -131,7 +130,7 @@ const Gallery = () => {
                       data-filter=".des"
                       onClick={() => handleCategoryClick(category.id)}
                     >
-                      {category.name}
+                     {category.name}
                     </li>
                   ))}
                 </ul>
@@ -159,7 +158,7 @@ const Gallery = () => {
                               src="assets/images/project-item-02.jpg"
                               alt={product.name}
                             />
-                          </a>
+                          </a>{ 
                           <div class="item-buttons">
                             <button class="add-to-favorite">
                               <i class="fas fa-heart"></i>
@@ -167,7 +166,7 @@ const Gallery = () => {
                             <button class="add-to-cart">
                               <i class="fas fa-shopping-cart"></i>
                             </button>
-                          </div>
+                    </div>}
                           <Link
                             to="product"
                             state={{ id: product.id }}
