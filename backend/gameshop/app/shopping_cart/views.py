@@ -25,6 +25,8 @@ def getShoppingCartByUserId(request, id):
         shopping_cart = Shopping_cart.objects.get(user_id_id=id)
         serializer = GetShopping_cartSerializer(shopping_cart, context={'request': request})
         return Response(serializer.data)
+    except Shopping_cart.DoesNotExist:
+        return Response([],status=status.HTTP_200_OK)
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
 
@@ -34,6 +36,7 @@ def addProductToShopping_cart(request, userId=None, product_id=None):
     try:
         # Retrieve the product instance
         product = Product.objects.get(id=product_id)
+        
 
         # Get or create the user's shopping cart
         if userId is None:
