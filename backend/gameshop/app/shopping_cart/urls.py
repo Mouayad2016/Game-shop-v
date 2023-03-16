@@ -19,7 +19,7 @@ urlpatterns = [
     path('<int:userId>/<int:product_id>/postProduct', views.addProductToShopping_cart),
     # * Method : Post
     # * link:  http://127.0.0.1:8000/cart/null/product_id/postProduct
-    path('null/<int:product_id>/postProduct', views.addProductToShopping_cart),
+    # path('null/<int:product_id>/postProduct', views.addProductToShopping_cart),
 
     # * Method : Post
     path('post', views.postShopping_cart),

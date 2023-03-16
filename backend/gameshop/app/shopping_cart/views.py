@@ -23,8 +23,7 @@ def getShoppingCartByUserId(request, id):
 
     try:
         shopping_cart = Shopping_cart.objects.get(user_id_id=id)
-        product = shopping_cart.product_set.all()
-        serializer = GetShopping_cartSerializer(product, many=True)
+        serializer = GetShopping_cartSerializer(shopping_cart, context={'request': request})
         return Response(serializer.data)
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
@@ -33,29 +32,30 @@ def getShoppingCartByUserId(request, id):
 @api_view(['POST'])
 def addProductToShopping_cart(request, userId=None, product_id=None):
     try:
+        # Retrieve the product instance
         product = Product.objects.get(id=product_id)
 
+        # Get or create the user's shopping cart
         if userId is None:
-            shopping_cart, created = Shopping_cart.objects.get_or_create(user_id_id=None)
+            shopping_cart, created = Shopping_cart.objects.get_or_create(user_id=None)
             shopping_cart.delete_after = timezone.now() + timedelta(hours=1)
         else:
-            user_id = userId
-            shopping_cart, created = Shopping_cart.objects.get_or_create(user_id_id=userId)
+            shopping_cart, created = Shopping_cart.objects.get_or_create(user_id=userId)
 
-        # Get the user's shopping cart or create a new one if it doesn't exist
-        # shopping_cart, created = Shopping_cart.objects.get_or_create(user_id_id=user_id)
-        # shopping_cart.product_prod_cart.add(product)
-        product.prod_cart.add(shopping_cart)
+        # Add the product to the shopping cart
+        shopping_cart.prod_cart.add(product)
 
         # Return a success response
         if created:
             return Response({'cart_id': shopping_cart.id, 'success': 'Product added to new cart'}, status=200)
         else:
             return Response({'success': 'Product added to existing cart'}, status=200)
+    except Product.DoesNotExist as e:
+        print(str(e))
+        return Response({'error': 'Product does not exist'}, status=400)
     except Exception as e:
-        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
-
-
+        print(str(e))
+        return Response({'error': str(e)}, status=400)
 @api_view(['POST'])
 def postShopping_cart(request):
     try:
