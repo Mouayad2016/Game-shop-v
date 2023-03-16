@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getData } from "./helper/axios";
-/*import "./gallery.css";*/
+import "./gallery.css";
 const Gallery = () => {
   const [categoryData, setCategoryData] = useState([]);
   const [productData, setProductData] = useState([]);
@@ -158,7 +158,7 @@ const Gallery = () => {
                               src="assets/images/project-item-02.jpg"
                               alt={product.name}
                             />
-                          </a>{/* 
+                          </a>{ 
                           <div class="item-buttons">
                             <button class="add-to-favorite">
                               <i class="fas fa-heart"></i>
@@ -166,11 +166,11 @@ const Gallery = () => {
                             <button class="add-to-cart">
                               <i class="fas fa-shopping-cart"></i>
                             </button>
-                    </div>*/}
+                    </div>}
                           <Link
                             to="product"
                             state={{ id: product.id }}
-                            class="text-button-icon"/*"item-name"*/
+                            class="item-name"
                           >
                             {product.name}
                           </Link>
