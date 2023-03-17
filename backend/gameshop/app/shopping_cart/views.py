@@ -40,7 +40,8 @@ def addProductToShopping_cart(request, userId=None, product_id=None):
 
         # Get or create the user's shopping cart
         if userId is None:
-            shopping_cart, created = Shopping_cart.objects.get_or_create(user_id=None)
+            # shopping_cart, created = Shopping_cart.objects.get_or_create(user_id=None)
+            shopping_cart, created = Shopping_cart.objects.create(user_id=None)
             shopping_cart.delete_after = timezone.now() + timedelta(hours=1)
         else:
             shopping_cart, created = Shopping_cart.objects.get_or_create(user_id=userId)
