@@ -15,7 +15,7 @@ const AdminHome = () => {
                 <button class="btn"><i class="fa-solid fa-user"> Profil</i></button>
               </div>
               <div class="col">
-                <button class="btn"><i class="fa-solid fa-user-group"> Admins</i></button>
+                <button class="btn"><Link to="/admin/admin"><i class="fa-solid fa-user-group"> Admins</i></Link></button>
               </div>
               <div class="col">
                 <button class="btn"><Link to="/admin/products"><i class="fa-solid fa-gamepad"> Products</i></Link></button>
