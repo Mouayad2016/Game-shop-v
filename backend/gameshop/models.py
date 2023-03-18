@@ -54,10 +54,11 @@ class Shopping_cart(models.Model):
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
     prod_cart = models.ManyToManyField(Product, null=True)
+    
 class Product_images(models.Model):
     id: models.AutoField(primary_key=True)
     product_id= models.ForeignKey('Product', on_delete=models.CASCADE)
-    image=models.ImageField()
+    image = models.ImageField(upload_to='product_images/')
 
 class Order_product(models.Model):
     id = models.AutoField(primary_key=True)
