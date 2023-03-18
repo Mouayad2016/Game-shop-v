@@ -24,7 +24,45 @@ function Admin() {
     }
   };
 
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "", 
+  });
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/administrators/post",
+        formData
+      );
+      console.log(response.data);
+      setFormData({
+        username: "",
+        password: "",
+      });
+      setErrorMessage("Bravo, you just create a new admin");
+      window.location.reload(false);
+    } catch (error) {
+      console.error(error);
+      setErrorMessage("An error occurred while creating the new admin.");
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+
+
+
   return (
+    <section>
     <div class="adminProducts">
       <h3>All admin</h3>
       <div class="container-fluid">
@@ -55,6 +93,46 @@ function Admin() {
             </div>
         </div>
       </div>
+
+        <section>
+      <div class="col-lg-12"><h1>Create a new admin</h1></div>
+    <div className="form_container">
+      <form onSubmit={handleSubmit}>
+        {errorMessage && (
+          <div className="alert alert-danger" role="alert">
+            {errorMessage}
+          </div>
+        )}
+        <div className="form-group">
+          <label htmlFor="name">UserName</label>
+          <input
+            type="text"
+            className="form-control"
+            id="username"
+            name="username"
+            value={formData.username}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="description">New password</label>
+          <textarea
+            className="form-control"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+          />
+          </div>
+        <button type="submit" className="btn btn-primary">
+          Create 
+        </button>
+      </form>
+
+      
+    </div>
+   </section> 
+    </section>
     );
 };
 
