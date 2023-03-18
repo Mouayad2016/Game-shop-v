@@ -9,8 +9,11 @@ urlpatterns = [
     # * link:  http://127.0.0.1:8000/favorite_product/get
     path('get', views.getFavorite_produce),
     # * Method : Get
-    # * link:  http://127.0.0.1:8000/favorite_product/get/user_id
-    path('get/<int:user_id>', views.getFavorite_produceByUser_id),
+    # * link:  http://127.0.0.1:8000/favorite_product/get/user/user_id
+    path('get/user/<int:user_id>', views.getFavorite_produceByUser_id),
+    # * Method : Get
+    # * link:  http://127.0.0.1:8000/favorite_product/get/product/product_id
+    path('get/product/<int:product_id>', views.getFavorite_productByProduct_id),
     # * Method : Post 
     # * link:  http://127.0.0.1:8000/favorite_product/post
     # * Form : { "product_id": 1, "user_id": 1}
