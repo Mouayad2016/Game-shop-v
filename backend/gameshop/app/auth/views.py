@@ -1,6 +1,5 @@
 import json
 from django.shortcuts import redirect
-from google.oauth2 import id_token
 from django.conf import settings
 from django.urls import reverse
 from urllib.parse import urlencode
@@ -46,8 +45,6 @@ def google_auth_callback(request):
             "client_secret": settings.GOOGLE_OAUTH_CLIENT_SECRET
         }
         token_response =httpreq.request("POST",token_url, data=token_params)
-        print("This is my token respne")
-        print(token_response.content)
         access_token = token_response.json()["access_token"]
         # req = requests.Request()
 

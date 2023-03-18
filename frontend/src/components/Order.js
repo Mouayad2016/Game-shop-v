@@ -8,6 +8,7 @@ import { getCookieValue } from "../helper/cookies";
 const Account = () => {
     const [orderproductData, setOrderProductData] = useState([]);
     const [orderData, setOrderData] = useState([]);
+    const [productData, setProductData] = useState([]);
     const location = useLocation()
     const { order_id } = location.state
     const idd = order_id;
@@ -31,6 +32,7 @@ const Account = () => {
     useEffect(() => {
         fetchOrderProductdata();
         fetchOrderData();
+        fetchProdData();
       },[]);
 
       const fetchOrderData = async () => {
@@ -59,6 +61,15 @@ const Account = () => {
           console.log("error =",e);
         }
       };
+      const fetchProdData = async (product_id) => {
+        try {
+          const response = await axios.get(`http://localhost:8000/products/get/${product_id}`);
+          const prod = response.data;
+          setProductData(prod);
+        } catch (e) {
+          console.log(e);
+        }
+      };
 
     return (
  
@@ -66,7 +77,8 @@ const Account = () => {
 {fID ? (
     <div class="container">
         <h2> About your order {idd} </h2>
-        <br></br><br></br>
+        <br></br><p>Return to <Link to="/account">My account page</Link></p>
+        <br></br>
         <div class="row">
           {orderData.filter((e) => {
             return e.user_id === parseInt(id) ? e : null;
@@ -89,15 +101,17 @@ const Account = () => {
                       <td>{e.payment_way}</td>
                     </tr>
                     {orderproductData.map((e) =>(
-                       <tr>
-                       <td>Product number : {e.product_id}</td>
-                       <td><Link to="/product" state={{id : e.product_id}}>Product page</Link></td>
-                    {/*need if we can to get the info about the product on that page to direclyt show info to the customers ( name, price...)  */}
-                     </tr> 
+                    <tr>
+                       <td onClick={() => fetchProdData(e.product_id)} >Your product number : {e.product_id}</td>
+                       <td><Link to="/product" state={{id : e.product_id}}>See product page</Link></td>
+                    </tr> 
                     ))}
-
+                    
+                    
                     </tbody>
                 </table>
+                {productData ?<h5>{"Product "+productData.id+" : "+productData.name+" for "+productData.price+" sek "}</h5> : <h5>Click on the product number to see more info about that product</h5>}
+                <p>Click on the product number to see more info about that product</p>{/* does not look good but a lest you have the information*/}
                 </div>
           </div>
          
@@ -127,4 +141,4 @@ export default Account;
 
 
 
-  
+  /**/

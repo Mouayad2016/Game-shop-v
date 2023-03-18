@@ -3,45 +3,13 @@ import "./ShoppingCart.css";
 import CartItem from "./CartItems";
 import axios from "axios";
 import PayPalButton from "./paybalBotton";
+import { getData } from "../helper/axios";
+import { getCookieValue } from "../../helper/cookies";
 
 function ShoppingCart() {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      image: "https://via.placeholder.com/150",
-      name: "Item 1",
-      price: 1.11,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      image: "https://via.placeholder.com/150",
-      name: "Item 2",
-      price: 2.22,
-      quantity: 2,
-    },
-    {
-      id: 3,
-      image: "https://via.placeholder.com/150",
-      name: "Item 3",
-      price: 3.33,
-      quantity: 3,
-    },
-    {
-      id: 4,
-      image: "https://via.placeholder.com/150",
-      name: "Item 4",
-      price: 4.44,
-      quantity: 4,
-    },
-    {
-      id: 5,
-      image: "https://via.placeholder.com/150",
-      name: "Item 5",
-      price: 5.55,
-      quantity: 4,
-    },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
+
+  
   const increase = (id) => {
     let index = cartItems.findIndex((item) => item.id === id);
     let tmp = [...cartItems];
@@ -50,6 +18,22 @@ function ShoppingCart() {
     axios.put(`http://127.0.0.1:8000/cart/${id}/update`, tmp[index]);
     setCartItems(tmp);
   };
+
+  useEffect(() => {
+    getShoppingCart();
+  }, []);
+
+  const getShoppingCart = async () => {
+    const user_id = getCookieValue("user_id");
+    console.log(user_id);
+    try {
+      const shoppingCart = await getData({ url: `/cart/${1}/get` });
+      setCartItems(shoppingCart.data.prod_cart);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const decrease = (id) => {
     let index = cartItems.findIndex((item) => item.id === id);
     let tmp = [...cartItems];
@@ -67,12 +51,7 @@ function ShoppingCart() {
     (total, item) => total + item.price * item.quantity,
     0
   );
-  useEffect(() => {
-    axios.get("http://127.0.0.1:8000/cart/get").then((res) => {
-      //add to chart need user_id,otherwise always return []
-      // setCartItems(res.data)
-    });
-  }, []);
+
   const handleCheckout = () => {
     alert("Thank you for your purchase!");
     setCartItems([]);
@@ -94,6 +73,16 @@ function ShoppingCart() {
               />
             ))}{" "}
           </div>{" "}
+          <div>
+            {" "}
+            <p>
+              <strong>Paybal email:</strong> sb - qonwa25271562
+              @personal.example.com{" "}
+            </p>
+            <p>
+              <strong>Paybal password:</strong> 00000000{" "}
+            </p>
+          </div>
           <div className="cart-summary">
             <p className="cart-summary-text">
               Subtotal:{" "}

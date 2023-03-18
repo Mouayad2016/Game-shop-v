@@ -107,6 +107,7 @@ function ShoppingCart() {
               Checkout{" "}
             </button>{" "}
           </div>{" "}
+          <p> sb - qonwa25271562 @personal.example.com </p> <p> 00000000 </p>{" "}
           <PayPalButton />
         </>
       ) : (
