@@ -1,6 +1,8 @@
 import React, { useState} from "react";
 import "./PaypalPayement.css";
+import PayPalButton from "./paybalBotton";
 
+// Filling in the shipping info will be on the same page as the payment method
 function PaypalPayement() {
   const [shippingInfo, setShippingInfo] = useState({
     fullName: '',
@@ -85,8 +87,12 @@ function PaypalPayement() {
             required
           />
         </div>
-        <button type="submit" className="submit-button">Submit</button>
+        <a href="#howtopay"><button className="sub-bt">NEXT</button></a>
       </form>
+
+      <div id="howtopay">
+        <PayPalButton />
+      </div>
     </div>
   );
 }
