@@ -43,7 +43,7 @@ const AdminProfile = () => {
           window.location.reload(false);
         } catch (error) {
           console.error(error);
-          setErrorMessage("An error occurred while updating your profile.");
+          setErrorMessage("An error occurred while updating your profile.\nMake sure you have filled both fields before submitting.");
         }
     };
 
@@ -81,7 +81,10 @@ const AdminProfile = () => {
             <section>
                 <br></br>
                 <br></br>
-                <div class="col-lg-12"><h3>Change your profile</h3></div>
+                <div class="col-lg-12">
+                    <h3>Change your profile</h3>
+                    <p>Both fields are mandatory</p>
+                </div>
                 <div className="form_container">
                     <form onSubmit={handleSubmit}>
                         {errorMessage && (
