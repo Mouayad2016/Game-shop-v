@@ -25,6 +25,7 @@ import AdminDeleteProduct from './pages/adminPages/DeleteProductPage';
 import AdminDiscountPage from './pages/adminPages/AdminDiscountPage';
 import AdminAdminPage from './pages/adminPages/AdminPage';
 import AdminProfilePage from './pages/adminPages/AdminProfilePage';
+import AdminCustomersPage from './pages/adminPages/AdminCustomersPage';
 
 
 const router = createBrowserRouter([
@@ -115,6 +116,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/profile",
     element : <AdminProfilePage/>,
+  },
+  {
+    path: "/admin/customers",
+    element : <AdminCustomersPage/>,
   },
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));
