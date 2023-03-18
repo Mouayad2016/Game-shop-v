@@ -12,7 +12,7 @@ const AdminHome = () => {
           <div class="container-fluid">
             <div class="row">
             <div class="col">
-                <button class="btn"><i class="fa-solid fa-user"> Profil</i></button>
+                <button class="btn"><Link to="/admin/profile"><i class="fa-solid fa-user"> Profil</i></Link></button>
               </div>
               <div class="col">
                 <button class="btn"><Link to="/admin/admin"><i class="fa-solid fa-user-group"> Admins</i></Link></button>
