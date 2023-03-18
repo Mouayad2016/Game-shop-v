@@ -5,3 +5,15 @@ class Product_ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product_images
         fields = '__all__'
+
+    def create(self, validated_data):
+        # Get the uploaded file
+        image = validated_data.pop('image')
+
+        # Create a new Product_images object
+        product_image = Product_images.objects.create(**validated_data)
+
+        # Associate the uploaded file with the new Product_images object
+        product_image.image.save(image.name, image)
+
+        return product_image
