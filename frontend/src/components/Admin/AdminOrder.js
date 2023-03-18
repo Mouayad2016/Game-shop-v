@@ -28,7 +28,7 @@ function AdminOrder() {
   return (
     <section>
     <div class="adminProducts">
-      <h3>All admin</h3>
+      <h3>All orders</h3>
       <div class="container-fluid">
         <div class="table-responsive">
           <table class="table table-bordeless">

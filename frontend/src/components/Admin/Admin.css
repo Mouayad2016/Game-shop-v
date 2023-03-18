@@ -9,6 +9,10 @@
     right: 0;
 }
 
+.header-area .main-nav .nav li:hover a {
+    color:black;
+}
+
 .adminHome .btn {
     background-color: green; /* Blue background */
     border: none; /* Remove borders */
