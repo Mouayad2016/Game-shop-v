@@ -40,6 +40,7 @@ const AdminHeader = () => {
                                     <li class="scroll-to-section"><Link to="/admin/review">Reviews</Link></li>
                                     <li class="scroll-to-section"><Link to="/admin/admin">Admin</Link></li>
                                     <li class="scroll-to-section"><Link to="/admin/customers">Customers</Link></li>
+                                    <li class="scroll-to-section"><Link to="/admin/orders">Orders</Link></li>
                                     <li class="scroll-to-section">
                                     <button class="btn" onClick={handleLogout} data-toggle="tooltip" data-placement="bottom" title="Log Out"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                                     </li>

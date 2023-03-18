@@ -35,10 +35,10 @@ const AdminHome = () => {
             <div class="row">
               <div class="col">
                 <button class="btn"><Link to="/admin/customers"><i class="fa-solid fa-rectangle-list">Customers</i></Link></button>
-              </div>{/*
+              </div>
               <div class="col">
-                <button class="btn"><Link to="/admin/discount"><i class="fa-solid fa-coins"> Discount</i></Link></button>
-  </div>*/}
+                <button class="btn"><Link to="/admin/order"><i class="fa-solid fa-coins"> Orders</i></Link></button>
+  </div>
             </div>
           </div>
         </div>
