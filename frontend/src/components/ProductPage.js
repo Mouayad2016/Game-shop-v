@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import axios from "axios";
 import { getCookieValue } from "../helper/cookies";
 
@@ -28,6 +28,7 @@ const ProductPage = () => {
   const [userData, setUserData] = useState([]);
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState("");
+  const [favorites, setFavorites] = useState([]);
 
 
   useEffect(() => {
@@ -101,13 +102,31 @@ const ProductPage = () => {
   };
 
   const addToFavorites = async () => {
-    if (!fId) {
-      alert("Please log in to add this product to favorites");
-      return;
-    }
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/favorite_product/get/product/${productData.id}`); // check if product already exists on server
 
-    const response = await axios.post(`http://127.0.0.1:8000/favorite_product/post/${fId}/${productData.id}`);
-    console.log("Product added to favorites: ", response.data);
+      if (response.status === 200) {
+        const data = response.data;
+        if (data.exists) {
+          // product already exists, do not add again
+          alert("Product already exists in favorites");
+          return;
+        }
+      }
+  
+      // product does not exist, add to favorites
+      const addResponse = await axios.post(`http://127.0.0.1:8000/favorite_product/post/${fId}/${productData.id}`);
+      console.log(addResponse.data); // add this line to print the response data
+
+      if (addResponse.status != 201) {
+        console.log("Failed to add product to favorites");
+        return;
+      }
+  
+      alert("Product was successfully added to favorites!");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 return (
@@ -158,7 +177,13 @@ return (
                     <p>Only {productData.price} SEK and {productData.stock} product left.</p>
                     <br></br>
                     <fieldset>
-                      <button onClick={addToFavorites}>Add to favorites</button>
+                      {fId ? (
+                        <button onClick={addToFavorites}>Add to favorites</button>
+                      ):(
+                        <Link to="/Logpage">
+                          <button>Log in or Register to add this product to your favorites</button>
+                        </Link>
+                      )}
                     </fieldset>
                     <br></br>
                     <fieldset>
@@ -195,7 +220,7 @@ return (
                       type="submit" 
                       id="form-submit" 
                       class="main-button-icon"
-                      >Add to chart<i class="fa fa-arrow-right"></i></button>
+                      >Add to cart<i class="fa fa-arrow-right"></i></button>
                     </fieldset>
                     
                 </div>{productData.description} 
