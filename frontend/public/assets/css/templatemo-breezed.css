@@ -444,8 +444,8 @@ header
 
 .header-area .main-nav .nav li:hover a,
 .header-area .main-nav .nav li a.active {
-  color: #fff!important;
-  opacity: 0.5;
+  color: #000000!important;
+  opacity: 1;
 }
 
 .background-header .main-nav .nav li:hover a,

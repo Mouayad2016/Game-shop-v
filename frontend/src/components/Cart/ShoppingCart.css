@@ -1,10 +1,12 @@
 .shopping-cart {
   width: 800px;
   margin: 0 auto;
+  margin-bottom: 100px;
   background-color: #f5f5f5;
   padding: 20px;
   border-radius: 10px;
   font-family: Arial, sans-serif;
+
 }
 
 .shopping-cart-header {

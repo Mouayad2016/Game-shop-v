@@ -15,6 +15,16 @@ def getProduct_images(request):
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
 
+@api_view(['GET'])
+def get_product_image_id(request, product_id):
+    try:
+        product_image = Product_images.objects.get(product_id=product_id)
+    except Product_images.DoesNotExist:
+        return Response({'error': 'Product image not found'}, status=status.HTTP_404_NOT_FOUND)
+
+    serializer = Product_ImageSerializer(product_image)
+    return Response(serializer.data)
+
 @api_view(['POST'])
 def postProduct_images(request):
     try:

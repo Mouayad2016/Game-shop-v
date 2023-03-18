@@ -9,11 +9,15 @@
     right: 0;
 }
 
+.header-area .main-nav .nav li:hover a {
+    color:black;
+}
+
 .adminHome .btn {
     background-color: green; /* Blue background */
     border: none; /* Remove borders */
     color: white; /* White text */
-    padding: 12px 16px; /* Some padding */
+    padding: 16px 16px; /* Some padding */
     font-size: 16px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
 }
@@ -28,7 +32,7 @@
 }
 
 .adminHome .row {
-    margin: 2%;
+    margin: 3%;
 }
 
 .adminHome .container-fluid {

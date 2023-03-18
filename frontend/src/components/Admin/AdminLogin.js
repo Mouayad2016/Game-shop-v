@@ -39,6 +39,7 @@ const AdminLogin = () => {
         if (account && account.password === hashedPassword) {
             setauthenticated(true)
             sessionStorage.setItem("authenticated", true);
+            sessionStorage.setItem("id", account.id);
             navigate("/admin", {replace: true});
         }
     };
@@ -49,6 +50,7 @@ const AdminLogin = () => {
             <h2>Welcome Back</h2>
             <p></p>
             <h6>Please log in with your administrators credentials</h6>
+            <p>If you do not have administrators credentials yet, please contact the head administrator at <a href="mailto:h22anogo@du.se">h22anogo@du.se</a> to obtain temporary credentials</p>
             <div className="form_container">
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">

@@ -71,7 +71,7 @@ function ShoppingCart() {
   useEffect(() => {
     axios.get("http://127.0.0.1:8000/cart/get").then((res) => {
       //add to chart need user_id,otherwise always return []
-      // setCartItems(res.data)
+      setCartItems(res.data)
     });
   }, []);
   const handleCheckout = () => {
