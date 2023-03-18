@@ -53,7 +53,15 @@ class Shopping_cart(models.Model):
     user_id = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
     created_at = models.DateField(default=datetime.date.today)
     updated_at = models.DateField(default=datetime.date.today)
-    prod_cart = models.ManyToManyField(Product, null=True)
+    prod_cart = models.ManyToManyField(Product, null=True, through="CartItem")
+
+
+class CartItem(models.Model):
+    cart  = models.ForeignKey(Shopping_cart, on_delete=models.CASCADE)
+    product  = models.ForeignKey(Product , on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+
+
 class Product_images(models.Model):
     id: models.AutoField(primary_key=True)
     product_id= models.ForeignKey('Product', on_delete=models.CASCADE)

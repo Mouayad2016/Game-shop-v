@@ -16,7 +16,11 @@ urlpatterns = [
 
     # * Method : Post
     # * link:  http://127.0.0.1:8000/cart/userId/product_id/postProduct
-    path('<int:userId>/<int:product_id>/postProduct', views.addProductToShopping_cart),
+
+    path('<int:product_id>/postProduct', views.addToShopingCartNoAuthUser),
+    path('<int:userId>/<int:product_id>/postProduct', views.addProductToShopping_cartAuthUser),
+    path('<int:cartId>/<int:product_id>/deleteProduct', views.DeleteProductFromShoppingCartByCartId),
+
     # * Method : Post
     # * link:  http://127.0.0.1:8000/cart/null/product_id/postProduct
     # path('null/<int:product_id>/postProduct', views.addProductToShopping_cart),

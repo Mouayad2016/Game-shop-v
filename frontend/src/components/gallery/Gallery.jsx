@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getData } from "./helper/axios";
+import { getData } from "../helper/axios";
+import ItemButtons from "./compnents/itemButtons";
 import "./gallery.css";
 const Gallery = () => {
   const [categoryData, setCategoryData] = useState([]);
@@ -31,7 +32,7 @@ const Gallery = () => {
         id: product.id,
         name: product.name,
         des: product.description,
-        is_deleted:  product.is_deleted,
+        is_deleted: product.is_deleted,
       }));
       setProductData(products);
     } catch (e) {
@@ -48,7 +49,7 @@ const Gallery = () => {
         id: product.id,
         name: product.name,
         des: product.description,
-        is_deleted:  product.is_deleted,
+        is_deleted: product.is_deleted,
       }));
       setProductData(products);
     } catch (e) {
@@ -66,7 +67,7 @@ const Gallery = () => {
         id: product.id,
         name: product.name,
         des: product.description,
-        is_deleted:  product.is_deleted,
+        is_deleted: product.is_deleted,
       }));
       setProductData([...productData, ...products]);
     } catch (e) {
@@ -84,7 +85,7 @@ const Gallery = () => {
         id: product.id,
         name: product.name,
         des: product.description,
-        is_deleted:  product.is_deleted,
+        is_deleted: product.is_deleted,
       }));
       setProductData([...productData, ...products]);
     } catch (e) {
@@ -134,7 +135,7 @@ const Gallery = () => {
                       data-filter=".des"
                       onClick={() => handleCategoryClick(category.id)}
                     >
-                     {category.name}
+                      {category.name}
                     </li>
                   ))}
                 </ul>
@@ -146,45 +147,38 @@ const Gallery = () => {
                   {loading ? (
                     <div>Loading...</div>
                   ) : (
-                    productData.filter((product) =>{
-                      return product.is_deleted ? null : product;
-                    }).map((product) => (
-                      
-                      <div
-                        key={product.id}
-                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all des"
-                      >
-                        <div class="item">
-                          <a
-                            href="assets/images/project-item-02.jpg"
-                            data-lightbox={product.id}
-                            data-title={`<h2>${product.name}</h2><br />
+                    productData
+                      .filter((product) => {
+                        return product.is_deleted ? null : product;
+                      })
+                      .map((product) => (
+                        <div
+                          key={product.id}
+                          class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all des"
+                        >
+                          <div class="item">
+                            <a
+                              href="assets/images/project-item-02.jpg"
+                              data-lightbox={product.id}
+                              data-title={`<h2>${product.name}</h2><br />
                           <p><Truncate maxWidth={50} inline title="branch-name-that-is-really-long">${product.des}</Truncate></p>`}
-                          >
-                            <img
-                              src="assets/images/project-item-02.jpg"
-                              alt={product.name}
-                            />
-                          </a>{ 
-                          <div class="item-buttons">
-                            <button class="add-to-favorite">
-                              <i class="fas fa-heart"></i>
-                            </button>
-                            <button class="add-to-cart">
-                              <i class="fas fa-shopping-cart"></i>
-                            </button>
-                    </div>}
-                          <Link
-                            to="product"
-                            state={{ id: product.id }}
-                            class="item-name"
-                          >
-                            {product.name}
-                          </Link>
+                            >
+                              <img
+                                src="assets/images/project-item-02.jpg"
+                                alt={product.name}
+                              />
+                            </a>
+                            {<ItemButtons prod_id={product.id} />}
+                            <Link
+                              to="product"
+                              state={{ id: product.id }}
+                              class="item-name"
+                            >
+                              {product.name}
+                            </Link>
+                          </div>
                         </div>
-                      </div>
-                    
-                    ))
+                      ))
                   )}
                 </div>
                 <div class="text-center">

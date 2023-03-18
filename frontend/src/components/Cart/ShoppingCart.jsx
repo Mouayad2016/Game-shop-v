@@ -1,60 +1,39 @@
 import React, { useState, useEffect } from "react";
 import "./ShoppingCart.css";
 import CartItem from "./CartItems";
-import axios from "axios";
 import PayPalButton from "./paybalBotton";
 import { getData } from "../helper/axios";
 import { getCookieValue } from "../../helper/cookies";
 
 function ShoppingCart() {
   const [cartItems, setCartItems] = useState([]);
+  const [cart_id, setCart_id] = useState();
 
-  
-  const increase = (id) => {
-    let index = cartItems.findIndex((item) => item.id === id);
-    let tmp = [...cartItems];
-    let quantity = cartItems[index].quantity;
-    tmp[index].quantity = quantity + 1;
-    axios.put(`http://127.0.0.1:8000/cart/${id}/update`, tmp[index]);
-    setCartItems(tmp);
-  };
-
+  const [cartTotal, setCartTotal] = useState();
   useEffect(() => {
     getShoppingCart();
   }, []);
 
   const getShoppingCart = async () => {
     const user_id = getCookieValue("user_id");
-    console.log(user_id);
     try {
-      const shoppingCart = await getData({ url: `/cart/${1}/get` });
-      setCartItems(shoppingCart.data.prod_cart);
+      const shoppingCart = await getData({
+        url: `/cart/${user_id}/get`,
+      });
+      setCart_id(shoppingCart.data.id);
+      setCartItems(shoppingCart.data.cart_items);
+
+      let sum = 0;
+      shoppingCart.data.cart_items.map((e) => {
+        console.log(e.quantity);
+        for (let i = 1; i <= e.quantity; i++) {
+          sum += e.product.price;
+        }
+      });
+      setCartTotal(sum);
     } catch (e) {
       console.log(e);
     }
-  };
-
-  const decrease = (id) => {
-    let index = cartItems.findIndex((item) => item.id === id);
-    let tmp = [...cartItems];
-    let quantity = cartItems[index].quantity;
-    if (quantity != 1) {
-      axios.put(`http://127.0.0.1:8000/cart/${id}/update`, tmp[index]);
-      tmp[index].quantity = quantity - 1;
-    } else {
-      axios.delete(`http://127.0.0.1:8000/cart/${id}/delete`);
-      tmp.splice(index, 1);
-    }
-    setCartItems(tmp);
-  };
-  const cartTotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-
-  const handleCheckout = () => {
-    alert("Thank you for your purchase!");
-    setCartItems([]);
   };
 
   return (
@@ -64,13 +43,10 @@ function ShoppingCart() {
         <>
           <div className="cart-items">
             {" "}
+            
             {cartItems.map((item) => (
-              <CartItem
-                key={item.id}
-                {...item}
-                increase={increase}
-                decrease={decrease}
-              />
+              <CartItem key={item.id} props={item} shoppingCart_id={cart_id} />
+              
             ))}{" "}
           </div>{" "}
           <div>

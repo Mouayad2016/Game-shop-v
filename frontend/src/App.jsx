@@ -2,7 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Banner from "./components/Banner";
 import Footer from "./components/Footer";
-import Gallery from "./components/Gallery";
+import Gallery from "./components/gallery/Gallery";
 import HeaderHome from "./components/HeaderHome";
 import Search from "./components/Search";
 import PopupDialog from "./components/popUp/popUp";

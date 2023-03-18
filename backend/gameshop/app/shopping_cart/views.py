@@ -3,9 +3,11 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.utils import timezone
 from datetime import timedelta
-from ...models import Shopping_cart, Product
-from .serializer import GetShopping_cartSerializer
+from ...models import Shopping_cart, Product,CartItem
+from django.contrib.auth.models import User
 
+from .serializer import GetShopping_cartSerializer
+from django.shortcuts import get_object_or_404
 # ---------------------------------------------------------------------------------------------- -------------------------------------------
 @api_view(['GET'])
 def getShopping_cart(request):
@@ -22,6 +24,7 @@ def getShopping_cart(request):
 def getShoppingCartByUserId(request, id):
 
     try:
+        print(request)
         shopping_cart = Shopping_cart.objects.get(user_id_id=id)
         serializer = GetShopping_cartSerializer(shopping_cart, context={'request': request})
         return Response(serializer.data)
@@ -32,34 +35,57 @@ def getShoppingCartByUserId(request, id):
 
 
 @api_view(['POST'])
-def addProductToShopping_cart(request, userId=None, product_id=None):
+def addProductToShopping_cartAuthUser(request, userId, product_id=None):
     try:
-        # Retrieve the product instance
-        product = Product.objects.get(id=product_id)
-        
-
-        # Get or create the user's shopping cart
-        if userId is None:
-            # shopping_cart, created = Shopping_cart.objects.get_or_create(user_id=None)
-            shopping_cart, created = Shopping_cart.objects.create(user_id=None)
-            shopping_cart.delete_after = timezone.now() + timedelta(hours=1)
+        user = User.objects.get(id=userId)
+        product = get_object_or_404(Product, id=product_id)
+        shopping_carts = Shopping_cart.objects.filter(user_id=userId)
+        if shopping_carts.exists():
+            shopping_cart = shopping_carts.first()
+            cart_item, created = CartItem.objects.get_or_create(cart=shopping_cart, product=product)
+            if not created:
+                cart_item.quantity += 1
+                cart_item.save()
         else:
-            shopping_cart, created = Shopping_cart.objects.get_or_create(user_id=userId)
-
-        # Add the product to the shopping cart
-        shopping_cart.prod_cart.add(product)
-
-        # Return a success response
-        if created:
-            return Response({'cart_id': shopping_cart.id, 'success': 'Product added to new cart'}, status=200)
-        else:
-            return Response({'success': 'Product added to existing cart'}, status=200)
-    except Product.DoesNotExist as e:
-        print(str(e))
-        return Response({'error': 'Product does not exist'}, status=400)
+            shopping_cart = Shopping_cart.objects.create(user_id=user)
+            cart_item = CartItem.objects.create(cart=shopping_cart, product=product)
+        return Response({'cart_id': shopping_cart.id}, status=200)
     except Exception as e:
         print(str(e))
         return Response({'error': str(e)}, status=400)
+    
+@api_view(['DELETE'])
+def DeleteProductFromShoppingCartByCartId(request, cartId, product_id=None):
+    try:
+        shopping_cart = get_object_or_404(Shopping_cart, id=cartId)
+        product = get_object_or_404(Product, id=product_id)
+       
+        cart_item  = CartItem.objects.get(cart=shopping_cart, product=product)
+        if cart_item.quantity > 1:
+            cart_item.quantity -= 1
+            cart_item.save()
+        else:
+            cart_item.delete()
+        return Response({'cart_id': shopping_cart.id}, status=200)
+    except Exception as e:
+        print(str(e))
+        return Response({'error': str(e)}, status=400)
+
+@api_view(['POST'])
+def addToShopingCartNoAuthUser(request , product_id):
+    product = get_object_or_404(Product,id=product_id)  # This will return 404 if no product exist 
+    try:   
+        shopping_cart = Shopping_cart.objects.create(user_id=None)
+        shopping_cart.delete_after = timezone.now() + timedelta(hours=1)
+        shopping_cart.save()
+
+        shopping_cart.prod_cart.add(product)
+        return Response({'cart_id': shopping_cart.id}, status=200)
+    except Exception as e:
+        print(str(e))
+        return Response({'error': str(e)}, status=400)
+
+
 @api_view(['POST'])
 def postShopping_cart(request):
     try:
