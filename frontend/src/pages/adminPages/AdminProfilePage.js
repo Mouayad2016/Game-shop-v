@@ -3,7 +3,7 @@ import AdminHeader from '../../components/Admin/AdminHeader'
 import AdminProfile from '../../components/Admin/AdminProfile'
 
 
-function AdminProfile() {
+function AdminProfilePage() {
   return (
     <div className="App">
       <AdminHeader />
@@ -12,4 +12,4 @@ function AdminProfile() {
   );
 }
  
-export default AdminProfile;
+export default AdminProfilePage;
