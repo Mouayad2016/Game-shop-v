@@ -19,6 +19,21 @@ function ShoppingCart() {
     setCartItems(tmp);
   };
 
+  const decrease = (id) => {
+    let index = cartItems.findIndex((item) => item.id === id);
+    let tmp = [...cartItems];
+    let quantity = cartItems[index].quantity;
+    if (quantity != 1) {
+      axios.put(`http://127.0.0.1:8000/cart/${id}/update`, tmp[index]);
+      tmp[index].quantity = quantity - 1;
+    } else {
+      axios.delete(`http://127.0.0.1:8000/cart/${id}/delete`);
+      tmp.splice(index, 1);
+    }
+    setCartItems(tmp);
+  };
+  const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
   useEffect(() => {
     getShoppingCart();
   }, []);
@@ -34,32 +49,9 @@ function ShoppingCart() {
     }
   };
 
-  const decrease = (id) => {
-    let index = cartItems.findIndex((item) => item.id === id);
-    let tmp = [...cartItems];
-    let quantity = cartItems[index].quantity;
-    if (quantity != 1) {
-      axios.put(`http://127.0.0.1:8000/cart/${id}/update`, tmp[index]);
-      tmp[index].quantity = quantity - 1;
-    } else {
-      axios.delete(`http://127.0.0.1:8000/cart/${id}/delete`);
-      tmp.splice(index, 1);
-    }
-    setCartItems(tmp);
-  };
-  const cartTotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-
-  const handleCheckout = () => {
-    alert("Thank you for your purchase!");
-    setCartItems([]);
-  };
-
   return (
     <div className="shopping-cart">
-      <h2 className="shopping-cart-header"> Shopping Cart </h2>{" "}
+      <h2 className="shopping-cart-header"> Shopping Cart </h2>
       {cartItems.length > 0 ? (
         <>
           <div className="cart-items">
@@ -71,32 +63,30 @@ function ShoppingCart() {
                 increase={increase}
                 decrease={decrease}
               />
-            ))}{" "}
-          </div>{" "}
+            ))}
+          </div>
           <div>
-            {" "}
             <p>
               <strong>Paybal email:</strong> sb - qonwa25271562
-              @personal.example.com{" "}
+              @personal.example.com
             </p>
             <p>
-              <strong>Paybal password:</strong> 00000000{" "}
+              <strong>Paybal password:</strong> 00000000
             </p>
           </div>
           <div className="cart-summary">
             <p className="cart-summary-text">
-              Subtotal:{" "}
+              Subtotal:
               <span className="cart-summary-price">
-                {" "}
-                $ {cartTotal.toFixed(2)}{" "}
-              </span>{" "}
-            </p>{" "}
+                $ {cartTotal.toFixed(2)}
+              </span>
+            </p>
             <PayPalButton />
-          </div>{" "}
+          </div>
         </>
       ) : (
         <p className="empty-cart-message"> Your cart is empty. </p>
-      )}{" "}
+      )}
     </div>
   );
 }
