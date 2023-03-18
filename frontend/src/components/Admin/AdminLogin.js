@@ -39,6 +39,7 @@ const AdminLogin = () => {
         if (account && account.password === hashedPassword) {
             setauthenticated(true)
             sessionStorage.setItem("authenticated", true);
+            sessionStorage.setItem("id", account.id);
             navigate("/admin", {replace: true});
         }
     };
