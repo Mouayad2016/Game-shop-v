@@ -71,9 +71,16 @@ def deleteAdministratorsById(request,id):
 def updateAdministratorsById(request,id):
     try:
         administrators = Administrators.objects.get(id=id)
+
         serializer = AdministratorsSerializer(administrators, data=request.data,partial=True )#? partial=True update only data provided by the body
         if serializer.is_valid():
-            serializer.save()
+            username = request.data.get("username")
+            raw_password = request.data.get("password")
+
+            # encrypted_password = make_password(raw_password)
+            encrypted_password = hashlib.sha256((raw_password + username).encode()).hexdigest()
+
+            serializer.save(password=encrypted_password)
             return Response(serializer.data)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

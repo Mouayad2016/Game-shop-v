@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import CartPage from './pages/Cartpage';
+import Paypage from './pages/Paypage';
 import Login from './pages/Logpage';
 import Register from './pages/Regispage';
 import reportWebVitals from './reportWebVitals';
@@ -23,6 +24,10 @@ import AdminLoginPage from './pages/adminPages/AdminLoginPage';
 import AdminDeleteCategory from './pages/adminPages/DeleteCategoryPage';
 import AdminDeleteProduct from './pages/adminPages/DeleteProductPage';
 import AdminDiscountPage from './pages/adminPages/AdminDiscountPage';
+import AdminAdminPage from './pages/adminPages/AdminPage';
+import AdminProfilePage from './pages/adminPages/AdminProfilePage';
+import AdminCustomersPage from './pages/adminPages/AdminCustomersPage';
+import AdminOrderPage from './pages/adminPages/AdminOrderPage';
 
 
 const router = createBrowserRouter([
@@ -31,9 +36,13 @@ const router = createBrowserRouter([
     element : <App />,
   },
   {
-    path: "/cartpage",
+    path: "/Cartpage",
     element : <CartPage/>,
   }, /*when you create a new page you need to add the path here*/
+  {
+    path: "/Paypage",
+    element : <Paypage/>,
+  },
   {
     path: "/Logpage",
     element : <Login/>,
@@ -105,6 +114,22 @@ const router = createBrowserRouter([
   {
     path: "/admin/Discount",
     element : <AdminDiscountPage/>,
+  },
+  {
+    path: "/admin/Admin",
+    element : <AdminAdminPage/>,
+  },
+  {
+    path: "/admin/profile",
+    element : <AdminProfilePage/>,
+  },
+  {
+    path: "/admin/customers",
+    element : <AdminCustomersPage/>,
+  },
+  {
+    path: "/admin/order",
+    element : <AdminOrderPage/>,
   },
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));

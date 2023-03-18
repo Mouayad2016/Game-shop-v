@@ -24,14 +24,8 @@ function CreateProductForm() {
   }, []);
   const fetchAllProdData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/products/get");
-      const prod = response.data.map((prod) => ({
-        id: prod.id,
-        name: prod.name,
-        des: prod.description,
-        stock: prod.stock,
-        price: prod.price,
-      }));
+      const response = await axios.get(`http://localhost:8000/products/get/${idd}`);
+      const prod = response.data;
       setProductData(prod);
     } catch (e) {
       console.log(e);
@@ -42,7 +36,7 @@ function CreateProductForm() {
     description: "",
     stock: 0,
     price: 0,
-   /* prod_category: [],*/
+    prod_category: [],
   });
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -59,13 +53,27 @@ function CreateProductForm() {
         description: "",
         stock: 0,
         price: 0, 
-      /*  prod_category: [],*/
+       prod_category: [],
       });
       setErrorMessage("");
     } catch (error) {
       console.error(error);
       setErrorMessage("An error occurred while creating the product.");
     }
+  };
+  const handleCategoryChange = (event) => {
+    const { value } = event.target;
+    setFormData({
+      ...formData,
+      prod_category: [...formData.prod_category, value],
+    });
+  };
+
+  const handleRemoveCategory = (category) => {
+    setFormData({
+      ...formData,
+      prod_category: formData.prod_category.filter((c) => c !== category),
+    });
   };
 
   const handleInputChange = (event) => {
@@ -87,9 +95,6 @@ function CreateProductForm() {
             {errorMessage}
           </div>
         )}
-        {productData.filter((e) =>{
-              return e.id === idd ? e : null;
-            }).map((e) => (
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
@@ -97,32 +102,24 @@ function CreateProductForm() {
             className="form-control"
             id="name"
             name="name"
-            value={e.name}
-            placeholder={e.name}
+            value={productData.name}
+            placeholder={productData.name}
             onChange={handleInputChange}
           />
-        </div>))}
-        {productData.filter((e) =>{
-              return e.id === idd ? e : null;
-            }).map((e) => (
+        </div>
         <div className="form-group">
           <label htmlFor="description">Description</label>
           <textarea
             className="form-control"
             id="description"
             name="description"
-            value={e.des}
-            placeholder={e.des}
+            value={productData.description}
+            placeholder={productData.description}
             onChange={handleInputChange}
           />
-        </div>))}
-        {productData.filter((e) =>{
-              return e.id === idd ? e : null;
-            }).map((e) => (
-                <label>Current stock: {e.stock}</label>
-            ))}
-        <div className="form-group">
-          {/*<label htmlFor="stock">Stock</label>*/ }
+        </div>
+          <label>Current stock: {productData.stock}</label>
+         <div className="form-group">
           <input
             type="number"
             className="form-control"
@@ -132,10 +129,7 @@ function CreateProductForm() {
             onChange={handleInputChange}
           />
         </div>
-        {productData.filter((e) =>{
-              return e.id === idd ? e : null;
-            }).map((e) => (
-                <label>Current price: {e.price}</label>))}
+        <label>Current price: {productData.price}</label>
         <div className="form-group">
           <input
             type="number"
@@ -145,42 +139,9 @@ function CreateProductForm() {
             value={formData.price}
             onChange={handleInputChange}
           />
-        </div>{/*}
-        <div className="form-group">
-          <label htmlFor="categories">Categories</label>
-          <select
-            className="form-control"
-            id="categories"
-            onChange={handleCategoryChange}
-          >
-            <option value="">-- Select a category --</option>
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-            
-          </select>*/}{/*
-          {formData.prod_category.length > 0 && (
-            <div className="selected-categories">
-              {formData.prod_category.map((category) => (
-                <span key={category} className="selected-category">
-                  {category.name}
-                  <button
-                    type="button"
-                    className="close"
-                    aria-label="Remove category"
-                    onClick={() => handleRemoveCategory(category)}
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </span>
-              ))}
-            </div>
-              )}
-              </div>*/}
+        </div>
         <button type="submit" className="btn btn-primary">
-          Create
+          Modify
         </button>
       </form>
     </div>

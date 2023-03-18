@@ -2,7 +2,7 @@ import React from "react";
 import "./CartItem.css";
 
 function CartItem(props) {
-  const {id, image, name, price, quantity,increase,decrease} = props;
+  const {id, image, name, price,decrease} = props;
   return (
     <div className="cart-item">
       <img className="cart-item-image" src={image} alt="item" />
@@ -14,11 +14,7 @@ function CartItem(props) {
           onClick={()=>{
             decrease(id)
           }}
-          >-</button>
-          <span>{quantity}</span>
-          <button
-          onClick={()=>{increase(id)}}
-          >+</button>
+          >Remove</button>
         </div>
       </div>
     </div>

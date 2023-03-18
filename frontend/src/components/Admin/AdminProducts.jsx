@@ -22,6 +22,7 @@ const AdminProducts = () => {
         des: products.description,
         stock: products.stock,
         price: products.price,
+        is_deleted : products.is_deleted,
       }));
       setProductData(products);
     } catch (e) {
@@ -41,6 +42,7 @@ const AdminProducts = () => {
         des: products.description,
         stock: products.stock,
         price: products.price,
+        is_deleted : products.is_deleted,
       }));
       setProductData([...productData, ...products]);
     } catch (e) {
@@ -90,7 +92,7 @@ const AdminProducts = () => {
               <tr class="bg-light">
                 <th width="5%"> # </th> <th width="20%"> Name </th>{" "}
                 <th width="10%"> Stock </th> <th width="10%"> Category </th>{" "}
-                <th width="20%"> Price </th> <th width="20%"> Reviews </th> <th width="20%">Modify</th><th width="20%">Delete</th>{" "}
+                <th width="20%"> Price </th> <th width="10%"> Is deleted </th> <th width="20%"> Reviews </th> <th width="20%">Modify</th><th width="20%">Delete</th>{" "}
               </tr>{" "}
             </thead>{" "}
             <tbody>
@@ -101,7 +103,7 @@ const AdminProducts = () => {
               productData.map((e) => (
                 <tr>
                   <td> {e.id} </td> <td> {e.name} </td> <td> {e.stock} </td>{" "}
-                  <td> {e.cat} </td> <td> {e.price} </td>{" "}
+                  <td> {e.cat} </td> <td> {e.price} </td> <td> {e.is_deleted ? "yes" : "no"} </td>{" "}
                   <td>
                     {" "}
                     <Link

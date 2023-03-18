@@ -31,6 +31,7 @@ const Gallery = () => {
         id: product.id,
         name: product.name,
         des: product.description,
+        is_deleted:  product.is_deleted,
       }));
       setProductData(products);
     } catch (e) {
@@ -47,6 +48,7 @@ const Gallery = () => {
         id: product.id,
         name: product.name,
         des: product.description,
+        is_deleted:  product.is_deleted,
       }));
       setProductData(products);
     } catch (e) {
@@ -64,6 +66,7 @@ const Gallery = () => {
         id: product.id,
         name: product.name,
         des: product.description,
+        is_deleted:  product.is_deleted,
       }));
       setProductData([...productData, ...products]);
     } catch (e) {
@@ -81,6 +84,7 @@ const Gallery = () => {
         id: product.id,
         name: product.name,
         des: product.description,
+        is_deleted:  product.is_deleted,
       }));
       setProductData([...productData, ...products]);
     } catch (e) {
@@ -142,7 +146,10 @@ const Gallery = () => {
                   {loading ? (
                     <div>Loading...</div>
                   ) : (
-                    productData.map((product) => (
+                    productData.filter((product) =>{
+                      return product.is_deleted ? null : product;
+                    }).map((product) => (
+                      
                       <div
                         key={product.id}
                         class="col-lg-4 col-md-4 col-sm-6 col-xs-12 all des"
@@ -176,6 +183,7 @@ const Gallery = () => {
                           </Link>
                         </div>
                       </div>
+                    
                     ))
                   )}
                 </div>
