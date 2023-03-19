@@ -1,0 +1,69 @@
+.download-page {
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* flex-grow: 1; */
+  height: 50vh;
+}
+
+.header {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.title {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #2e2e2e;
+}
+
+.description {
+  font-size: 24px;
+  margin-bottom: 40px;
+  color: #6c6c6c;
+}
+
+.download-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.button {
+  display: inline-block;
+  width: 250px;
+  height: 80px;
+  border-radius: 20px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.file-download {
+  display: inline-block;
+  padding: 15px 25px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.file-download:hover {
+  background-color: #0062cc;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.file-download i {
+  margin-right: 10px;
+}

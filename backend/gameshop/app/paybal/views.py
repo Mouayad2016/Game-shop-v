@@ -24,7 +24,7 @@ def paypal_payment(request):
                 "payment_method": "paypal"
             },
             "redirect_urls": {
-                "return_url": "http://localhost:3000",
+                "return_url": "http://localhost:3000/download",
                 "cancel_url": "http://localhost:3000"
             },
             "transactions": [{

@@ -32,5 +32,7 @@ urlpatterns = [
     path('favorite_product/', include('gameshop.app.favorite_product.urls')),
     path('order_product/', include('gameshop.app.order_product.urls')),
     path('adress/', include('gameshop.app.adress.urls')),
+    path('file/', include('gameshop.app.download.urls')),
+
 
 ]
