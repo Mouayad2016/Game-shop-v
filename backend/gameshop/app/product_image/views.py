@@ -18,11 +18,11 @@ def getProduct_images(request):
 @api_view(['GET'])
 def get_product_image_id(request, product_id):
     try:
-        product_image = Product_images.objects.get(product_id=product_id)
+        product_images = Product_images.objects.filter(product_id=product_id)
     except Product_images.DoesNotExist:
-        return Response({'error': 'Product image not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'error': 'Product images not found'}, status=status.HTTP_404_NOT_FOUND)
 
-    serializer = Product_ImageSerializer(product_image)
+    serializer = Product_ImageSerializer(product_images, many=True)
     return Response(serializer.data)
 
 @api_view(['POST'])

@@ -24,12 +24,9 @@ def getProduct(request):
         products = Product.objects.all()[int(offset):int(offset)+int(limit)]
         serializer = ProductSerializer(products, many=True)
         data = serializer.data
-        for product in data:
-            product['image'] = product.get('image')  # update the image field to contain the image path
         return Response(data)
     except Exception as e:
         return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
-
 
 @api_view(['GET'])
 def getProductByCategory(request, id):
