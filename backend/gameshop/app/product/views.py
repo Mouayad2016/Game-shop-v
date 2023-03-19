@@ -19,13 +19,16 @@ def getProductByProductId(request, id):
 @api_view(['GET'])
 def getProduct(request):
     try:
-        limit = request.GET.get('limit', 6) # get the limit parameter from the query string, default to 10
-        offset = request.GET.get('offset', 0) # get the offset parameter from the query string, default to 0
-        product = Product.objects.all()[int(offset):int(offset)+int(limit)]
-        serializer = GetProductSerializer(product, many=True)
-        return Response(serializer.data)
+        limit = request.GET.get('limit', 6)
+        offset = request.GET.get('offset', 0)
+        products = Product.objects.all()[int(offset):int(offset)+int(limit)]
+        serializer = ProductSerializer(products, many=True)
+        data = serializer.data
+        for product in data:
+            product['image'] = product.get('image')  # update the image field to contain the image path
+        return Response(data)
     except Exception as e:
-        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+        return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])

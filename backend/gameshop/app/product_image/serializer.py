@@ -4,7 +4,7 @@ from ...models import Product_images
 class Product_ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product_images
-        fields = '__all__'
+        fields = ('id', 'product_id', 'image')
 
     def create(self, validated_data):
         # Get the uploaded file

@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -23,3 +24,6 @@ urlpatterns = [
     # * the data you pass will be uppdated ex : { "product_id": 1, "image": imagePath} 
     path('<int:id>/update', views.updateProduct_imagesById),
 ]      
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
