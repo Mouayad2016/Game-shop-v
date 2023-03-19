@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { postData, getData, deleteData } from "../helper/axios";
 import { getCookieValue } from "../../helper/cookies";
-
 import "./CartItem.css";
 
 function CartItem({ props, onData, removeItem, shoppingCart_id }) {
@@ -49,13 +48,13 @@ function CartItem({ props, onData, removeItem, shoppingCart_id }) {
     <div className="cart-item">
       <img className="cart-item-image" src={props.product.image} alt="item" />
       <div className="cart-item-details">
-        <p className="cart-item-name"> {props.product.name} </p>{" "}
-        <p className="cart-item-price"> {`$${price * quantity}`} </p>{" "}
+        <p className="cart-item-name"> {props.product.name} </p>
+        <p className="cart-item-price"> {`${price * quantity} SEK`} </p>
         <div className="cart-item-quantity">
-          <button onClick={decress}>- </button> <span> {quantity} </span>{" "}
-          <button onClick={incress}>+ </button>{" "}
-        </div>{" "}
-      </div>{" "}
+          <button onClick={decress}>- </button> <span> {quantity} </span>
+          <button onClick={incress}>+ </button>
+        </div>
+      </div>
     </div>
   );
 }

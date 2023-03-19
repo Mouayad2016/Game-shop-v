@@ -1,6 +1,7 @@
 import React, { useState} from "react";
 import "./PaypalPayement.css";
 import PayPalButton from "./paybalBotton";
+import ShoppingCart from "./ShoppingCart";
 
 // Filling in the shipping info will be on the same page as the payment method
 function PaypalPayement() {
@@ -91,7 +92,7 @@ function PaypalPayement() {
       </form>
 
       <div id="howtopay">
-        <PayPalButton />
+      <PayPalButton total={ShoppingCart.cartTotal} />
       </div>
     </div>
   );

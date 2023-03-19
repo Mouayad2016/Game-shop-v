@@ -3,7 +3,7 @@
   margin: 0 auto;
   margin-bottom: 100px;
   padding: 30px;
-  background-color: #fff;
+  background-color: #e8e8e8;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
@@ -42,7 +42,7 @@
   border-radius: 5px;
   border: none;
   font-size: 18px;
-  background-color: #f5f5f5;
+  background-color: #e4e4e4;
   transition: background-color 0.3s ease;
 }
 
@@ -76,4 +76,11 @@ button p {
   font-weight: bold;
   padding: 2px;
   align-self: center;
+}
+
+#howtopay {
+  width: 750px;
+  height: auto;
+  margin: 0;
+  margin-top: 20px;
 }

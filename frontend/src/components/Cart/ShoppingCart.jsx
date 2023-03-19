@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ShoppingCart.css";
 import CartItem from "./CartItems";
-
+import { Link } from "react-router-dom";
 import PayPalButton from "./paybalBotton";
 import { getData } from "../helper/axios";
 import { getCookieValue } from "../../helper/cookies";
@@ -77,13 +77,12 @@ function ShoppingCart() {
           </div>
           <div className="cart-summary">
             <p className="cart-summary-text">
-              Subtotal:
+              Subtotal:&emsp;
               <span className="cart-summary-price">
-                $ {cartTotal.toFixed(2)}
+                 {cartTotal.toFixed(2)} SEK
               </span>
             </p>
-
-            <PayPalButton total={cartTotal} />
+            <Link to="/Paypage"><button className="check">Submit</button></Link>
           </div>
         </>
       ) : (
