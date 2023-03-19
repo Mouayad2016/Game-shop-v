@@ -5,18 +5,17 @@ from . import views
 
 urlpatterns = [
     # ? Note No need to add / att the end i already configured the setting so it will be there automatically
-    # * Method : Post 
-    # * link:  http://127.0.0.1:8000/shopping_cart/post
-    # * Form : { "user_id": 1}
     path('get', views.getShopping_cart),
-    # * Method : Get
-    # * link:  http://127.0.0.1:8000/cart/id/get
-
+    path('<int:id>/get/cartId', views.getShopping_cart_by_id),
     path('<int:id>/get', views.getShoppingCartByUserId), 
+
+    
 
     # * Method : Post
     # * link:  http://127.0.0.1:8000/cart/userId/product_id/postProduct
+    path('<int:cart_id>/<int:product_id>/postProduct/cartId', views.addProductToShopping_cart_by_cart_id),
 
+    
     path('<int:product_id>/postProduct', views.addToShopingCartNoAuthUser),
     path('<int:userId>/<int:product_id>/postProduct', views.addProductToShopping_cartAuthUser),
     path('<int:cartId>/<int:product_id>/deleteProduct', views.DeleteProductFromShoppingCartByCartId),

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { BeatLoader } from "react-spinners";
 // import ReactLoading from "react-loading";
 import "./style.css";
-const PayPalButton = () => {
+const PayPalButton = ({ total }) => {
   const [loading, setLoading] = useState(false);
   const handlePay = async () => {
     console.log("hi");
@@ -14,7 +14,7 @@ const PayPalButton = () => {
       const response = await axios.post(
         "http://localhost:8000/payment/pay",
         {
-          amount: "10.00",
+          amount: `${total}`,
           currency: "USD",
           description: "Example payment",
         },
@@ -31,7 +31,7 @@ const PayPalButton = () => {
   };
 
   return (
-    <button type="button" onClick={handlePay}>
+    <button type="button" onClick={total !== 0 ? handlePay : null}>
       {loading ? (
         <BeatLoader loading={true} size={15} color={"#007bff"} />
       ) : (

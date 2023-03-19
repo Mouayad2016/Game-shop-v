@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./ShoppingCart.css";
 import CartItem from "./CartItems";
 
-import { Link } from "react-router-dom";
 import PayPalButton from "./paybalBotton";
 import { getData } from "../helper/axios";
 import { getCookieValue } from "../../helper/cookies";
@@ -19,9 +18,11 @@ function ShoppingCart() {
 
   const getShoppingCart = async () => {
     const user_id = getCookieValue("user_id");
+    const user_cart = getCookieValue("cart_id");
+
     try {
       const shoppingCart = await getData({
-        url: `/cart/${user_id}/get`,
+        url: user_id ? `/cart/${user_id}/get` : `/cart/${user_cart}/get/cartId`,
       });
       setCart_id(shoppingCart.data.id);
       setCartItems(shoppingCart.data.cart_items);
@@ -38,6 +39,15 @@ function ShoppingCart() {
       console.log(e);
     }
   };
+  const reflecctOnChildChanges = (childData) => {
+    const a = cartTotal + childData;
+    setCartTotal(a);
+  };
+  const removeItem = (prod_id) => {
+    console.log("try to remove");
+    const newList = cartItems.filter((e) => e.product.id !== prod_id);
+    setCartItems(newList);
+  };
 
   return (
     <div className="shopping-cart">
@@ -47,7 +57,13 @@ function ShoppingCart() {
           <div className="cart-items">
             {" "}
             {cartItems.map((item) => (
-              <CartItem key={item.id} props={item} shoppingCart_id={cart_id} />
+              <CartItem
+                key={item.id}
+                onData={reflecctOnChildChanges}
+                props={item}
+                removeItem={removeItem}
+                shoppingCart_id={cart_id}
+              />
             ))}{" "}
           </div>{" "}
           <div>
@@ -66,10 +82,8 @@ function ShoppingCart() {
                 $ {cartTotal.toFixed(2)}
               </span>
             </p>
-            <Link to="/Paypage">
-              <button id="check">Check</button>
-            </Link>
-            <PayPalButton />
+
+            <PayPalButton total={cartTotal} />
           </div>
         </>
       ) : (

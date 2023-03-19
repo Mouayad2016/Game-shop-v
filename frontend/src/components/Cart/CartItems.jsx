@@ -4,7 +4,7 @@ import { getCookieValue } from "../../helper/cookies";
 
 import "./CartItem.css";
 
-function CartItem({ props, shoppingCart_id }) {
+function CartItem({ props, onData, removeItem, shoppingCart_id }) {
   const [quantity, setQuantity] = useState();
   const [price, setPrice] = useState();
   useEffect(() => {
@@ -21,19 +21,25 @@ function CartItem({ props, shoppingCart_id }) {
         url: `/cart/${userId}/${props.product.id}/postProduct`,
         data: {},
       });
+
+      onData(price);
     } catch (e) {
       console.log(e);
     }
   };
   const decress = async () => {
     try {
-      console.log(shoppingCart_id);
-      let a = quantity - 1;
+      let a = quantity !== 0 ? quantity - 1 : 0;
+
+      if (quantity === 1) {
+        removeItem(props.product.id);
+      }
       setQuantity(a);
       const cart_id = await deleteData({
         url: `/cart/${shoppingCart_id}/${props.product.id}/deleteProduct`,
         data: {},
       });
+      onData(-price);
     } catch (e) {
       console.log(e);
     }

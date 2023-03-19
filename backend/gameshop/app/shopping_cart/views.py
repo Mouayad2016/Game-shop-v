@@ -19,10 +19,17 @@ def getShopping_cart(request):
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
 
+@api_view(['GET'])
+def getShopping_cart_by_id(request, id):
+    try:
+        shopping_cart = Shopping_cart.objects.get(id=id)
+        serializer = GetShopping_cartSerializer(shopping_cart)
+        return Response(serializer.data)
+    except Exception as e:
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
 
 @api_view(['GET'])
 def getShoppingCartByUserId(request, id):
-
     try:
         print(request)
         shopping_cart = Shopping_cart.objects.get(user_id_id=id)
@@ -32,6 +39,7 @@ def getShoppingCartByUserId(request, id):
         return Response([],status=status.HTTP_200_OK)
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+
 
 
 @api_view(['POST'])
@@ -70,6 +78,28 @@ def DeleteProductFromShoppingCartByCartId(request, cartId, product_id=None):
     except Exception as e:
         print(str(e))
         return Response({'error': str(e)}, status=400)
+
+@api_view(['POST'])
+def addProductToShopping_cart_by_cart_id(request, cart_id, product_id=None):
+    try:
+        product = get_object_or_404(Product, id=product_id)
+        shopping_carts = Shopping_cart.objects.filter(id=cart_id)
+        if shopping_carts.exists():
+            shopping_cart = shopping_carts.first()
+            cart_item, created = CartItem.objects.get_or_create(cart=shopping_cart, product=product)
+            if not created:
+                cart_item.quantity += 1
+                cart_item.save()
+        else:
+            shopping_cart = Shopping_cart.objects.create(id=cart_id)
+            cart_item = CartItem.objects.create(cart=shopping_cart, product=product)
+        return Response({'cart_id': shopping_cart.id}, status=200)
+    except Exception as e:
+        print(str(e))
+        return Response({'error': str(e)}, status=400)
+    
+
+    
 
 @api_view(['POST'])
 def addToShopingCartNoAuthUser(request , product_id):
