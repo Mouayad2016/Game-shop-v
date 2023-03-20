@@ -1,69 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import "./Admin.css";
-import { getData } from "../helper/axios";
-import { axios } from "axios";
+import './Admin.css';
+import axios from "axios";
 
 const AdminDiscount = () => {
-  const [productData, setProductData] = useState([]);
   const [discountData, setDiscountData] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetchAllProduct();
+    fetchAllDiscountdata();
   }, []);
 
-  const fetchAllProduct = async () => {
-    setLoading(true);
+  const fetchAllDiscountdata = async () => {
     try {
-      const productResponse = await getData({ url: "http://localhost:8000/products/get" });
-      const discountResponse = await getData({ url: "http://localhost:8000/discount/get" });
-
-      const products = productResponse.data.map((product) => {
-        const discountProduct = discountResponse.data.find(
-          (discount) => discount.product_id === product.id
-        );
-        return {
-          id: product.id,
-          name: product.name,
-          description: product.description,
-          stock: product.stock,
-          price: product.price,
-          discountPrice: discountProduct?.discount_price ?? 0,
-        };
-      });
-      setProductData(products);
+      const response = await axios.get("http://localhost:8000/discount/get");
+      const discount = response.data.map((discount) => ({
+        id: discount.id,
+        start_date: discount.start_date,
+        end_date: discount.end_date,
+        title: discount.title,
+        discount_type: discount.discount_type,
+        rate: discount.rate,
+        code: discount.code,
+        admin_id: discount.discount_at,
+      }));
+      setDiscountData(discount);
     } catch (e) {
       console.log(e);
-    }
-    setLoading(false);
-  };
-
-  const [formData, setFormData] = useState({
-    id_deletor: "1",
-  });
-
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const deleteProduct = async (productId) => {
-    try {
-      const response = await axios.put(
-        `http://127.0.0.1:8000/products/${productId}/delete`,
-        formData
-      );
-      console.log(response.data);
-      setFormData({
-        id_deletor: "1",
-      });
-      setErrorMessage("");
-      setProductData((prevData) =>
-        prevData.map((product) =>
-          product.id === productId ? { ...product, deleted_by_admin_id: 1 } : product
-        )
-      );
-    } catch (error) {
-      console.error(error);
-      setErrorMessage("An error occurred while deleting the product.");
     }
   };
 
@@ -71,66 +33,47 @@ const AdminDiscount = () => {
     <div className="adminDiscount">
       <div className="container-fluid">
         <h1>Product Discount</h1>
-        <div className="col-lg-12">
-          <button className="btn">
-            Click here to <Link to="/admin/ProductCreate">Create Product</Link>
-          </button>
-          <br />
-          <br />
+        <div class="col-lg-12">   
+          <button class="btn">Click hete to <Link to="/admin/createDiscount">Create a Discount</Link></button><br></br><br></br>
         </div>
-        <div className="col-lg-12">
-          <div className="table-responsive">
-            <table className="table table-bordeless">
-              <thead>
-                <tr className="bg-light">
-                  <th width="5%"> # </th>
-                  <th width="20%"> Name </th>
-                  <th width="10%"> Stock </th>
-                  <th width="10%"> Category </th>
-                  <th width="20%"> Price </th>
-                  <th width="20%"> Reviews </th>
-                  <th width="20%">Delete</th>
+        <br />
+        <br />
+      </div>
+      <div className="col-lg-12">
+        <div className="table-responsive">
+          <table className="table table-borderless">
+            <thead>
+              <tr className="bg-light">
+                <th width="5%"> ID </th>
+                <th width="20%"> Start date </th>
+                <th width="20%"> End date </th>
+                <th width="20%"> Title </th>
+                <th width="20%"> Discount type </th>
+                <th width="20%"> rate </th>
+                <th width="20%"> code </th>
+                <th width="20%"> Admin ID </th>
+                <th width="20%"> Delete </th>
+              </tr>
+            </thead>
+            <tbody>
+              {discountData.map((e) => (
+                <tr>
+                  <td>{e.id}</td>
+                  <td>{e.start_date}</td>
+                  <td>{e.end_date}</td>
+                  <td>{e.title}</td>
+                  <td>{e.discount_type}</td>
+                  <td>{e.rate}</td>
+                  <td>{e.code}</td>
+                  <td>{e.admin_id}</td>
+                  <td><Link to="/admin/DeleteDiscount" className="alert alert-danger" state={{ id: e.id }}>Delete</Link></td>
                 </tr>
-              </thead>
-              <tbody>
-                {loading ? (
-                  <div>Loading...</div>
-                ) : (
-                  discountData.map((e) => (
-                    <tr key={e.id}>
-                      <td> {e.id} </td>
-                      <td> {e.name} </td>
-                      <td> {e.stock} </td>
-                      <td> {e.cat} </td>
-                      <td>
-                        ${" "}
-                        {e.price.toFixed(2)}{" "}
-                        {e.discount && (
-                          <span className="discount-price">
-                            {" "}
-                            ${" "}
-                            {(e.price - (e.price * e.discount) / 100).toFixed(2)}{" "}
-                          </span>
-                        )}
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn"
-                          // onClick={() => handleDelete(e.id)}
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   );
 };
-export default AdminDiscount;
-                             
+export default AdminDiscount
