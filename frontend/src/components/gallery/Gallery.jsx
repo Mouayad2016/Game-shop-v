@@ -213,7 +213,7 @@ const Gallery = () => {
                             >
                               {product && product.images && product.images.length > 0 ? (
                                 <img
-                                  src={`http://localhost:8000/${product.images[0]}`}
+                                  src={`http://localhost:8000${product.images[0]}`}
                                   alt={product.name}
                                   style={{ width: '200px', height: '200px' }}
                                   className="product-image"
