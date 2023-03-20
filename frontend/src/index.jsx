@@ -29,6 +29,9 @@ import AdminProfilePage from "./pages/adminPages/AdminProfilePage";
 import AdminCustomersPage from "./pages/adminPages/AdminCustomersPage";
 import AdminOrderPage from "./pages/adminPages/AdminOrderPage";
 import DownloadPage from "./pages/download";
+import AdminCreateDiscount from './pages/adminPages/AddDiscountPage';
+import AdminDeleteDiscount from './pages/adminPages/DeleteDiscountPage';
+
 
 const router = createBrowserRouter([
   {
@@ -134,6 +137,14 @@ const router = createBrowserRouter([
   {
     path: "/download",
     element: <DownloadPage />,
+  },
+  {
+    path: "/admin/createDiscount",
+    element : <AdminCreateDiscount/>,
+  },
+  {
+    path: "/admin/DeleteDiscount",
+    element : <AdminDeleteDiscount/>,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
