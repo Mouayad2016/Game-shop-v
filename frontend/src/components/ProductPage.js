@@ -26,6 +26,7 @@ const ProductPage = () => {
   const [productData, setProductData] = useState([]);
   const [reviewData, setReviewData] = useState([]);
   const [userData, setUserData] = useState([]);
+  const [imageData, setImageData] = useState([]);
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState("");
   const [favorites, setFavorites] = useState([]);
@@ -35,6 +36,7 @@ const ProductPage = () => {
     fetchAllProdData();
     fetchAllReviewData();
     fetchNameData();
+    fetchAllImageData();
   }, []);
 
   const fetchAllProdData = async () => {
@@ -46,6 +48,21 @@ const ProductPage = () => {
       console.log(e);
     }
   };
+
+  const fetchAllImageData = async () => {
+    try{
+      const response = await axios.get(`http://127.0.0.1:8000/product_image/get/${idd}`)
+      const image = response.data.map((image) => ({
+        link : image.image
+      }));
+      setImageData(image);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  let first = true;
+  
 
   const fetchAllReviewData = async () => {
     try {
@@ -129,6 +146,7 @@ const ProductPage = () => {
     }
   }
 
+
 return (
     <div>
 
@@ -139,34 +157,32 @@ return (
             <div class="col-lg-9">
                 <div class="filters-content">
                     <div class="row grid">
-                        <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 all des">
-                          <div class="item">
-                            <a href={"assets/images/project-item-0"+idd+".jpg"} data-lightbox="image-A" data-title="Our Projects"><img src={"assets/images/project-item-0"+idd+".jpg"} alt=""/></a>
-                          </div>
-                        </div>
+                      {imageData.filter((image) => { return first ? image : null, first = false}).map((image) => (
                         
                         <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 all des">
+                        <div>
+                          <a href={`http://localhost:8000/${image.link}`} data-lightbox="image-A" data-title={productData.name}><img src={`http://localhost:8000/${image.link}`} alt=""/></a>
+                        </div>
+                      </div>
+                      ))}
+                      <div>
+
                           <div class="row grid">
-                            <div class="item col-lg-4 col-md-6 col-sm-8 all">
-                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
-                          </div>
-                          <br></br>
-                          <div class="item col-lg-4 col-md-6 col-sm-8 all">
-                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
-                          </div>
-                          <br></br>
-                          <div class="item col-lg-4 col-md-6 col-sm-8 all">
-                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
-                          </div>
-                          <br></br>
-                          <div class="item col-lg-4 col-md-6 col-sm-8 all">
-                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
-                          </div>
-                          <br></br>
-                          <div class="item col-lg-4 col-md-6 col-sm-8 all">
-                            <a href="assets/images/project-item-01.jpg" data-lightbox="image-A" data-title="Our Projects"><img src="assets/images/project-item-01.jpg" alt=""/></a>
-                          </div>
-            </div></div></div></div></div>
+
+                            {imageData.map((image) => (
+                      
+                            <div class="col-lg-5 col-md-5 col-sm-7 col-xs-11 all des"><div >
+                            <a href={`http://localhost:8000/${image.link}`} data-lightbox="image-A" data-title={productData.name}><img src={`http://localhost:8000/${image.link}`} alt=""/></a>
+                            </div>
+                            <br></br>
+                        </div>
+                          
+                      
+
+                    ))}</div>
+                    </div>
+                        
+                                    </div></div></div>
           
             <div class="col-lg-3">    
                 <div class="section-heading">
@@ -178,10 +194,10 @@ return (
                     <br></br>
                     <fieldset>
                       {fId ? (
-                        <button onClick={addToFavorites}>Add to favorites</button>
+                        <button class="main-button" onClick={addToFavorites}>Add to favorites</button>
                       ):(
                         <Link to="/Logpage">
-                          <button>Log in or Register to add this product to your favorites</button>
+                          <button class="button"><strong>Here</strong> to log-in and add this product to your favorites</button>
                         </Link>
                       )}
                     </fieldset>
@@ -225,7 +241,7 @@ return (
                     
                 </div>{productData.description} 
         </div>
-        <p>comment : need to add discount if there is some</p>
+        {/*<p>comment : need to add discount if there is some</p>*/}
       </div>
       {/* <container>
         <h2>Add review</h2>
