@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from django.conf import settings
-from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -15,7 +15,7 @@ urlpatterns = [
     # * link:  http://127.0.0.1:8000/products 
     path('get', views.getProduct),     
     # * Method : Get
-    # * link:  http://127.0.0.1:8000/products/id/get
+    # * link:  http://127.0.0.1:8000/products/category_id/get
     path('<int:id>/get', views.getProductByCategory),  
     # * Method : Get
     # * link:  http://127.0.0.1:8000/products/get/text
@@ -31,7 +31,4 @@ urlpatterns = [
     # * link:  http://127.0.0.1:8000/products/id/update 
     # * the data you pass will be uppdated ex : { "name":"mouayad", "description": "uppdated", "stock": 22}
     path('<int:id>/update', views.updateProductById),
-]      
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

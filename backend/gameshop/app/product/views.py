@@ -31,14 +31,14 @@ def getProduct(request):
 @api_view(['GET'])
 def getProductByCategory(request, id):
     try:
-        limit = request.GET.get('limit', 6) # get the limit parameter from the query string, default to 10
+        limit = request.GET.get('limit', 6) # get the limit parameter from the query string, default to 6
         offset = request.GET.get('offset', 0) # get the offset parameter from the query string, default to 0
         category = Categories.objects.get(id=id)
-        product = category.product_set.all()[int(offset):int(offset)+int(limit)]
-        serializer = GetProductSerializer(product, many=True)
+        products = category.product_set.all()[int(offset):int(offset)+int(limit)]
+        serializer = GetProductSerializer(products, many=True, context={'request': request})
         return Response(serializer.data)
     except Exception as e:
-        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST)
         
 @api_view(['GET'])
 def getProductFuzzyQuery(request, text):

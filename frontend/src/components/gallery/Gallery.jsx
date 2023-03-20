@@ -19,6 +19,7 @@ const Gallery = () => {
       id: category.id,
       name: category.name,
     }));
+    console.log(categories); // Add this line to console log the categories
     setCategoryData(categories);
   };
 
@@ -28,72 +29,116 @@ const Gallery = () => {
       const productResponse = await getData({
         url: `/products/${categoryId}/get`,
       });
-      const products = productResponse.data.map((product) => ({
-        id: product.id,
-        name: product.name,
-        des: product.description,
-        is_deleted: product.is_deleted,
-      }));
+      const products = productResponse.data.map((product) => {
+        let images = [];
+        if (product.images && product.images.length > 0) {
+          images = product.images.map((image) => {
+            return image;
+          });
+        }
+        return {
+          id: product.id,
+          name: product.name,
+          des: product.description,
+          is_deleted: product.is_deleted,
+          images: images,
+        };
+      });
+      console.log(products);
       setProductData(products);
     } catch (e) {
       console.log(e);
     }
     setLoading(false);
   };
+
   const fetchAllProduct = async () => {
     setLoading(true);
     try {
       const productResponse = await getData({ url: "/products/get" });
-
-      const products = productResponse.data.map((product) => ({
-        id: product.id,
-        name: product.name,
-        des: product.description,
-        is_deleted: product.is_deleted,
-      }));
+      const products = productResponse.data.map((product) => {
+        let images = [];
+        if (product.images && product.images.length > 0) {
+          images = product.images.map((image) => {
+            return image;
+          });
+        }
+        return {
+          id: product.id,
+          name: product.name,
+          des: product.description,
+          is_deleted: product.is_deleted,
+          images: images,
+        };
+      });
+      console.log(products); // add this line to check the image URLs
       setProductData(products);
     } catch (e) {
-      console.log(e);
+      console.log("Error fetching products:", e);
     }
     setLoading(false);
   };
+
   const loadCatProd = async (categoryId) => {
     setLoading(true);
     try {
       const productResponse = await getData({
         url: `/products/${categoryId}/get?offset=${productData.length}`,
       });
-      const products = productResponse.data.map((product) => ({
-        id: product.id,
-        name: product.name,
-        des: product.description,
-        is_deleted: product.is_deleted,
-      }));
+      const products = productResponse.data.map((product) => {
+        let images = [];
+        if (product.images && product.images.length > 0) {
+          images = product.images.map((image) => {
+            return image;
+          });
+        }
+        return {
+          id: product.id,
+          name: product.name,
+          des: product.description,
+          is_deleted: product.is_deleted,
+          images: images,
+        };
+      });
+      console.log(products);
       setProductData([...productData, ...products]);
     } catch (e) {
       console.log(e);
     }
     setLoading(false);
   };
+
   const loadAllProd = async () => {
     setLoading(true);
     try {
       const productResponse = await getData({
         url: `/products/get?offset=${productData.length}`,
       });
-      const products = productResponse.data.map((product) => ({
-        id: product.id,
-        name: product.name,
-        des: product.description,
-        is_deleted: product.is_deleted,
-      }));
+      const products = productResponse.data.map((product) => {
+        let images = [];
+        if (product.images && product.images.length > 0) {
+          images = product.images.map((image) => {
+            return image;
+          });
+        }
+        return {
+          id: product.id,
+          name: product.name,
+          des: product.description,
+          is_deleted: product.is_deleted,
+          images: images,
+        };
+      });
+      console.log(products);
       setProductData([...productData, ...products]);
     } catch (e) {
       console.log(e);
     }
     setLoading(false);
   };
+
   const handleCategoryClick = (categoryId) => {
+    console.log('categoryId:', categoryId);
     if (categoryId) {
       car_id = categoryId;
       fechCatProd(categoryId);
@@ -109,6 +154,7 @@ const Gallery = () => {
     } else {
       loadAllProd();
     }
+    console.log("Load Data:", car_id);
   };
 
   // const addProductTOShoppingCart = (prodId){
@@ -126,7 +172,7 @@ const Gallery = () => {
               </div>
               <div class="filters">
                 <ul>
-                  <li class="desactive" onClick={() => handleCategoryClick()}>
+                  <li class="desactive" onClick={() => fetchAllProduct()}>
                     All
                   </li>
                   {categoryData.map((category) => (
@@ -158,15 +204,33 @@ const Gallery = () => {
                         >
                           <div class="item">
                             <a
-                              href="assets/images/project-item-02.jpg"
+                              href={product.images && product.images.length > 0 && (
+                                `http://localhost:8000/${product.images[0]}`
+                              )}
                               data-lightbox={product.id}
                               data-title={`<h2>${product.name}</h2><br />
                           <p><Truncate maxWidth={50} inline title="branch-name-that-is-really-long">${product.des}</Truncate></p>`}
                             >
-                              <img
-                                src="assets/images/project-item-02.jpg"
-                                alt={product.name}
-                              />
+                              {product && product.images && product.images.length > 0 ? (
+                                <img
+                                  src={`http://localhost:8000/${product.images[0]}`}
+                                  alt={product.name}
+                                  // style={{ width: '200px', height: '200px' }}
+                                  className="product-image"
+                                  onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = 'http://localhost:3000/assets/images/project-item-02.jpg';
+                                  }}
+                                />
+                              ) : (
+                                <img
+                                  src="http://localhost:3000/assets/images/project-item-02.jpg"
+                                  alt={product.name}
+                                  className="product-image"
+                                />
+                              )}
+
+
                             </a>
                             {<ItemButtons prod_id={product.id} />}
                             <Link

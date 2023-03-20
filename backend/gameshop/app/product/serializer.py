@@ -17,8 +17,13 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class GetProductSerializer(serializers.ModelSerializer):
     prod_category = CategorySerializer(many=True)
+    images = serializers.SerializerMethodField()
     # category_id = serializers.IntegerField()
+
     class Meta:
         model = Product
         fields = '__all__'
 
+    def get_images(self, product):
+        product_images = Product_images.objects.filter(product_id=product.id)
+        return [image.image.url for image in product_images]
