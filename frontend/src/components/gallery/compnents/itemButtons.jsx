@@ -6,17 +6,17 @@ const ItemButtons = (props) => {
     const userId = getCookieValue("user_id");
     const user_cart = getCookieValue("cart_id");
 
-    if (user_cart) {
+    if (userId) {
+      const cart_id = await postData({
+        url: `/cart/${userId}/${props.prod_id}/postProduct`,
+        data: {},
+      });
+    } else if (user_cart) {
       const postDataToCartByCartId = await postData({
         url: `/cart/${user_cart}/${props.prod_id}/postProduct/cartId`,
         data: {},
       });
       document.cookie = `cart_id=${postDataToCartByCartId.data.cart_id}; path=/;`;
-    } else if (userId) {
-      const cart_id = await postData({
-        url: `/cart/${userId}/${props.prod_id}/postProduct`,
-        data: {},
-      });
     } else {
       const cart_id = await postData({
         url: `/cart/${props.prod_id}/postProduct`,

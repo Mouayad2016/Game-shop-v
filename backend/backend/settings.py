@@ -12,7 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+import django_heroku
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,15 +25,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-PAYPAL_CLIENT_ID = "AZpYnUbC27xo1LozvWDUVE39fMZhE2Y7ZsStKsQm9k2zaRvqQKdYEmleomGqLmzjAd-T7g-AtnmfP1nM"
-PAYPAL_SECRET = "EJne0o4UIN9btm5bsPqZNYmkCpv1y4CqxhlR_4a5JwRWX1g4xE3KiqSu3M2sdMWlxcKRq0_gdz2-Rd6T"
-SECRET_KEY = 'django-insecure-)@6zs(jz6%w)ychj$swd%7&$p+=#(+x@0lhvgejv5=8(nbo%7^'
-GOOGLE_OAUTH_CLIENT_ID= "208664010544-tel853atbvk6bqe1mpintav5p4jjgm3v.apps.googleusercontent.com"
-GOOGLE_OAUTH_CLIENT_SECRET= "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"
+PAYPAL_CLIENT_ID = os.environ.get('PAYPAL_CLIENT_ID')
+PAYPAL_SECRET = os.environ.get('PAYPAL_SECRET')
+SECRET_KEY = os.environ.get('SECRET_KEY')
+GOOGLE_OAUTH_CLIENT_ID= os.environ.get('GOOGLE_OAUTH_CLIENT_ID')
+GOOGLE_OAUTH_CLIENT_SECRET= os.environ.get('GOOGLE_OAUTH_CLIENT_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 REST_FRAMEWORK = { 
     # 'DEFAULT_PARSER_CLASSES': [
@@ -59,6 +62,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -161,3 +165,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/product_images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'product_images')
+django_heroku.settings(locals())

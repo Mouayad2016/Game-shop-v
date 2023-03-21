@@ -79,10 +79,17 @@ function ShoppingCart() {
             <p className="cart-summary-text">
               Subtotal:&emsp;
               <span className="cart-summary-price">
-                 {cartTotal.toFixed(2)} SEK
+                {cartTotal.toFixed(2)} SEK
               </span>
             </p>
-            <Link to="/Paypage"><button className="check">Submit</button></Link>
+            <Link
+              to={{
+                pathname: "/Paypage",
+                search: `?total=${cartTotal}`, // state: { total: cartTotal },
+              }}
+            >
+              <button className="check">Submit</button>
+            </Link>
           </div>
         </>
       ) : (
