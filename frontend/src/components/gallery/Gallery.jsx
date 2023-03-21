@@ -138,7 +138,7 @@ const Gallery = () => {
   };
 
   const handleCategoryClick = (categoryId) => {
-    console.log('categoryId:', categoryId);
+    console.log("categoryId:", categoryId);
     if (categoryId) {
       car_id = categoryId;
       fechCatProd(categoryId);
@@ -204,22 +204,27 @@ const Gallery = () => {
                         >
                           <div class="item">
                             <a
-                              href={product.images && product.images.length > 0 && (
+                              href={
+                                product.images &&
+                                product.images.length > 0 &&
                                 `http://localhost:8000/${product.images[0]}`
-                              )}
+                              }
                               data-lightbox={product.id}
                               data-title={`<h2>${product.name}</h2><br />
                           <p><Truncate maxWidth={50} inline title="branch-name-that-is-really-long">${product.des}</Truncate></p>`}
                             >
-                              {product && product.images && product.images.length > 0 ? (
+                              {product &&
+                              product.images &&
+                              product.images.length > 0 ? (
                                 <img
-                                  src={`http://localhost:8000${product.images[0]}`}
+                                  src={`http://localhost:8000/product_image/get/name?imgName=${product.images[0]}`}
                                   alt={product.name}
-                                  style={{ width: '200px', height: '200px' }}
+                                  style={{ width: "200px", height: "200px" }}
                                   className="product-image"
                                   onError={(e) => {
                                     e.target.onerror = null;
-                                    e.target.src = 'http://localhost:3000/assets/images/project-item-02.jpg';
+                                    e.target.src =
+                                      "http://localhost:3000/assets/images/project-item-02.jpg";
                                   }}
                                 />
                               ) : (
@@ -229,8 +234,6 @@ const Gallery = () => {
                                   className="product-image"
                                 />
                               )}
-
-
                             </a>
                             {<ItemButtons prod_id={product.id} />}
                             <Link

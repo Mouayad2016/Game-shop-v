@@ -12,6 +12,7 @@ def getProductByProductId(request, id):
         product = Product.objects.get(id=id)
         serializer = ProductSerializer(product)
         return Response(serializer.data)
+        
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
 

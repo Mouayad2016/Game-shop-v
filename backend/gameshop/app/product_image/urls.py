@@ -12,6 +12,8 @@ urlpatterns = [
     # * Method : Get
     # * link:  http://127.0.0.1:8000/product_image/get/product_id
     path('get/<int:product_id>', views.get_product_image_id),
+    path('get/name', views.getProduct_images_by_name),
+
     # * Method : Post 
     # * link:  http://127.0.0.1:8000/product_image/post
     # * Form : { "product_id": 1, "image": imagePath}

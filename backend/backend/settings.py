@@ -165,4 +165,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/product_images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'product_images')
+
 django_heroku.settings(locals())
