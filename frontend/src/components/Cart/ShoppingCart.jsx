@@ -66,7 +66,7 @@ function ShoppingCart() {
               />
             ))}{" "}
           </div>{" "}
-          <div>
+          {/*<div>
             <p>
               <strong>Paybal email:</strong> sb - qonwa25271562
               @personal.example.com
@@ -74,7 +74,7 @@ function ShoppingCart() {
             <p>
               <strong>Paybal password:</strong> 00000000
             </p>
-          </div>
+            </div>*/}
           <div className="cart-summary">
             <p className="cart-summary-text">
               Subtotal:&emsp;
