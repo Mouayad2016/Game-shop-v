@@ -50,6 +50,7 @@ function CreateCatForm() {
   return (
     <section>
         <div class="col-lg-12"><h1>Delete category number {idd}</h1>Do not use it is not working fo now</div>
+        <div class="adminForm">
     <div className="form_container">
       <form onSubmit={handleSubmit}>
         {errorMessage && (
@@ -73,7 +74,9 @@ function CreateCatForm() {
           Delete
         </button>
       </form>
-    </div><div class="col-lg-12">
+    </div>
+    </div>
+    <div class="col-lg-12">
       <button class="btn">Click hete to return to <Link to="/admin/Category">Category</Link></button><br></br><br></br>
       </div></section>
   );

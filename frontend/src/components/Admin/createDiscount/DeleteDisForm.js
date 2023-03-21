@@ -53,6 +53,7 @@ function CreateDisForm() {
   return (
     <section>
         <div class="col-lg-12"><h1>Delete discound number {idd}</h1></div>
+        <div class="adminForm">
     <div className="form_container">
       <form onSubmit={handleSubmit}>
         {errorMessage && (
@@ -75,7 +76,9 @@ function CreateDisForm() {
           Delete
         </button>
       </form>
-    </div><div class="col-lg-12">
+    </div>
+    </div>
+    <div class="col-lg-12">
       <button class="btn">Click hete to return to <Link to="/admin/discount">Discount</Link></button><br></br><br></br>
       </div></section>
   );

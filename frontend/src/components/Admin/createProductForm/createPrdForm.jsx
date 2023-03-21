@@ -66,6 +66,7 @@ function CreateProductForm() {
   };
 
   return (
+    <div class="adminForm">
     <div className="form_container">
       <form onSubmit={handleSubmit}>
         {errorMessage && (
@@ -152,6 +153,7 @@ function CreateProductForm() {
           Create
         </button>
       </form>
+    </div>
     </div>
   );
 }

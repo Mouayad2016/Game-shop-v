@@ -88,6 +88,7 @@ function CreateProductForm() {
   return (
     <section>
     <div class="col-lg-12"><h1>Manage my product info</h1></div>
+    <div class="adminForm">
     <div className="form_container">
       <form onSubmit={handleSubmit}>
         {errorMessage && (
@@ -144,6 +145,7 @@ function CreateProductForm() {
           Modify
         </button>
       </form>
+    </div>
     </div>
     </section>
   );

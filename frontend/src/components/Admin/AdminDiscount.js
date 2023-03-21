@@ -34,7 +34,7 @@ const AdminDiscount = () => {
       <div className="container-fluid">
         <h1>Product Discount</h1>
         <div class="col-lg-12">   
-          <button class="btn">Click hete to <Link to="/admin/createDiscount">Create a Discount</Link></button><br></br><br></br>
+          <button class="btn">Click here to <Link to="/admin/createDiscount">Create a Discount</Link></button><br></br><br></br>
         </div>
         <br />
         <br />

@@ -51,33 +51,35 @@ const AdminLogin = () => {
             <p></p>
             <h6>Please log in with your administrators credentials</h6>
             <p>If you do not have administrators credentials yet, please contact the head administrator at <a href="mailto:h22anogo@du.se">h22anogo@du.se</a> to obtain temporary credentials</p>
-            <div className="form_container">
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="Username"
-                            //placeholder='username'
-                            value={username}
-                            onChange={(e) => setusername(e.target.value)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            name="Password"
-                            //placeholder='password'
-                            onChange={(e) => setpassword(e.target.value)}
-                        />
-                    </div>
-                    <button type="submit" className="btn btn-primary">
-                        Log In
-                    </button>
-                </form>
+            <div class="adminForm">
+                <div className="form_container">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="username">Username</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="Username"
+                                //placeholder='username'
+                                value={username}
+                                onChange={(e) => setusername(e.target.value)}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password</label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                name="Password"
+                                //placeholder='password'
+                                onChange={(e) => setpassword(e.target.value)}
+                            />
+                        </div>
+                        <button type="submit" className="btn btn-primary">
+                            Log In
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     );

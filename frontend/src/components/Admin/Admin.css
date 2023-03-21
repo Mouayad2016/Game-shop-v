@@ -49,3 +49,7 @@
 .adminProducts h3 {
     padding-bottom: 30px;
 }
+
+.adminForm .form-group {
+    width:auto;
+}

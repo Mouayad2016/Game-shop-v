@@ -96,6 +96,7 @@ function Admin() {
 
         <section>
       <div class="col-lg-12"><h1>Create a new admin</h1></div>
+      <div class="adminForm">
     <div className="form_container">
       <form onSubmit={handleSubmit}>
         {errorMessage && (
@@ -130,6 +131,7 @@ function Admin() {
       </form>
 
       
+    </div>
     </div>
    </section> 
     </section>

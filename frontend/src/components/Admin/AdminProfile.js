@@ -85,39 +85,41 @@ const AdminProfile = () => {
                     <h3>Change your profile</h3>
                     <p>Both fields are mandatory</p>
                 </div>
-                <div className="form_container">
-                    <form onSubmit={handleSubmit}>
-                        {errorMessage && (
-                        <div className="alert alert-danger" role="alert">
-                            {errorMessage}
-                        </div>
-                        )}
-                        <div className="form-group">
-                        <label htmlFor="name">Username</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="username"
-                            name="username"
-                            value={formData.username}
-                            onChange={handleInputChange}
-                        />
-                        </div>
-                        <div className="form-group">
-                        <label htmlFor="description">New password</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleInputChange}
-                        />
-                        </div>
-                        <button type="submit" className="btn btn-primary">
-                        Modify 
-                        </button>
-                    </form>
+                <div class="adminForm">
+                    <div className="form_container">
+                        <form onSubmit={handleSubmit}>
+                            {errorMessage && (
+                            <div className="alert alert-danger" role="alert">
+                                {errorMessage}
+                            </div>
+                            )}
+                            <div className="form-group">
+                            <label htmlFor="name">Username</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="username"
+                                name="username"
+                                value={formData.username}
+                                onChange={handleInputChange}
+                            />
+                            </div>
+                            <div className="form-group">
+                            <label htmlFor="description">New password</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleInputChange}
+                            />
+                            </div>
+                            <button type="submit" className="btn btn-primary">
+                            Modify 
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </section>
         </div>

@@ -48,6 +48,7 @@ function CreateDisForm() {
   return (
     <section>
       <div class="col-lg-12"><h1>Create a Discount</h1></div>
+      <div class="adminForm">
       <div className="form_container">
         <form onSubmit={handleSubmit}>
           {errorMessage && (
@@ -81,8 +82,10 @@ function CreateDisForm() {
             </button>
         </form>
 
-      </div><div class="col-lg-12">
-        <button class="btn">Click hete to return to <Link to="/admin/discount">Category</Link></button><br></br><br></br>
+      </div>
+      </div>
+      <div class="col-lg-12">
+        <button class="btn">Click here to return to <Link to="/admin/discount">Discount</Link></button><br></br><br></br>
       </div></section>
   );
 }
