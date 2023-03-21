@@ -72,7 +72,11 @@ const Gallery = () => {
         };
       });
       console.log(products); // add this line to check the image URLs
+
       setProductData(products);
+      // productData.map((e) => {
+      //   console.log(e.id);
+      // });
     } catch (e) {
       console.log("Error fetching products:", e);
     }
@@ -207,7 +211,7 @@ const Gallery = () => {
                               href={
                                 product.images &&
                                 product.images.length > 0 &&
-                                `http://localhost:8000/${product.images[0]}`
+                                `http://localhost:8000/product_image/get/name?imgName=${product.images[0]}`
                               }
                               data-lightbox={product.id}
                               data-title={`<h2>${product.name}</h2><br />
