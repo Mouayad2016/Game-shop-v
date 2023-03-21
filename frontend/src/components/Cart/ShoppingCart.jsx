@@ -49,6 +49,7 @@ function ShoppingCart() {
     setCartItems(newList);
   };
 
+  if(cartItems !== undefined) {
   return (
     <div className="shopping-cart">
       <h2 className="shopping-cart-header"> Shopping Cart </h2>
@@ -97,6 +98,14 @@ function ShoppingCart() {
       )}
     </div>
   );
+  } else {
+    return (
+      <div className="shopping-cart">
+        <h2 className="shopping-cart-header"> Shopping Cart </h2>
+        <p className="empty-cart-message"> Your cart is empty. </p>
+      </div>
+    );
+  }
 }
 
 export default ShoppingCart;
