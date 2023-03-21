@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
 import axios from "axios";
+import { getCookieValue } from "../helper/cookies";
 
 import { getData } from "../components/helper/axios";
 
@@ -15,7 +16,7 @@ const ProductPage = ({ prodId }) => {
     //   document.cookie = `user_id=${user_id}; path=/;`;
     // }
 
-    // setId(getCookieValue("user_id"));
+     setId(getCookieValue("user_id"));
     fetchAllProdData();
   }, []);
 
@@ -169,7 +170,7 @@ const ProductPage = ({ prodId }) => {
                         <div class="col-lg-5 col-md-5 col-sm-7 col-xs-11 all des">
                           <div>
                             <a
-                              href={`http://localhost:8000/${image}`}
+                              href={`http://localhost:8000/product_image/get/name?imgName=${image}`}
                               data-lightbox="image-A"
                               data-title={productData.name}
                             >
