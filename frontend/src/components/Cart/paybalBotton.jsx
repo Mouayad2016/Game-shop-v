@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { BeatLoader } from "react-spinners";
@@ -7,13 +7,15 @@ import "./style.css";
 const PayPalButton = ({ total }) => {
   const [loading, setLoading] = useState(false);
   const handlePay = async () => {
+    console.log(total);
+    console.log("pay");
     try {
       setLoading(true);
       if (total !== 0) {
         const response = await axios.post(
           "http://localhost:8000/payment/pay",
           {
-            amount: `${total}`,
+            amount: total.total,
             currency: "USD",
             description: "Example payment",
           },

@@ -100,14 +100,15 @@ function PaypalPayement(total) {
             required
           />
         </div>
-        <a href="#howtopay">
+        <PayPalButton total={total} />
+        {/* <a href="#howtopay">
           <button className="sub-bt">NEXT</button>
-        </a>
+        </a> */}
       </form>
 
-      <div id="howtopay">
+      {/* <div id="howtopay">
         <PayPalButton total={total} />
-      </div>
+      </div> */}
     </div>
   );
 }
