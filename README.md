@@ -57,7 +57,7 @@ Install the requirements in the backend
   pip install -r requirements.txt
 ```
 
-Install node js
+Install the required frontend packages
 
 ```bash
   cd frontend
