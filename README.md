@@ -43,44 +43,33 @@ And for the API the application in use is Postman.
 
 ## Installation
 
-First install globally
-/*we also need to install node js and then npm*/
-```bash
-  pip install pipenv
-```
-
-On Mac
+Get the project from git
 
 ```bash
-  pip3 install pipenv
+  winget install --id Git.Git -e --source winget
+  git clone https://github.com/Mouayad2016/Game-shop-v.git
 ```
 
-Then go into backend directory and install django
+Install the requirements in the backend
 
 ```bash
   cd backend
-  pipenv install django
+  pip install -r requirements.txt
 ```
 
-And activate the environment
+Install node js
 
 ```bash
-  pipenv shell
-```
-
-To install google authentication
-
-```bash
-  pip install google-auth
-  pip install google-auth-oathlib
-  npm install react-router-dom
+  install node js
+  npm install
 ```
 
 ## Deployment
 
-To deploy this project, this in backend
+To deploy this project, write this in backend
 
 ```bash
+  cd backend
   python manage.py runserver
 ```
 
@@ -88,7 +77,6 @@ And this in frontend
 
 ```bash
   cd frontend
-  cd gameshop
   npm start
 ```
 
@@ -104,17 +92,8 @@ from .models import Product
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields=('id',
-                'name',
-                'description',
-                'stock',
-                'review_id',
-                'discout_id',
-                'creator_admin_id',
-                'is_deleted',
-                'deleted_by_admin_id',
-                'created_at',
-                'updated_at')
+        fields=('__all__')
+
 ----
 
 views.py
@@ -128,14 +107,9 @@ def getProduct(request):
         serializer = ProductSerializer(product, many=True)
         return Response(serializer.data)
     except Exception as e:
-        return Response(str(e), status= status.HTTP_400_BAD_REQUEST);
+        return Response(str(e), status= status.HTTP_400_BAD_REQUEST)
 ```
 
 ## Documentation
 
-[Documentation](https://dalarnauniversity-my.sharepoint.com/:w:/g/personal/h17mohao_du_se/EVmgNsWvvP9AvFGXYsWU_gAByXA_GOFfB1LPlco5qVEEqw?e=BaXcSm)
-
-## License
-
-[Need to add!](https://choosealicense.com/licenses/mit/)
-
+[Documentation](https://dalarnauniversity-my.sharepoint.com/:w:/g/personal/h17mohao_du_se/EVmgNsWvvP9AvFGXYsWU_gAB9P5VUE12fBXGfXYFnFdxqA?rtime=wbEUQfQq20g)
