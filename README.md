@@ -60,7 +60,7 @@ Install the requirements in the backend
 Install node js
 
 ```bash
-  install node js
+  cd frontend
   npm install
 ```
 
