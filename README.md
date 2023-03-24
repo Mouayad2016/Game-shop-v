@@ -66,17 +66,18 @@ Install the required frontend packages
 
 ## Deployment
 
-To deploy this project, write this in backend
+To deploy this project, write this in backend in one terminal
 
 ```bash
   cd backend
   python manage.py runserver
 ```
 
-And this in frontend
+And this in frontend in another terminal
 
 ```bash
   cd frontend
+  npm install
   npm start
 ```
 
@@ -109,7 +110,3 @@ def getProduct(request):
     except Exception as e:
         return Response(str(e), status= status.HTTP_400_BAD_REQUEST)
 ```
-
-## Documentation
-
-[Documentation](https://dalarnauniversity-my.sharepoint.com/:w:/g/personal/h17mohao_du_se/EVmgNsWvvP9AvFGXYsWU_gAB9P5VUE12fBXGfXYFnFdxqA?rtime=wbEUQfQq20g)
